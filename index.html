@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kapi - Cálculo de Carga Térmica 2D Interativo & Simulação Horária 24h (Carrier HAP Architecture)</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app-container">
+        <!-- Top Navigation / KPI Bar -->
+        <header id="top-bar">
+            <div class="brand">
+                <span class="brand-icon">❄️</span>
+                <span class="brand-name">Kapi <strong>HVAC 2D</strong></span>
+                <span class="brand-badge">Carrier HAP 6.4 Engine</span>
+            </div>
+
+            <!-- Global HVAC Load Metrics -->
+            <div id="kpi-summary">
+                <div class="kpi-card">
+                    <span class="kpi-label">Carga Instantânea (TR)</span>
+                    <div class="kpi-value-group">
+                        <span class="kpi-value highlight" id="total-cooling-tr">0.00 TR</span>
+                        <span class="kpi-sub" id="total-cooling-btu">0 BTU/h</span>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <span class="kpi-label">Sensível vs Latente</span>
+                    <span class="kpi-value" id="total-sensible-latent">Sensível: 0 kW | Latente: 0 kW</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="kpi-label">Vazão Total de Ar</span>
+                    <span class="kpi-value" id="total-airflow-cfm">0 CFM</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="kpi-label">Área Construída</span>
+                    <span class="kpi-value" id="total-area-m2">0.0 m²</span>
+                </div>
+            </div>
+
+            <!-- Quick Action Toolbar -->
+            <div id="cad-toolbar">
+                <button class="tool-btn active" data-mode="select" title="Selecionar e mover vértices (Snap QuadTree)">
+                    <span class="icon">↖</span> Selecionar
+                </button>
+                <button class="tool-btn" data-mode="draw" title="Desenhar Novo Espaço (Clique nos vértices e feche o polígono)">
+                    <span class="icon">✏️</span> Novo Espaço
+                </button>
+                <button class="tool-btn" data-mode="add_window" title="Clique em uma parede para adicionar e definir dimensões da janela">
+                    <span class="icon">🪟</span> Janela
+                </button>
+                <button class="tool-btn" data-mode="toggle_boundary" title="Alternar entre Parede Externa e Parede Divisória Interna">
+                    <span class="icon">🧱</span> Externa / Divisória
+                </button>
+                <button class="action-btn active" id="toggle-heatmap" title="Alternar Mapa de Calor Térmico (W/m²)">
+                    <span class="icon">🔥</span> Heatmap
+                </button>
+
+                <div class="toolbar-divider"></div>
+
+                <!-- Building / Map Orientation Rotation Controls -->
+                <div class="rotation-control-group" title="Girar Orientação do Mapa / Norte (clique ou arraste a Rosa dos Ventos)">
+                    <span class="compass-label">🧭 Norte:</span>
+                    <button class="btn-rot-step" id="btn-rot-ccw" title="Girar 15° anti-horário">↺</button>
+                    <input type="number" id="input-building-rotation" min="0" max="359" value="0" step="5" class="rotation-input" title="Ângulo de rotação do Norte">
+                    <span class="unit-deg">°</span>
+                    <button class="btn-rot-step" id="btn-rot-cw" title="Girar 15° horário">↻</button>
+                    <input type="range" id="slider-building-rotation" min="0" max="359" value="0" step="1" class="rotation-slider" title="Ajuste contínuo da orientação">
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Workspace -->
+        <main id="main-content">
+            <!-- Left Sidebar: Spaces & Search (Carrier HAP Filter Engine) -->
+            <aside id="left-sidebar">
+                <div class="sidebar-header">
+                    <h3>Espaços & Zonas</h3>
+                </div>
+
+                <!-- Carrier HAP SpacesSearchViewModel Filter Controls -->
+                <div class="search-box">
+                    <div class="search-input-wrapper">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="search-input" placeholder="Buscar por nome ou zona..." autocomplete="off">
+                    </div>
+                    
+                    <div class="filter-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="search-notes">
+                            <span>Incluir Anotações</span>
+                        </label>
+                        <div class="filter-dropdowns">
+                            <select id="filter-multilevel" title="Filtro Multi-Level">
+                                <option value="All">Nível: Todos</option>
+                                <option value="TrueOnly">Multi-Nível</option>
+                                <option value="FalseOnly">Nível Único</option>
+                            </select>
+                            <select id="filter-unmodeled" title="Filtro de Modelagem">
+                                <option value="All">Modelado: Todos</option>
+                                <option value="FalseOnly">Modelados</option>
+                                <option value="TrueOnly">Não Modelados</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="search-count" id="search-count-label">4 of 4 spaces displayed</div>
+                </div>
+
+                <!-- Space List with Peak Hour Badges -->
+                <div id="space-list" class="space-list"></div>
+
+                <!-- Coincident Peak & Diversity Info Footer -->
+                <div id="building-peak-badge" class="building-peak-footer"></div>
+            </aside>
+
+            <!-- Center: Interactive 2D Canvas Viewport + 24H Timeline Dock -->
+            <section id="viewport-container">
+                <canvas id="cad-canvas"></canvas>
+                
+                <div id="viewport-legend">
+                    <div class="legend-item"><span class="legend-color ext-wall"></span> Parede Externa</div>
+                    <div class="legend-item"><span class="legend-color ext-sun"></span> Incidência Solar Direta</div>
+                    <div class="legend-item"><span class="legend-color part-wall"></span> Divisória Interna</div>
+                    <div class="legend-item"><span class="legend-color window-line"></span> Janela</div>
+                    <div class="legend-item"><span class="legend-color heatmap-cool"></span> Baixa Carga (<60 W/m²)</div>
+                    <div class="legend-item"><span class="legend-color heatmap-hot"></span> Alta Carga (>120 W/m²)</div>
+                </div>
+
+                <!-- Bottom 24-Hour Timeline Player & Dynamic Load Curve -->
+                <div id="timeline-dock">
+                    <div class="timeline-controls-row">
+                        <button id="btn-play-timeline" class="play-btn">▶ Reproduzir 24h</button>
+                        
+                        <div class="slider-wrapper">
+                            <input type="range" id="hour-slider" min="0" max="23" value="14" step="1">
+                        </div>
+
+                        <div class="timeline-badges">
+                            <span class="badge time" id="timeline-time-badge">14:00h - Tarde</span>
+                            <span class="badge temp" id="timeline-temp-badge">Ext: 34.2°C</span>
+                            <span class="badge solar" id="timeline-sun-badge">☀️ Sol</span>
+                        </div>
+                    </div>
+
+                    <!-- 24-Hour SVG Dynamic Load Curve -->
+                    <div id="hourly-chart-container"></div>
+                </div>
+            </section>
+
+            <!-- Right Sidebar: Properties & Thermal Inspector -->
+            <aside id="right-sidebar">
+                <div class="sidebar-header">
+                    <h3>Inspetor de Carga Térmica</h3>
+                </div>
+
+                <!-- Selected Space Properties -->
+                <div id="property-panel" class="property-panel">
+                    <div class="section-title">Propriedades do Espaço</div>
+                    
+                    <div id="prop-load-summary" class="prop-load-badge"></div>
+
+                    <div class="form-group">
+                        <label for="prop-name">Nome do Espaço:</label>
+                        <input type="text" id="prop-name">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="prop-zone">Zona Térmica:</label>
+                            <input type="text" id="prop-zone">
+                        </div>
+                        <div class="form-group">
+                            <label for="prop-height">Pé-direito (m):</label>
+                            <input type="number" id="prop-height" step="0.1" min="1.5">
+                        </div>
+                    </div>
+
+                    <div class="section-title">Cargas Internas (ASHRAE)</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="prop-occupants">Ocupantes (pessoas):</label>
+                            <input type="number" id="prop-occupants" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="prop-lighting">Iluminação (W/m²):</label>
+                            <input type="number" id="prop-lighting" step="0.5" min="0">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prop-equipment">Equipamentos / Tomadas (W/m²):</label>
+                        <input type="number" id="prop-equipment" step="1.0" min="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="prop-notes">Notas / Especificações:</label>
+                        <textarea id="prop-notes" rows="2"></textarea>
+                    </div>
+
+                    <!-- Walls and Fenestration Inspector -->
+                    <div class="section-title">Paredes & Janelas da Sala</div>
+                    <div id="prop-walls-container" class="walls-inspector-list">
+                        <p class="empty-hint">Nenhuma parede cadastrada.</p>
+                    </div>
+
+                    <div class="action-row">
+                        <button id="btn-delete-space" class="btn-danger">Excluir Espaço</button>
+                    </div>
+
+                    <hr class="divider">
+
+                    <!-- Ambient Design Conditions -->
+                    <div class="section-title">Condições de Projeto (ASHRAE)</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="weather-outdoor-db">Temp. Externa (°C):</label>
+                            <input type="number" id="weather-outdoor-db" value="35.0" step="0.5">
+                        </div>
+                        <div class="form-group">
+                            <label for="weather-indoor-db">Temp. Interna (°C):</label>
+                            <input type="number" id="weather-indoor-db" value="24.0" step="0.5">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="weather-peak-solar">Radiação Solar Pico (W/m²):</label>
+                        <input type="number" id="weather-peak-solar" value="650" step="10">
+                    </div>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <!-- Floating Window Dimension Modal -->
+    <div id="window-modal" class="modal-overlay hidden">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h4>🪟 Definir Dimensões da Janela</h4>
+                <button id="btn-close-window-modal" class="modal-close" title="Fechar">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="window-modal-wall-info" class="modal-desc">Parede (Comprimento: 6.0 m)</p>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="modal-win-width">Largura da Janela (m):</label>
+                        <input type="number" id="modal-win-width" step="0.1" min="0.3" value="1.8">
+                    </div>
+                    <div class="form-group">
+                        <label for="modal-win-height">Altura da Janela (m):</label>
+                        <input type="number" id="modal-win-height" step="0.1" min="0.3" value="1.4">
+                    </div>
+                </div>
+                <div class="modal-calc-preview" id="window-modal-preview">
+                    Área da Janela: <strong>2.52 m²</strong>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="btn-remove-window" class="btn-danger-outline">Remover Janela</button>
+                <button id="btn-save-window" class="btn-primary">Salvar Dimensões</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Script Entry -->
+    <script type="module" src="src/app.js"></script>
+</body>
+</html>
