@@ -1,7 +1,7 @@
 # Kapi HVAC 2D - Calculadora de Carga Térmica & Simulação Dinâmica 24h
 
-> **Versão:** `v0.1`  
-> **Status:** Release Inicial  
+> **Versão:** `v0.12`  
+> **Status:** Release Atualizada  
 > **Tecnologias:** JavaScript Moderno (ES Modules), HTML5 Canvas 2D, CSS3 Glassmorphism & Tokens, Python 3 (Engenharia de Testes)
 
 ---
@@ -20,7 +20,11 @@ A metodologia de cálculo adota os fundamentos consagrados da engenharia térmic
 ## 🚀 Principais Funcionalidades
 
 ### 1. Modelagem Arquitetônica 2D & CAD
-* **Navegação com Botão Direito:** Clique e arraste com o botão direito do mouse (ou botão do meio / Alt + clique esquerdo) para locomover e navegar livremente pelo plano do edifício.
+* **Movimentação Completa de Blocos (Drag & Drop):** Arraste qualquer espaço/sala diretamente pelo plano 2D com feedback visual dinâmico.
+* **Encaixe Magnético (Snap):** Alinhamento inteligente entre vértices e arestas de salas adjacentes com indicadores visuais no canvas.
+* **Detecção Automática de Paredes (Regra dos 60%):** Quando duas salas colam com $\ge 60\%$ de sobreposição, a parede vira automaticamente Divisória Interna (sem insolação). Ao afastar, volta a ser Parede Externa com insolação direta.
+* **Atalho com Botão Direito:** Clique com o botão direito para definir largura, comprimento, altura e uso, criando o bloco instantaneamente.
+* **Navegação com Botão Direito (Pan):** Clique e arraste com o botão direito do mouse para navegar livremente pelo plano do edifício.
 * **Dimensionamento Preciso de Esquadrias:** Inserção e edição das dimensões exatas de cada janela (largura e altura em metros) com cálculo automático da área envidraçada e da relação vidro/parede (*Window-to-Wall Ratio*).
 * **Orientação Solar & Rotação do Norte:** Controle fino do azimute do edifício (0° a 359°) via campos numéricos, botões incrementais ou arrastando a Rosa dos Ventos interativa. O cálculo da incidência solar em todas as fachadas é recalculado instantaneamente.
 * **Busca e Filtro Rápido de Espaços:** Barra de pesquisa em tempo real para filtrar ambientes por nome ou por zona térmica, com métricas de área total e carga acumulada.

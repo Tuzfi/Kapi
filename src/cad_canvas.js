@@ -32,6 +32,12 @@ export class CadCanvas {
         this.hoveredPoint = null;
         this.hoveredWall = null;
         this.draggedPoint = null;
+        this.draggedSpace = null;
+        this.dragSpaceStartMouse = null;
+        this.dragSpaceInitialPoly = null;
+        this.isDraggingSpace = false;
+        this.activeSnapPoints = [];
+        this.rightClickStartPos = null;
 
         this.spaces = [];
         this.heatMapMode = true; // Color-code zones by thermal load density
@@ -45,6 +51,7 @@ export class CadCanvas {
         this.onSpacesChanged = null;
         this.onWindowConfigure = null;
         this.onBuildingRotationChanged = null;
+        this.onQuickBlockRequested = null;
 
         this.initEvents();
         this.resize();
@@ -53,6 +60,7 @@ export class CadCanvas {
     setSpaces(spaces) {
         this.spaces = spaces;
         this.spaces.forEach(space => this.updateSpaceWalls(space));
+        this.autoDetectAdjacentBoundaries();
         this.spatialIndex.rebuild(spaces);
         this.render();
     }
@@ -130,26 +138,55 @@ export class CadCanvas {
                 this.isPanning = true;
                 this.panStartX = mousePos.x - this.offsetX;
                 this.panStartY = mousePos.y - this.offsetY;
+                if (e.button === 2) {
+                    this.rightClickStartPos = {
+                        screenX: mousePos.x,
+                        screenY: mousePos.y,
+                        worldX: Math.round(worldPos.x * 2) / 2,
+                        worldY: Math.round(worldPos.y * 2) / 2
+                    };
+                }
                 this.canvas.style.cursor = 'grabbing';
                 return;
             }
 
             if (e.button === 0) {
                 if (this.mode === 'select') {
-                    // Check if clicking near a point to drag
+                    // Check if clicking near a vertex of selected space (or any space) to drag that vertex
                     const nearPt = this.spatialIndex.findNearestPoint(worldPos.x, worldPos.y, 14 / this.scale);
                     if (nearPt) {
                         this.draggedPoint = nearPt;
+                        this.selectedSpaceId = nearPt.spaceId;
+                        const sel = this.spaces.find(s => s.id === nearPt.spaceId);
+                        if (this.onSpaceSelected) {
+                            this.onSpaceSelected(sel);
+                        }
+                        this.render();
                         return;
                     }
 
-                    // Otherwise select enclosure
+                    // Otherwise check if clicking inside an enclosure/space to select and start drag of the entire block
                     const enc = this.spatialIndex.findEnclosureAt(worldPos.x, worldPos.y);
-                    this.selectedSpaceId = enc ? enc.id : null;
-                    if (this.onSpaceSelected) {
-                        this.onSpaceSelected(enc);
+                    if (enc) {
+                        this.selectedSpaceId = enc.id;
+                        this.draggedSpace = enc;
+                        this.dragSpaceStartMouse = { x: worldPos.x, y: worldPos.y };
+                        this.dragSpaceInitialPoly = enc.polygon.map(p => ({ x: p.x, y: p.y }));
+                        this.isDraggingSpace = false;
+                        if (this.onSpaceSelected) {
+                            this.onSpaceSelected(enc);
+                        }
+                        this.render();
+                        return;
+                    } else {
+                        // Clicked empty background: clear selection
+                        this.selectedSpaceId = null;
+                        this.draggedSpace = null;
+                        if (this.onSpaceSelected) {
+                            this.onSpaceSelected(null);
+                        }
+                        this.render();
                     }
-                    this.render();
                 } else if (this.mode === 'draw') {
                     // Snap to existing point if near
                     const snapPt = this.spatialIndex.findNearestPoint(worldPos.x, worldPos.y, 12 / this.scale);
@@ -220,17 +257,53 @@ export class CadCanvas {
 
             const worldPos = this.screenToWorld(mousePos.x, mousePos.y);
 
+            // Handle Whole Block Dragging with Magnetic Snap
+            if (this.draggedSpace && this.dragSpaceStartMouse) {
+                const totalDx = worldPos.x - this.dragSpaceStartMouse.x;
+                const totalDy = worldPos.y - this.dragSpaceStartMouse.y;
+                const screenDist = Math.hypot(
+                    mousePos.x - (this.dragSpaceStartMouse.x * this.scale + this.offsetX),
+                    mousePos.y - (this.dragSpaceStartMouse.y * this.scale + this.offsetY)
+                );
+
+                if (!this.isDraggingSpace && screenDist > 3) {
+                    this.isDraggingSpace = true;
+                }
+
+                if (this.isDraggingSpace) {
+                    this.canvas.style.cursor = 'grabbing';
+
+                    // Candidate polygon shifted by mouse delta
+                    const candidatePoly = this.dragSpaceInitialPoly.map(p => ({
+                        x: p.x + totalDx,
+                        y: p.y + totalDy
+                    }));
+
+                    // Calculate magnetic snap against other blocks and alignment
+                    const snapResult = this.calculateBlockSnap(candidatePoly, this.draggedSpace.id);
+                    this.draggedSpace.polygon = snapResult.polygon;
+                    this.activeSnapPoints = snapResult.snapPoints;
+
+                    this.updateSpaceWalls(this.draggedSpace);
+                    this.autoDetectAdjacentBoundaries();
+                    this.spatialIndex.rebuild(this.spaces);
+                    this.render();
+                    return;
+                }
+            }
+
             if (this.draggedPoint) {
-                // Drag vertex
-                const snapX = Math.round(worldPos.x * 2) / 2;
-                const snapY = Math.round(worldPos.y * 2) / 2;
-                this.draggedPoint.point.x = snapX;
-                this.draggedPoint.point.y = snapY;
+                // Drag individual vertex with snap
+                const snap = this.calculateVertexSnap(worldPos.x, worldPos.y, this.draggedPoint.spaceId);
+                this.draggedPoint.point.x = snap.x;
+                this.draggedPoint.point.y = snap.y;
+                this.activeSnapPoints = snap.snapPoints;
 
                 // Sync walls
                 const space = this.spaces.find(s => s.id === this.draggedPoint.spaceId);
                 if (space) {
                     this.updateSpaceWalls(space);
+                    this.autoDetectAdjacentBoundaries();
                     this.spatialIndex.rebuild(this.spaces);
                 }
                 this.render();
@@ -245,6 +318,17 @@ export class CadCanvas {
                 this.canvas.style.cursor = 'crosshair';
             } else if (this.mode === 'add_window' || this.mode === 'toggle_boundary') {
                 this.canvas.style.cursor = 'cell';
+            } else if (this.mode === 'select') {
+                // If hovering near a point: pointer. If hovering inside an enclosure: grab
+                const hoveredPt = this.spatialIndex.findNearestPoint(worldPos.x, worldPos.y, 14 / this.scale);
+                const hoveredEnc = this.spatialIndex.findEnclosureAt(worldPos.x, worldPos.y);
+                if (hoveredPt) {
+                    this.canvas.style.cursor = 'pointer';
+                } else if (hoveredEnc) {
+                    this.canvas.style.cursor = 'grab';
+                } else {
+                    this.canvas.style.cursor = 'default';
+                }
             } else {
                 this.canvas.style.cursor = 'default';
             }
@@ -257,7 +341,7 @@ export class CadCanvas {
             this.render();
         });
 
-        window.addEventListener('mouseup', () => {
+        window.addEventListener('mouseup', (e) => {
             if (this.isRotatingCompass) {
                 this.isRotatingCompass = false;
             }
@@ -265,10 +349,37 @@ export class CadCanvas {
                 this.isPanning = false;
                 this.canvas.style.cursor = this.mode === 'draw' ? 'crosshair' : 'default';
             }
-            if (this.draggedPoint) {
-                this.draggedPoint = null;
+
+            // Right-click shortcut: if released close to mousedown without panning drag, open Quick Block dialog
+            if (e.button === 2 && this.rightClickStartPos) {
+                const mousePos = this.getCanvasMousePos(e);
+                const dist = Math.hypot(mousePos.x - this.rightClickStartPos.screenX, mousePos.y - this.rightClickStartPos.screenY);
+                if (dist < 6) {
+                    if (this.onQuickBlockRequested) {
+                        this.onQuickBlockRequested(this.rightClickStartPos.worldX, this.rightClickStartPos.worldY, mousePos);
+                    }
+                }
+                this.rightClickStartPos = null;
+            }
+
+            if (this.isDraggingSpace) {
+                this.isDraggingSpace = false;
+                this.activeSnapPoints = [];
+                this.autoDetectAdjacentBoundaries();
+                this.spatialIndex.rebuild(this.spaces);
                 this.triggerChanged();
             }
+
+            if (this.draggedPoint) {
+                this.draggedPoint = null;
+                this.activeSnapPoints = [];
+                this.autoDetectAdjacentBoundaries();
+                this.spatialIndex.rebuild(this.spaces);
+                this.triggerChanged();
+            }
+
+            this.draggedSpace = null;
+            this.dragSpaceStartMouse = null;
         });
 
         // Double click to finish polygon
@@ -309,14 +420,257 @@ export class CadCanvas {
                 p2: p2,
                 length: wallLength,
                 boundaryCondition: existingWall.boundaryCondition || BOUNDARY_CONDITIONS.OUTDOOR,
+                isAutoDetectedPartition: existingWall.isAutoDetectedPartition || false,
                 hasWindow: existingWall.hasWindow || false,
                 windowWidth: existingWall.windowWidth,
                 windowHeight: existingWall.windowHeight,
+                wallAssembly: existingWall.wallAssembly || 'masonry_insulated',
+                surfaceColor: existingWall.surfaceColor || 'medium',
                 orientation: ThermalEngine.getSegmentOrientation(p1, p2, this.buildingRotation)
             });
         }
         space.walls = walls;
         space.area = ThermalEngine.calculatePolygonArea(pts);
+    }
+
+    calculateBlockSnap(candidatePoly, draggedSpaceId) {
+        const otherSpaces = this.spaces.filter(s => s.id !== draggedSpaceId);
+        if (otherSpaces.length === 0) {
+            const shiftX = Math.round(candidatePoly[0].x * 2) / 2 - candidatePoly[0].x;
+            const shiftY = Math.round(candidatePoly[0].y * 2) / 2 - candidatePoly[0].y;
+            return {
+                polygon: candidatePoly.map(p => ({ x: p.x + shiftX, y: p.y + shiftY })),
+                snapPoints: []
+            };
+        }
+
+        const snapDist = Math.max(0.35, Math.min(0.9, 20 / this.scale));
+        let bestDist = snapDist;
+        let snapShiftX = 0;
+        let snapShiftY = 0;
+        let foundVertexSnap = false;
+        const snapPoints = [];
+
+        // 1. Primary: Vertex-to-Vertex Magnetic Snap
+        for (const p of candidatePoly) {
+            for (const other of otherSpaces) {
+                if (!other.polygon) continue;
+                for (const q of other.polygon) {
+                    const d = Math.hypot(p.x - q.x, p.y - q.y);
+                    if (d < bestDist) {
+                        bestDist = d;
+                        snapShiftX = q.x - p.x;
+                        snapShiftY = q.y - p.y;
+                        foundVertexSnap = true;
+                        snapPoints.length = 0;
+                        snapPoints.push({ x: q.x, y: q.y });
+                    }
+                }
+            }
+        }
+
+        if (foundVertexSnap) {
+            return {
+                polygon: candidatePoly.map(p => ({
+                    x: Math.round((p.x + snapShiftX) * 1000) / 1000,
+                    y: Math.round((p.y + snapShiftY) * 1000) / 1000
+                })),
+                snapPoints: snapPoints
+            };
+        }
+
+        // 2. Secondary: Edge-to-Edge Alignment Snap (Collinear wall snapping)
+        let bestEdgeDistX = snapDist;
+        let bestEdgeDistY = snapDist;
+        let edgeShiftX = 0;
+        let edgeShiftY = 0;
+        let foundEdgeX = false;
+        let foundEdgeY = false;
+
+        for (const p of candidatePoly) {
+            for (const other of otherSpaces) {
+                if (!other.polygon) continue;
+                for (const q of other.polygon) {
+                    const dx = Math.abs(p.x - q.x);
+                    if (dx < bestEdgeDistX) {
+                        bestEdgeDistX = dx;
+                        edgeShiftX = q.x - p.x;
+                        foundEdgeX = true;
+                    }
+                    const dy = Math.abs(p.y - q.y);
+                    if (dy < bestEdgeDistY) {
+                        bestEdgeDistY = dy;
+                        edgeShiftY = q.y - p.y;
+                        foundEdgeY = true;
+                    }
+                }
+            }
+        }
+
+        const finalShiftX = foundEdgeX ? edgeShiftX : (Math.round(candidatePoly[0].x * 2) / 2 - candidatePoly[0].x);
+        const finalShiftY = foundEdgeY ? edgeShiftY : (Math.round(candidatePoly[0].y * 2) / 2 - candidatePoly[0].y);
+
+        return {
+            polygon: candidatePoly.map(p => ({
+                x: Math.round((p.x + finalShiftX) * 1000) / 1000,
+                y: Math.round((p.y + finalShiftY) * 1000) / 1000
+            })),
+            snapPoints: snapPoints
+        };
+    }
+
+    calculateVertexSnap(wx, wy, movingSpaceId) {
+        const snapDist = Math.max(0.3, Math.min(0.8, 16 / this.scale));
+        let bestDist = snapDist;
+        let snapPt = null;
+
+        for (const space of this.spaces) {
+            if (!space.polygon) continue;
+            for (const p of space.polygon) {
+                const d = Math.hypot(p.x - wx, p.y - wy);
+                if (d > 0.001 && d < bestDist) {
+                    bestDist = d;
+                    snapPt = { x: p.x, y: p.y };
+                }
+            }
+        }
+
+        if (snapPt) {
+            return { x: snapPt.x, y: snapPt.y, snapPoints: [snapPt] };
+        }
+
+        return {
+            x: Math.round(wx * 2) / 2,
+            y: Math.round(wy * 2) / 2,
+            snapPoints: []
+        };
+    }
+
+    autoDetectAdjacentBoundaries() {
+        const tol = 0.20; // 20cm distance tolerance for touching walls
+
+        for (let i = 0; i < this.spaces.length; i++) {
+            const spaceA = this.spaces[i];
+            if (!spaceA.walls) continue;
+
+            for (let wA = 0; wA < spaceA.walls.length; wA++) {
+                const wallA = spaceA.walls[wA];
+                const p1 = wallA.p1;
+                const p2 = wallA.p2;
+                const lenA = Math.hypot(p2.x - p1.x, p2.y - p1.y);
+                if (lenA < 0.05) continue;
+
+                const ux = (p2.x - p1.x) / lenA;
+                const uy = (p2.y - p1.y) / lenA;
+                const nx = -uy;
+                const ny = ux;
+
+                const intervals = [];
+
+                for (let j = 0; j < this.spaces.length; j++) {
+                    if (i === j) continue;
+                    const spaceB = this.spaces[j];
+                    if (!spaceB.walls) continue;
+
+                    for (let wB = 0; wB < spaceB.walls.length; wB++) {
+                        const wallB = spaceB.walls[wB];
+                        const q1 = wallB.p1;
+                        const q2 = wallB.p2;
+
+                        const distQ1 = Math.abs((q1.x - p1.x) * nx + (q1.y - p1.y) * ny);
+                        const distQ2 = Math.abs((q2.x - p1.x) * nx + (q2.y - p1.y) * ny);
+
+                        // If both endpoints are within tolerance of wall A's line, they are collinear
+                        if (distQ1 <= tol && distQ2 <= tol) {
+                            const t1 = (q1.x - p1.x) * ux + (q1.y - p1.y) * uy;
+                            const t2 = (q2.x - p1.x) * ux + (q2.y - p1.y) * uy;
+                            const tMin = Math.min(t1, t2);
+                            const tMax = Math.max(t1, t2);
+
+                            const overlapStart = Math.max(0, tMin);
+                            const overlapEnd = Math.min(lenA, tMax);
+
+                            if (overlapEnd > overlapStart + 0.05) {
+                                intervals.push([overlapStart, overlapEnd]);
+                            }
+                        }
+                    }
+                }
+
+                let totalOverlap = 0;
+                if (intervals.length > 0) {
+                    intervals.sort((a, b) => a[0] - b[0]);
+                    let curStart = intervals[0][0];
+                    let curEnd = intervals[0][1];
+
+                    for (let k = 1; k < intervals.length; k++) {
+                        if (intervals[k][0] <= curEnd) {
+                            curEnd = Math.max(curEnd, intervals[k][1]);
+                        } else {
+                            totalOverlap += (curEnd - curStart);
+                            curStart = intervals[k][0];
+                            curEnd = intervals[k][1];
+                        }
+                    }
+                    totalOverlap += (curEnd - curStart);
+                }
+
+                const overlapRatio = totalOverlap / lenA;
+
+                // 60% rule: "quando colar uma parede em outra pelo menos uns 60% de outra climatizado fazer o sistema contar aquele lado como divisoria interna e caso saia da parede voltar para insolação e etc"
+                if (overlapRatio >= 0.595) {
+                    wallA.boundaryCondition = BOUNDARY_CONDITIONS.INTERNAL_PARTITION;
+                    wallA.isAutoDetectedPartition = true;
+                } else {
+                    // Revert to outdoor if it was an auto-detected partition or was internal
+                    if (wallA.isAutoDetectedPartition || wallA.boundaryCondition === BOUNDARY_CONDITIONS.INTERNAL_PARTITION) {
+                        wallA.boundaryCondition = BOUNDARY_CONDITIONS.OUTDOOR;
+                        wallA.isAutoDetectedPartition = false;
+                        wallA.orientation = ThermalEngine.getSegmentOrientation(p1, p2, this.buildingRotation);
+                    }
+                }
+            }
+        }
+    }
+
+    createBlock(x, y, width, length, height = 3.0, name = null, spaceType = 'office_enclosed') {
+        const id = 'space_' + Date.now();
+        const spaceNumber = this.spaces.length + 1;
+        const poly = [
+            { x: x, y: y },
+            { x: x + width, y: y },
+            { x: x + width, y: y + length },
+            { x: x, y: y + length }
+        ];
+
+        const newSpace = {
+            id: id,
+            name: name || `Space ${spaceNumber}`,
+            spaceNumber: spaceNumber,
+            zone: `Zone ${Math.ceil(spaceNumber / 2)}`,
+            spaceType: spaceType,
+            polygon: poly,
+            height: height,
+            occupants: Math.max(1, Math.round((width * length) / 10)),
+            lightingDensity: 10.0,
+            equipmentDensity: 10.0,
+            notes: 'Criado via atalho rápido (botão direito)',
+            isMultiLevel: false,
+            isUnmodeled: false,
+            walls: []
+        };
+
+        this.updateSpaceWalls(newSpace);
+        this.spaces.push(newSpace);
+        this.autoDetectAdjacentBoundaries();
+        this.spatialIndex.rebuild(this.spaces);
+        this.selectedSpaceId = id;
+        this.triggerChanged();
+        if (this.onSpaceSelected) {
+            this.onSpaceSelected(newSpace);
+        }
+        this.render();
+        return newSpace;
     }
 
     finishDrawingSpace() {
@@ -340,6 +694,7 @@ export class CadCanvas {
         };
         this.updateSpaceWalls(newSpace);
         this.spaces.push(newSpace);
+        this.autoDetectAdjacentBoundaries();
         this.newPolygonPoints = [];
         this.mode = 'select';
         this.selectedSpaceId = id;
@@ -441,12 +796,12 @@ export class CadCanvas {
             let displayBTUh = 0;
             if (this.hourlyEngine) {
                 const hourRes = this.hourlyEngine.calculateSpaceHour(space, this.currentHour, this.thermalEngine.designConditions);
-                loadWpM2 = hourRes.loadDensityWpM2;
+                loadWpM2 = hourRes.loadDensityWpM2 || hourRes.densityWpM2 || 60;
                 displayLoadTR = hourRes.totalCoolingTR;
                 displayBTUh = hourRes.totalCoolingBTUh;
             } else {
                 const loadResult = this.thermalEngine.calculateSpaceThermalLoad(space);
-                loadWpM2 = loadResult.loads.totals.loadDensityWpM2;
+                loadWpM2 = loadResult.loads.totals.loadDensityWpM2 || 60;
                 displayLoadTR = loadResult.loads.totals.coolingTons;
                 displayBTUh = loadResult.loads.totals.coolingBTUh;
             }
@@ -560,16 +915,20 @@ export class CadCanvas {
             cy /= space.polygon.length;
             const centerScreen = this.worldToScreen(cx, cy);
 
-            ctx.fillStyle = '#f0f6fc';
-            ctx.font = 'bold 12px Inter, sans-serif';
+            ctx.fillStyle = '#f8fafc';
+            ctx.font = '600 12px Inter, sans-serif';
             ctx.textAlign = 'center';
-            ctx.fillText(space.name, centerScreen.x, centerScreen.y - 8);
+            ctx.fillText(space.name, centerScreen.x, centerScreen.y - 7);
 
-            ctx.font = '10px Inter, sans-serif';
-            ctx.fillStyle = '#8b949e';
+            ctx.font = '500 11px "JetBrains Mono", monospace';
+            ctx.fillStyle = isSelected ? '#38bdf8' : '#e2e8f0';
             const areaM2 = space.area || ThermalEngine.calculatePolygonArea(space.polygon);
-            ctx.fillText(`${areaM2.toFixed(1)} m² | ${displayLoadTR} TR`, centerScreen.x, centerScreen.y + 6);
-            ctx.fillText(`${displayBTUh.toLocaleString()} BTU/h (${loadWpM2} W/m²)`, centerScreen.x, centerScreen.y + 19);
+            ctx.fillText(`${areaM2.toFixed(1)} m²  •  ${displayLoadTR} TR`, centerScreen.x, centerScreen.y + 7);
+
+            ctx.font = '400 9.5px Inter, sans-serif';
+            ctx.fillStyle = '#94a3b8';
+            const safeWpM2 = Math.round(loadWpM2 || 0);
+            ctx.fillText(`${Math.round(displayBTUh).toLocaleString()} BTU/h (${safeWpM2} W/m²)`, centerScreen.x, centerScreen.y + 19);
 
             ctx.restore();
         }
@@ -613,16 +972,76 @@ export class CadCanvas {
         if (this.selectedSpaceId) {
             const selSpace = this.spaces.find(s => s.id === this.selectedSpaceId);
             if (selSpace && selSpace.polygon) {
+                // If dragging the whole space, draw highlight border
+                if (this.isDraggingSpace) {
+                    ctx.beginPath();
+                    const firstPt = this.worldToScreen(selSpace.polygon[0].x, selSpace.polygon[0].y);
+                    ctx.moveTo(firstPt.x, firstPt.y);
+                    for (let i = 1; i < selSpace.polygon.length; i++) {
+                        const pt = this.worldToScreen(selSpace.polygon[i].x, selSpace.polygon[i].y);
+                        ctx.lineTo(pt.x, pt.y);
+                    }
+                    ctx.closePath();
+                    ctx.strokeStyle = '#38bdf8';
+                    ctx.lineWidth = 2.5;
+                    ctx.setLineDash([6, 4]);
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+                }
+
                 for (const p of selSpace.polygon) {
                     const sp = this.worldToScreen(p.x, p.y);
                     ctx.beginPath();
-                    ctx.arc(sp.x, sp.y, 5, 0, Math.PI * 2);
-                    ctx.fillStyle = '#58a6ff';
+                    ctx.arc(sp.x, sp.y, 5.5, 0, Math.PI * 2);
+                    ctx.fillStyle = '#0ea5e9';
                     ctx.strokeStyle = '#ffffff';
-                    ctx.lineWidth = 1.5;
+                    ctx.lineWidth = 2;
                     ctx.fill();
                     ctx.stroke();
                 }
+
+                // If currently dragging space, draw informative HUD badge
+                if (this.isDraggingSpace) {
+                    const first = this.worldToScreen(selSpace.polygon[0].x, selSpace.polygon[0].y);
+                    const tagText = `🧲 Mover: ${selSpace.name}`;
+                    ctx.font = '600 11px Inter, sans-serif';
+                    const tw = ctx.measureText(tagText).width + 16;
+                    ctx.fillStyle = 'rgba(11, 17, 30, 0.9)';
+                    ctx.strokeStyle = '#0ea5e9';
+                    ctx.lineWidth = 1.5;
+                    ctx.beginPath();
+                    ctx.roundRect(first.x - 10, first.y - 28, tw, 22, 5);
+                    ctx.fill();
+                    ctx.stroke();
+                    ctx.fillStyle = '#38bdf8';
+                    ctx.textAlign = 'left';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(tagText, first.x - 2, first.y - 17);
+                }
+            }
+        }
+
+        // Active Magnetic Snap Points (Draw glowing snap target crosshairs)
+        if (this.activeSnapPoints && this.activeSnapPoints.length > 0) {
+            for (const pt of this.activeSnapPoints) {
+                const sp = this.worldToScreen(pt.x, pt.y);
+                ctx.beginPath();
+                ctx.arc(sp.x, sp.y, 9, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(14, 165, 233, 0.35)';
+                ctx.strokeStyle = '#38bdf8';
+                ctx.lineWidth = 2.5;
+                ctx.fill();
+                ctx.stroke();
+
+                // Crosshair lines
+                ctx.beginPath();
+                ctx.moveTo(sp.x - 14, sp.y);
+                ctx.lineTo(sp.x + 14, sp.y);
+                ctx.moveTo(sp.x, sp.y - 14);
+                ctx.lineTo(sp.x, sp.y + 14);
+                ctx.strokeStyle = '#ffffff';
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
             }
         }
 

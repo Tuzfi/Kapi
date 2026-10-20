@@ -18,55 +18,58 @@
                     <span class="brand-icon">❄️</span>
                 </div>
                 <div class="brand-info">
-                    <span class="brand-name">Kapi <strong>HVAC 2D</strong></span>
-                    <span class="brand-badge">v0.1</span>
+                    <span class="brand-name">Kapi <strong>HVAC</strong></span>
+                    <span class="brand-badge">v0.12</span>
                 </div>
             </div>
 
-            <!-- Global HVAC Load Metrics -->
+            <!-- Global HVAC Load Metrics - Streamlined HUD -->
             <div id="kpi-summary">
-                <div class="kpi-card kpi-primary">
-                    <div class="kpi-label-row">
-                        <span class="kpi-label">Carga Instantânea</span>
-                        <span class="kpi-chip">PICO 24H</span>
+                <div class="kpi-hero-pill">
+                    <div class="kpi-primary-group">
+                        <span class="kpi-micro-label">CARGA PICO</span>
+                        <span class="kpi-hero-value" id="total-cooling-tr">0.00 TR</span>
                     </div>
-                    <div class="kpi-value-group">
-                        <span class="kpi-value highlight" id="total-cooling-tr">0.00 TR</span>
-                        <span class="kpi-sub" id="total-cooling-btu">0 BTU/h</span>
+                    <div class="kpi-divider-v"></div>
+                    <div class="kpi-sub-stats">
+                        <div class="kpi-sub-row">
+                            <span class="sub-chip" title="Vazão de Ar de Insuflamento">
+                                <span class="chip-label">Vazão:</span>
+                                <strong id="total-airflow-cfm">0 CFM</strong>
+                            </span>
+                            <span class="sub-sep">•</span>
+                            <span class="sub-chip" title="Área Total Construída">
+                                <span class="chip-label">Área:</span>
+                                <strong id="total-area-m2">0.0 m²</strong>
+                            </span>
+                        </div>
+                        <div class="kpi-sub-row text-faint">
+                            <span id="total-cooling-btu">0 BTU/h</span>
+                            <span class="sub-sep">•</span>
+                            <span id="total-sensible-latent">Sensível: 0 kW | Latente: 0 kW</span>
+                        </div>
                     </div>
-                </div>
-                <div class="kpi-card kpi-secondary">
-                    <span class="kpi-label">Sensível vs Latente</span>
-                    <span class="kpi-value" id="total-sensible-latent">Sensível: 0 kW | Latente: 0 kW</span>
-                </div>
-                <div class="kpi-card kpi-accent">
-                    <span class="kpi-label">Vazão Total de Ar</span>
-                    <span class="kpi-value" id="total-airflow-cfm">0 CFM</span>
-                </div>
-                <div class="kpi-card kpi-muted">
-                    <span class="kpi-label">Área Construída</span>
-                    <span class="kpi-value" id="total-area-m2">0.0 m²</span>
                 </div>
             </div>
 
             <!-- Quick Action Toolbar -->
             <div id="cad-toolbar">
-                <div class="toolbar-segment">
-                    <button class="tool-btn active" data-mode="select" title="Selecionar e mover vértices (Snap QuadTree)">
+                <div class="toolbar-segment" role="toolbar" aria-label="Ferramentas CAD">
+                    <button class="tool-btn active" data-mode="select" title="Selecionar e inspecionar espaços ou mover vértices">
                         <span class="icon">↖</span>
                         <span class="btn-text">Selecionar</span>
                     </button>
-                    <button class="tool-btn" data-mode="draw" title="Desenhar Novo Espaço (Clique nos vértices e feche o polígono)">
+                    <button class="tool-btn" data-mode="draw" title="Desenhar Novo Espaço (clique nos vértices)">
                         <span class="icon">✏️</span>
                         <span class="btn-text">Novo Espaço</span>
                     </button>
-                    <button class="tool-btn" data-mode="add_window" title="Clique em uma parede para adicionar e definir dimensões da janela">
+                    <button class="tool-btn" data-mode="add_window" title="Adicionar e dimensionar esquadria/janela">
                         <span class="icon">🪟</span>
                         <span class="btn-text">Janela</span>
                     </button>
                     <button class="tool-btn" data-mode="toggle_boundary" title="Alternar entre Parede Externa e Parede Divisória Interna">
                         <span class="icon">🧱</span>
-                        <span class="btn-text">Externa / Divisória</span>
+                        <span class="btn-text">Divisória</span>
                     </button>
                 </div>
 
@@ -79,8 +82,8 @@
 
                 <div class="toolbar-divider"></div>
 
-                <!-- Building / Map Orientation Rotation Controls -->
-                <div class="rotation-control-group" title="Girar Orientação do Mapa / Norte (clique ou arraste a Rosa dos Ventos)">
+                <!-- Building Orientation Rotation Controls -->
+                <div class="rotation-control-group" title="Orientação do Norte (clique para girar ou arraste a Rosa dos Ventos)">
                     <span class="compass-label">🧭 Norte:</span>
                     <button class="btn-rot-step" id="btn-rot-ccw" title="Girar 15° anti-horário">↺</button>
                     <div class="rotation-input-wrapper">
@@ -88,7 +91,12 @@
                         <span class="unit-deg">°</span>
                     </div>
                     <button class="btn-rot-step" id="btn-rot-cw" title="Girar 15° horário">↻</button>
-                    <input type="range" id="slider-building-rotation" min="0" max="359" value="0" step="1" class="rotation-slider" title="Ajuste contínuo da orientação">
+                    <input type="range" id="slider-building-rotation" min="0" max="359" value="0" step="1" class="hidden">
+                </div>
+
+                <div class="toolbar-hint" title="Clique com o botão direito no plano para inserir largura, comprimento e altura e criar um bloco">
+                    <span class="hint-mouse">🖱️</span>
+                    <span class="hint-text">Botão Direito: <strong>Novo Bloco</strong></span>
                 </div>
             </div>
         </header>
@@ -105,17 +113,18 @@
                     <span class="sidebar-badge-count" id="sidebar-spaces-count">4</span>
                 </div>
 
-                <!-- Spaces Filter Controls -->
+                <!-- Spaces Filter Controls (Minimal & Intuitive) -->
                 <div class="search-box">
                     <div class="search-input-wrapper">
                         <svg class="search-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="11" cy="11" r="8"></circle>
                             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                         </svg>
-                        <input type="text" id="search-input" placeholder="Buscar por nome ou zona..." autocomplete="off">
+                        <input type="text" id="search-input" placeholder="Buscar por sala ou zona..." autocomplete="off">
                     </div>
                     
-                    <div class="filter-options">
+                    <!-- Advanced filters hidden by default to keep UI clutter-free -->
+                    <div class="filter-options hidden">
                         <label class="checkbox-label">
                             <input type="checkbox" id="search-notes">
                             <span>Incluir Anotações</span>
@@ -133,7 +142,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="search-count" id="search-count-label">4 of 4 spaces displayed</div>
+                    <div class="search-count hidden" id="search-count-label">4 of 4 spaces displayed</div>
                 </div>
 
                 <!-- Space List with Peak Hour Badges -->
@@ -147,15 +156,27 @@
             <section id="viewport-container">
                 <canvas id="cad-canvas"></canvas>
                 
-                <div id="viewport-legend">
-                    <div class="legend-header">Legenda Técnica:</div>
+                <!-- Floating HUD Technical Legend -->
+                <div id="viewport-legend" class="viewport-hud-legend">
                     <div class="legend-items">
-                        <div class="legend-item"><span class="legend-color ext-wall"></span> Parede Externa</div>
-                        <div class="legend-item"><span class="legend-color ext-sun"></span> Incidência Solar Direta</div>
-                        <div class="legend-item"><span class="legend-color part-wall"></span> Divisória Interna</div>
-                        <div class="legend-item"><span class="legend-color window-line"></span> Janela</div>
-                        <div class="legend-item"><span class="legend-color heatmap-cool"></span> Baixa Carga (&lt;60 W/m²)</div>
-                        <div class="legend-item"><span class="legend-color heatmap-hot"></span> Alta Carga (&gt;120 W/m²)</div>
+                        <div class="legend-item" title="Parede Externa em Condução Sol-Ar">
+                            <span class="legend-color ext-wall"></span> Externa
+                        </div>
+                        <div class="legend-item" title="Fachada com Incidência Solar Direta nesta hora">
+                            <span class="legend-color ext-sun"></span> Sol Direto
+                        </div>
+                        <div class="legend-item" title="Divisória Interna entre Zonas">
+                            <span class="legend-color part-wall"></span> Divisória
+                        </div>
+                        <div class="legend-item" title="Esquadria / Janela Envidraçada">
+                            <span class="legend-color window-line"></span> Janela
+                        </div>
+                        <div class="legend-item" title="Baixa Carga Térmica Instantânea">
+                            <span class="legend-color heatmap-cool"></span> &lt;60 W/m²
+                        </div>
+                        <div class="legend-item" title="Alta Carga Térmica Instantânea">
+                            <span class="legend-color heatmap-hot"></span> &gt;120 W/m²
+                        </div>
                     </div>
                 </div>
 
@@ -185,154 +206,189 @@
                 <div class="sidebar-header">
                     <div class="header-title-group">
                         <span class="sidebar-icon">⚡</span>
-                        <h3>Inspetor de Carga Térmica</h3>
+                        <h3>Inspetor Térmico</h3>
                     </div>
                 </div>
 
                 <!-- Selected Space Properties -->
-                <div id="property-panel" class="property-panel">
-                    <div class="section-title">Propriedades do Espaço & Uso</div>
+                <div id="property-panel" class="property-panel disabled">
                     
-                    <div id="prop-load-summary" class="prop-load-badge"></div>
-
-                    <!-- Space Type Preset Selector -->
-                    <div class="form-group highlight-group">
-                        <label for="prop-space-type">🏢 Tipo de Espaço / Uso:</label>
-                        <select id="prop-space-type" class="preset-select">
-                            <option value="office_enclosed">Escritório Individual / Fechado</option>
-                            <option value="office_open">Escritório Aberto (Open Plan / Co-working)</option>
-                            <option value="conference_room">Sala de Reunião / Conferência</option>
-                            <option value="classroom">Sala de Aula / Treinamento</option>
-                            <option value="retail_store">Comércio / Loja / Shopping</option>
-                            <option value="restaurant_dining">Restaurante / Salão de Refeições</option>
-                            <option value="data_center">Data Center / CPD / Servidores</option>
-                            <option value="fitness_gym">Academia / Sala de Ginástica</option>
-                            <option value="hotel_room">Quarto de Hotel / Residencial</option>
-                            <option value="auditorium">Auditório / Teatro / Cinema</option>
-                            <option value="corridor">Corredor / Hall de Circulação</option>
-                            <option value="custom">Personalizado (Entrada Manual Livre)</option>
-                        </select>
+                    <!-- State A: Empty State when No Space is Selected -->
+                    <div id="no-space-placeholder" class="no-selection-placeholder">
+                        <div class="empty-inspector-card">
+                            <div class="empty-inspector-icon">🏢</div>
+                            <h4>Nenhum Espaço Selecionado</h4>
+                            <p>Clique em qualquer sala no plano 2D ou na lista à esquerda para inspecionar e personalizar suas cargas térmicas e esquadrias.</p>
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="prop-name">Nome do Espaço:</label>
-                        <input type="text" id="prop-name">
+                    <!-- State B: Active Space Properties Container -->
+                    <div id="space-fields-container" class="space-fields-container">
+                        <div id="prop-load-summary" class="prop-load-badge"></div>
+
+                        <!-- Card 1: Geral & Tipologia de Uso -->
+                        <div class="inspector-card">
+                            <div class="inspector-card-header">
+                                <span class="card-icon">🏢</span>
+                                <span class="card-title">Identificação & Uso</span>
+                            </div>
+                            
+                            <!-- Space Type Preset Selector -->
+                            <div class="form-group highlight-group">
+                                <label for="prop-space-type">Modelo ASHRAE / Uso:</label>
+                                <select id="prop-space-type" class="preset-select">
+                                    <option value="office_enclosed">Escritório Individual / Fechado</option>
+                                    <option value="office_open">Escritório Aberto (Open Plan / Co-working)</option>
+                                    <option value="conference_room">Sala de Reunião / Conferência</option>
+                                    <option value="classroom">Sala de Aula / Treinamento</option>
+                                    <option value="retail_store">Comércio / Loja / Shopping</option>
+                                    <option value="restaurant_dining">Restaurante / Salão de Refeições</option>
+                                    <option value="data_center">Data Center / CPD / Servidores</option>
+                                    <option value="fitness_gym">Academia / Sala de Ginástica</option>
+                                    <option value="hotel_room">Quarto de Hotel / Residencial</option>
+                                    <option value="auditorium">Auditório / Teatro / Cinema</option>
+                                    <option value="corridor">Corredor / Hall de Circulação</option>
+                                    <option value="custom">Personalizado (Entrada Manual Livre)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="prop-name">Nome do Espaço:</label>
+                                <input type="text" id="prop-name">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="prop-zone">Zona Térmica:</label>
+                                    <input type="text" id="prop-zone">
+                                </div>
+                                <div class="form-group">
+                                    <label for="prop-height">Pé-direito (m):</label>
+                                    <input type="number" id="prop-height" step="0.1" min="1.5">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="prop-notes">Notas / Especificações:</label>
+                                <textarea id="prop-notes" rows="2"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Cargas Internas & Renovação de Ar -->
+                        <div class="inspector-card">
+                            <div class="inspector-card-header">
+                                <span class="card-icon">👥</span>
+                                <span class="card-title">Cargas Internas & Ar 62.1</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="prop-activity-level">Atividade Metabólica:</label>
+                                <select id="prop-activity-level" class="preset-select">
+                                    <option value="seated_at_rest">Sentado em Repouso (67W sens / 35W lat)</option>
+                                    <option value="office_work">Trabalho de Escritório (72W sens / 60W lat)</option>
+                                    <option value="sedentary_work">Trabalho Sedentário/Reunião (82W sens / 79W lat)</option>
+                                    <option value="medium_work">Trabalho Leve/Comércio (87W sens / 133W lat)</option>
+                                    <option value="heavy_work">Trabalho Pesado (154W sens / 271W lat)</option>
+                                    <option value="athletics">Atividades Esportivas/Academia (208W sens / 320W lat)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="prop-occupants">Ocupantes (pessoas):</label>
+                                    <input type="number" id="prop-occupants" min="0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="prop-lighting">Iluminação (W/m²):</label>
+                                    <input type="number" id="prop-lighting" step="0.5" min="0">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="prop-equipment">Equipamentos / Tomadas (W/m²):</label>
+                                <input type="number" id="prop-equipment" step="1.0" min="0">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="prop-vent-rp" title="Taxa de ar exterior por ocupante (L/s por pessoa)">Taxa Pessoa (L/s·pes):</label>
+                                    <input type="number" id="prop-vent-rp" step="0.5" min="0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="prop-vent-ra" title="Taxa de ar exterior por área de piso (L/s por m²)">Taxa Área (L/s·m²):</label>
+                                    <input type="number" id="prop-vent-ra" step="0.1" min="0">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Envoltória, Cobertura & Paredes -->
+                        <div class="inspector-card">
+                            <div class="inspector-card-header">
+                                <span class="card-icon">🧱</span>
+                                <span class="card-title">Envoltória & Fachadas</span>
+                            </div>
+
+                            <div class="envelope-toggle-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="prop-has-roof">
+                                    <span><strong>Sob Cobertura / Teto Solar</strong></span>
+                                </label>
+                                <div id="roof-assembly-group" class="sub-form-group hidden">
+                                    <label for="prop-roof-assembly">Tipo de Cobertura:</label>
+                                    <select id="prop-roof-assembly">
+                                        <option value="insulated_deck">Laje c/ Isolamento Térmico EPS/PIR (U=0.35)</option>
+                                        <option value="uninsulated_concrete">Laje Maciça sem Isolamento (U=2.20)</option>
+                                        <option value="sandwich_pir">Telha Metálica Sanduíche PU/PIR (U=0.38)</option>
+                                        <option value="tile_with_ceiling">Telha Cerâmica/Fibrocimento c/ Forro (U=1.60)</option>
+                                    </select>
+                                </div>
+
+                                <label class="checkbox-label mt-2">
+                                    <input type="checkbox" id="prop-has-floor">
+                                    <span><strong>Piso sobre Solo ou Pilotis</strong></span>
+                                </label>
+                                <div id="floor-assembly-group" class="sub-form-group hidden">
+                                    <label for="prop-floor-assembly">Tipo de Piso:</label>
+                                    <select id="prop-floor-assembly">
+                                        <option value="slab_on_grade">Piso sobre Solo (Slab-on-Grade - Neutro Verão)</option>
+                                        <option value="over_pilotis">Piso sobre Pilotis / Garagem Aberta (U=0.45)</option>
+                                        <option value="interior_floor">Piso entre Andares Condicionados (Adiabático)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <!-- Walls and Fenestration Inspector -->
+                            <div class="walls-section-label">Paredes, Orientação & Janelas</div>
+                            <div id="prop-walls-container" class="walls-inspector-list">
+                                <p class="empty-hint">Nenhuma parede cadastrada.</p>
+                            </div>
+                        </div>
+
+                        <div class="action-row">
+                            <button id="btn-delete-space" class="btn-danger-quiet">Excluir Espaço</button>
+                        </div>
                     </div>
 
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="prop-zone">Zona Térmica:</label>
-                            <input type="text" id="prop-zone">
+                    <!-- Ambient Design Conditions (Global Building Climatic Parameters) -->
+                    <div class="global-climate-card">
+                        <div class="climate-card-header">
+                            <span class="card-icon">☀️</span>
+                            <span class="card-title">Condições Climáticas Globais</span>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="weather-outdoor-db">Temp. Externa (°C):</label>
+                                <input type="number" id="weather-outdoor-db" value="35.0" step="0.5">
+                            </div>
+                            <div class="form-group">
+                                <label for="weather-indoor-db">Temp. Interna (°C):</label>
+                                <input type="number" id="weather-indoor-db" value="24.0" step="0.5">
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="prop-height">Pé-direito (m):</label>
-                            <input type="number" id="prop-height" step="0.1" min="1.5">
+                            <label for="weather-peak-solar">Radiação Solar Pico (W/m²):</label>
+                            <input type="number" id="weather-peak-solar" value="650" step="10">
                         </div>
-                    </div>
-
-                    <div class="section-title">Ocupação & Nível de Atividade</div>
-                    <div class="form-group">
-                        <label for="prop-activity-level">Atividade Metabólica dos Ocupantes:</label>
-                        <select id="prop-activity-level" class="preset-select">
-                            <option value="seated_at_rest">Sentado em Repouso (67W sens / 35W lat)</option>
-                            <option value="office_work">Trabalho de Escritório (72W sens / 60W lat)</option>
-                            <option value="sedentary_work">Trabalho Sedentário/Reunião (82W sens / 79W lat)</option>
-                            <option value="medium_work">Trabalho Leve/Comércio (87W sens / 133W lat)</option>
-                            <option value="heavy_work">Trabalho Pesado (154W sens / 271W lat)</option>
-                            <option value="athletics">Atividades Esportivas/Academia (208W sens / 320W lat)</option>
-                        </select>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="prop-occupants">Ocupantes (pessoas):</label>
-                            <input type="number" id="prop-occupants" min="0">
-                        </div>
-                        <div class="form-group">
-                            <label for="prop-lighting">Iluminação (W/m²):</label>
-                            <input type="number" id="prop-lighting" step="0.5" min="0">
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="prop-equipment">Equipamentos / Tomadas (W/m²):</label>
-                        <input type="number" id="prop-equipment" step="1.0" min="0">
-                    </div>
-
-                    <div class="section-title">Renovação de Ar (ASHRAE 62.1)</div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="prop-vent-rp" title="Taxa de ar exterior por ocupante (L/s por pessoa)">Taxa Pessoa (L/s·pes):</label>
-                            <input type="number" id="prop-vent-rp" step="0.5" min="0">
-                        </div>
-                        <div class="form-group">
-                            <label for="prop-vent-ra" title="Taxa de ar exterior por área de piso (L/s por m²)">Taxa Área (L/s·m²):</label>
-                            <input type="number" id="prop-vent-ra" step="0.1" min="0">
-                        </div>
-                    </div>
-
-                    <div class="section-title">Cobertura & Piso (Envoltória)</div>
-                    <div class="envelope-toggle-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="prop-has-roof">
-                            <span><strong>Sob Cobertura / Último Andar (Teto Solar)</strong></span>
-                        </label>
-                        <div id="roof-assembly-group" class="sub-form-group hidden">
-                            <label for="prop-roof-assembly">Tipo de Cobertura:</label>
-                            <select id="prop-roof-assembly">
-                                <option value="insulated_deck">Laje c/ Isolamento Térmico EPS/PIR (U=0.35)</option>
-                                <option value="uninsulated_concrete">Laje Maciça sem Isolamento (U=2.20)</option>
-                                <option value="sandwich_pir">Telha Metálica Sanduíche PU/PIR (U=0.38)</option>
-                                <option value="tile_with_ceiling">Telha Cerâmica/Fibrocimento c/ Forro (U=1.60)</option>
-                            </select>
-                        </div>
-
-                        <label class="checkbox-label mt-2">
-                            <input type="checkbox" id="prop-has-floor">
-                            <span><strong>Piso Térreo / Contato com Solo ou Pilotis</strong></span>
-                        </label>
-                        <div id="floor-assembly-group" class="sub-form-group hidden">
-                            <label for="prop-floor-assembly">Tipo de Piso:</label>
-                            <select id="prop-floor-assembly">
-                                <option value="slab_on_grade">Piso sobre Solo (Slab-on-Grade - Neutro Verão)</option>
-                                <option value="over_pilotis">Piso sobre Pilotis / Garagem Aberta (U=0.45)</option>
-                                <option value="interior_floor">Piso entre Andares Condicionados (Adiabático)</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group mt-2">
-                        <label for="prop-notes">Notas / Especificações:</label>
-                        <textarea id="prop-notes" rows="2"></textarea>
-                    </div>
-
-                    <!-- Walls and Fenestration Inspector -->
-                    <div class="section-title">Paredes, Orientação & Janelas</div>
-                    <div id="prop-walls-container" class="walls-inspector-list">
-                        <p class="empty-hint">Nenhuma parede cadastrada.</p>
-                    </div>
-
-                    <div class="action-row">
-                        <button id="btn-delete-space" class="btn-danger">Excluir Espaço</button>
-                    </div>
-
-                    <hr class="divider">
-
-                    <!-- Ambient Design Conditions -->
-                    <div class="section-title">Condições Climáticas de Projeto</div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="weather-outdoor-db">Temp. Externa (°C):</label>
-                            <input type="number" id="weather-outdoor-db" value="35.0" step="0.5">
-                        </div>
-                        <div class="form-group">
-                            <label for="weather-indoor-db">Temp. Interna (°C):</label>
-                            <input type="number" id="weather-indoor-db" value="24.0" step="0.5">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="weather-peak-solar">Radiação Solar Pico (W/m²):</label>
-                        <input type="number" id="weather-peak-solar" value="650" step="10">
                     </div>
                 </div>
             </aside>
@@ -392,6 +448,69 @@
                 <button id="btn-remove-window" class="btn-danger-outline">Remover Janela</button>
                 <button id="btn-save-window" class="btn-primary">Salvar Configuração</button>
             </div>
+        </div>
+    </div>
+
+    <!-- Quick Block Creation Modal (Right-Click Canvas Shortcut) -->
+    <div id="quick-block-modal" class="modal-overlay hidden">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <div class="modal-header-title">
+                    <span class="modal-title-icon">📦</span>
+                    <h4>Criar Novo Bloco (Espaço 2D)</h4>
+                </div>
+                <button id="btn-close-quick-block" class="modal-close" title="Fechar (Esc)">&times;</button>
+            </div>
+            <form id="quick-block-form">
+                <div class="modal-body">
+                    <p class="modal-desc" id="quick-block-coords">Posição no Plano: X = 0.0m, Y = 0.0m</p>
+                    
+                    <div class="form-group">
+                        <label for="quick-name">Nome do Espaço:</label>
+                        <input type="text" id="quick-name" value="Espaço 5" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="quick-width">Largura (m):</label>
+                            <input type="number" id="quick-width" value="6.0" min="0.5" max="200" step="0.5" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="quick-length">Comprimento (m):</label>
+                            <input type="number" id="quick-length" value="5.0" min="0.5" max="200" step="0.5" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="quick-height">Pé-direito / Altura (m):</label>
+                            <input type="number" id="quick-height" value="3.0" min="1.5" max="30" step="0.1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="quick-space-type">Tipo de Espaço / Uso:</label>
+                            <select id="quick-space-type">
+                                <option value="office_enclosed">Escritório Individual / Fechado</option>
+                                <option value="office_open">Escritório Aberto (Open Plan)</option>
+                                <option value="conference_room">Sala de Reunião / Conferência</option>
+                                <option value="classroom">Sala de Aula / Treinamento</option>
+                                <option value="retail_store">Comércio / Loja</option>
+                                <option value="restaurant_dining">Restaurante / Refeições</option>
+                                <option value="data_center">Data Center / CPD</option>
+                                <option value="fitness_gym">Academia / Ginástica</option>
+                                <option value="hotel_room">Quarto de Hotel / Residencial</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="modal-calc-preview" id="quick-preview">
+                        Área: <strong>30.00 m²</strong> &bull; Volume: <strong>90.0 m³</strong>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="btn-cancel-quick-block" class="btn-danger-outline">Cancelar</button>
+                    <button type="submit" id="btn-submit-quick-block" class="btn-primary">Criar Bloco</button>
+                </div>
+            </form>
         </div>
     </div>
 

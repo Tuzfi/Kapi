@@ -300,7 +300,8 @@ export class HourlyEngine {
             totalCoolingBTUh: Number(totalBTUh.toFixed(0)),
             totalTR: Number(totalTR.toFixed(2)),
             totalCoolingTR: Number(totalTR.toFixed(2)),
-            densityWpM2: Number((grandTotal / floorArea).toFixed(1))
+            densityWpM2: Number((grandTotal / floorArea).toFixed(1)),
+            loadDensityWpM2: Number((grandTotal / floorArea).toFixed(1))
         };
     }
 

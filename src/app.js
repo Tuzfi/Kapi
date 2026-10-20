@@ -309,6 +309,7 @@ class KapiApp {
         this.updateCalculations();
         this.renderSpaceList();
         this.renderHourlyChart();
+        this.populatePropertyPanel(null);
     }
 
     initUI() {
@@ -372,6 +373,7 @@ class KapiApp {
         this.initWeatherEvents();
         this.initRotationEvents();
         this.initWindowModalEvents();
+        this.initQuickBlockModalEvents();
     }
 
     initRotationEvents() {
@@ -496,6 +498,84 @@ class KapiApp {
                 this.cadCanvas.triggerChanged();
                 closeModal();
                 this.populatePropertyPanel(currentEditing.space);
+            });
+        }
+    }
+
+    initQuickBlockModalEvents() {
+        const modal = document.getElementById('quick-block-modal');
+        const form = document.getElementById('quick-block-form');
+        const closeBtn = document.getElementById('btn-close-quick-block');
+        const cancelBtn = document.getElementById('btn-cancel-quick-block');
+        const coordsDesc = document.getElementById('quick-block-coords');
+        const nameInput = document.getElementById('quick-name');
+        const widthInput = document.getElementById('quick-width');
+        const lengthInput = document.getElementById('quick-length');
+        const heightInput = document.getElementById('quick-height');
+        const typeSelect = document.getElementById('quick-space-type');
+        const preview = document.getElementById('quick-preview');
+
+        let targetPos = { x: 0, y: 0 };
+
+        const updatePreview = () => {
+            const w = Math.max(0.5, parseFloat(widthInput ? widthInput.value : 6) || 6.0);
+            const l = Math.max(0.5, parseFloat(lengthInput ? lengthInput.value : 5) || 5.0);
+            const h = Math.max(1.0, parseFloat(heightInput ? heightInput.value : 3) || 3.0);
+            const area = w * l;
+            const vol = area * h;
+            if (preview) {
+                preview.innerHTML = `Área Prevista: <strong>${area.toFixed(2)} m²</strong> &bull; Volume: <strong>${vol.toFixed(1)} m³</strong>`;
+            }
+        };
+
+        if (widthInput) widthInput.addEventListener('input', updatePreview);
+        if (lengthInput) lengthInput.addEventListener('input', updatePreview);
+        if (heightInput) heightInput.addEventListener('input', updatePreview);
+
+        this.cadCanvas.onQuickBlockRequested = (wx, wy, mousePos) => {
+            targetPos = { x: wx, y: wy };
+            if (modal) modal.classList.remove('hidden');
+            if (coordsDesc) coordsDesc.textContent = `Posição no Plano: X = ${wx.toFixed(1)}m, Y = ${wy.toFixed(1)}m`;
+            if (nameInput) {
+                nameInput.value = `Espaço ${this.spaces.length + 1}`;
+                setTimeout(() => {
+                    nameInput.focus();
+                    nameInput.select();
+                }, 50);
+            }
+            updatePreview();
+        };
+
+        const closeModal = () => {
+            if (modal) modal.classList.add('hidden');
+        };
+
+        if (closeBtn) closeBtn.addEventListener('click', closeModal);
+        if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+
+        if (form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = nameInput && nameInput.value.trim() ? nameInput.value.trim() : `Espaço ${this.spaces.length + 1}`;
+                const w = Math.max(0.5, parseFloat(widthInput.value) || 6.0);
+                const l = Math.max(0.5, parseFloat(lengthInput.value) || 5.0);
+                const h = Math.max(1.0, parseFloat(heightInput.value) || 3.0);
+                const preset = typeSelect ? typeSelect.value : 'office_enclosed';
+
+                const newSpace = this.cadCanvas.createBlock(targetPos.x, targetPos.y, w, l, h, name, preset);
+                this.spaces = this.cadCanvas.spaces;
+                this.updateCalculations();
+                this.renderSpaceList();
+                this.renderHourlyChart();
+                this.populatePropertyPanel(newSpace);
+
+                closeModal();
             });
         }
     }
@@ -818,7 +898,7 @@ class KapiApp {
                 </div>` : ''}
                 <div class="breakdown-row">
                     <span>Pessoas (${space.occupants || 2}p - Sens+Lat):</span>
-                    <span>${loads.internal.peopleSensibleW + loads.internal.peopleLatentW} W</span>
+                    <span>${(loads.internal.peopleSensibleW + loads.internal.peopleLatentW).toFixed(1)} W</span>
                 </div>
                 <div class="breakdown-row">
                     <span>Iluminação:</span>
@@ -830,7 +910,7 @@ class KapiApp {
                 </div>
                 <div class="breakdown-row">
                     <span>Ventilação Exterior (62.1):</span>
-                    <span>${loads.ventilation.sensibleCoolingW + loads.ventilation.latentCoolingW} W (${loads.ventilation.cfm} CFM)</span>
+                    <span>${(loads.ventilation.sensibleCoolingW + loads.ventilation.latentCoolingW).toFixed(1)} W (${loads.ventilation.cfm} CFM)</span>
                 </div>
             </div>
         `;
@@ -1191,4 +1271,5 @@ class KapiApp {
 // Bootstrap on DOM ready
 window.addEventListener('DOMContentLoaded', () => {
     window.kapi = new KapiApp();
+    window.kapiApp = window.kapi;
 });
