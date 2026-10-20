@@ -1,0 +1,18 @@
+Index,Building Type
+100,Correctional Facility
+101,Courthouse
+200,Education - K-12
+201,Education - University
+300,Healthcare - Hospital
+301,Healthcare - Outpatient
+400,Hotel
+500,Manufacturing
+600,Motel
+700,Movie Theater
+800,Office
+900,Performing Arts Theater
+1000,Religious
+1100,Restaurant
+1200,Retail
+1300,Warehouse
+2000,[Include All Space Types]

@@ -1,0 +1,28 @@
+Index,Climate-Zone,Name,Assembly-Type,WallType,FloorType,Symmetrical,Inside-Surface-Color,Inside-Absorptivity,Outside-Surface-Color,Outside-Absorptivity,Inside-Surface-Resistance,Outside-Surface-Resistance,Overall-Uvalue,Overall-Weight,Layer-OneIs-Outside,Layer(1),Layer(2),Layer(3),Layer(4),Layer(5),Layer(6),Layer(7),Layer(8),.UsedForExteriorInsulation,.Configuration,.ExtendsVertically,.Extends-Horizontally,Exterior-Insulation-LayerID
+3101,0,2007 Zone 0 Above-grade steel-framed wall,1,1,0,FALSE,0,0.45,1,0.675,0.68,0.17,0.124,13.7,FALSE,610,103,610,614,0,0,0,0,FALSE,1,0,0,0
+3102,1,2007 Zone 1 Above-grade steel-framed wall,1,1,0,FALSE,0,0.45,1,0.675,0.68,0.17,0.124,13.7,FALSE,610,103,610,614,0,0,0,0,FALSE,1,0,0,0
+3103,2,2007 Zone 2 Above-grade steel-framed wall,1,1,0,FALSE,0,0.45,1,0.675,0.68,0.17,0.124,13.7,FALSE,610,103,610,614,0,0,0,0,FALSE,1,0,0,0
+3104,3,2007 Zone 3 Above-grade steel-framed wall,1,1,0,FALSE,0,0.45,1,0.675,0.68,0.17,0.084,13.9,FALSE,610,103,201,610,614,0,0,0,FALSE,1,0,0,0
+3105,4,2007 Zone 4 Above-grade steel-framed wall,1,1,0,FALSE,0,0.45,1,0.675,0.68,0.17,0.064,14,FALSE,610,103,204,610,614,0,0,0,FALSE,1,0,0,0
+3106,5,2007 Zone 5 Above-grade steel-framed wall,1,1,0,FALSE,0,0.45,1,0.675,0.68,0.17,0.064,14,FALSE,610,103,204,610,614,0,0,0,FALSE,1,0,0,0
+3107,6,2007 Zone 6 Above-grade steel-framed wall,1,1,0,FALSE,0,0.45,1,0.675,0.68,0.17,0.064,14,FALSE,610,103,204,610,614,0,0,0,FALSE,1,0,0,0
+3108,7,2007 Zone 7 Above-grade steel-framed wall,1,1,0,FALSE,0,0.45,1,0.675,0.68,0.17,0.064,14,FALSE,610,103,204,610,614,0,0,0,FALSE,1,0,0,0
+3109,8,2007 Zone 8 Above-grade steel-framed wall,1,1,0,FALSE,0,0.45,1,0.675,0.68,0.17,0.064,14,FALSE,610,103,204,610,614,0,0,0,FALSE,1,0,0,0
+3201,0,2007 Zone 0 Insulation entirely above deck,2,0,0,FALSE,0,0.45,0,0.45,0.61,0.17,0.063,2,TRUE,208,607,0,0,0,0,0,0,FALSE,1,0,0,0
+3202,1,2007 Zone 1 Insulation entirely above deck,2,0,0,FALSE,0,0.45,0,0.45,0.61,0.17,0.063,2,TRUE,208,607,0,0,0,0,0,0,FALSE,1,0,0,0
+3203,2,2007 Zone 2 Insulation entirely above deck,2,0,0,FALSE,0,0.45,0,0.45,0.61,0.17,0.048,2.2,TRUE,210,607,0,0,0,0,0,0,FALSE,1,0,0,0
+3204,3,2007 Zone 3 Insulation entirely above deck,2,0,0,FALSE,0,0.45,0,0.45,0.61,0.17,0.048,2.2,TRUE,210,607,0,0,0,0,0,0,FALSE,1,0,0,0
+3205,4,2007 Zone 4 Insulation entirely above deck,2,0,0,FALSE,0,0.45,0,0.45,0.61,0.17,0.048,2.2,TRUE,210,607,0,0,0,0,0,0,FALSE,1,0,0,0
+3206,5,2007 Zone 5 Insulation entirely above deck,2,0,0,FALSE,0,0.45,0,0.45,0.61,0.17,0.048,2.2,TRUE,210,607,0,0,0,0,0,0,FALSE,1,0,0,0
+3207,6,2007 Zone 6 Insulation entirely above deck,2,0,0,FALSE,0,0.45,0,0.45,0.61,0.17,0.048,2.2,TRUE,210,607,0,0,0,0,0,0,FALSE,1,0,0,0
+3208,7,2007 Zone 7 Insulation entirely above deck,2,0,0,FALSE,0,0.45,0,0.45,0.61,0.17,0.048,2.2,TRUE,210,607,0,0,0,0,0,0,FALSE,1,0,0,0
+3209,8,2007 Zone 8 Insulation entirely above deck,2,0,0,FALSE,0,0.45,0,0.45,0.61,0.17,0.048,2.2,TRUE,210,607,0,0,0,0,0,0,FALSE,1,0,0,0
+3301,0,"2007 Zone 0 Slab-on-grade floor, unheated",3,0,2,FALSE,1,0.675,0,0,0.92,0,0.733,70,FALSE,504,0,0,0,0,0,0,0,FALSE,2,2,2,203
+3302,1,"2007 Zone 1 Slab-on-grade floor, unheated",3,0,2,FALSE,1,0.675,0,0,0.92,0,0.733,70,FALSE,504,0,0,0,0,0,0,0,FALSE,2,2,2,203
+3303,2,"2007 Zone 2 Slab-on-grade floor, unheated",3,0,2,FALSE,1,0.675,0,0,0.92,0,0.733,70,FALSE,504,0,0,0,0,0,0,0,FALSE,2,2,2,203
+3304,3,"2007 Zone 3 Slab-on-grade floor, unheated",3,0,2,FALSE,1,0.675,0,0,0.92,0,0.733,70,FALSE,504,0,0,0,0,0,0,0,FALSE,2,2,2,203
+3305,4,"2007 Zone 4 Slab-on-grade floor, unheated",3,0,2,FALSE,1,0.675,0,0,0.92,0,0.733,70,FALSE,504,0,0,0,0,0,0,0,FALSE,2,2,2,203
+3306,5,"2007 Zone 5 Slab-on-grade floor, unheated",3,0,2,FALSE,1,0.675,0,0,0.92,0,0.733,70,FALSE,504,0,0,0,0,0,0,0,FALSE,2,2,2,203
+3307,6,"2007 Zone 6 Slab-on-grade floor, unheated",3,0,2,FALSE,1,0.675,0,0,0.92,0,0.733,70,FALSE,504,0,0,0,0,0,0,0,TRUE,2,2,2,205
+3308,7,"2007 Zone 7 Slab-on-grade floor, unheated",3,0,2,FALSE,1,0.675,0,0,0.92,0,0.733,70,FALSE,504,0,0,0,0,0,0,0,TRUE,2,2,2,208
+3309,8,"2007 Zone 8 Slab-on-grade floor, unheated",3,0,2,FALSE,1,0.675,0,0,0.92,0,0.733,70,FALSE,504,0,0,0,0,0,0,0,TRUE,2,2,2,208

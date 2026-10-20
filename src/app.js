@@ -1,6 +1,6 @@
 /**
  * Kapi - Main Application Logic
- * Integrates Spatial Index, Alphanumeric Space Search, Thermal Calculation Engine,
+ * Integrates Spatial Index, Alphanumeric Space Search, Thermal Calculation Engine (Carrier HAP 6.4),
  * 2D Interactive CAD Floor Plan, and 24-Hour Dynamic Hourly Simulation.
  */
 
@@ -9,21 +9,39 @@ import { SpaceSearchEngine } from './space_search.js';
 import { ThermalEngine, BOUNDARY_CONDITIONS } from './thermal_engine.js';
 import { HourlyEngine } from './hourly_engine.js';
 import { CadCanvas } from './cad_canvas.js';
+import {
+    SPACE_TYPES,
+    ACTIVITY_LEVELS,
+    WALL_ASSEMBLIES,
+    SURFACE_COLORS,
+    WINDOW_ASSEMBLIES,
+    INTERNAL_SHADING,
+    ROOF_ASSEMBLIES,
+    FLOOR_ASSEMBLIES
+} from './hap_library.js';
 
-// Default Building Spaces (Sample Office Layout)
+// Default Building Spaces (Sample Office Layout with Carrier HAP 6.4 Presets)
 const initialSpaces = [
     {
         id: 'space_1',
         name: 'Executive Office 101',
         spaceNumber: 101,
         zone: 'Zone 1 - East Wing',
+        spaceType: 'office_enclosed',
+        activityLevel: 'office_work',
         notes: 'Corner executive office with double exterior exposure (N & E)',
         isMultiLevel: false,
         isUnmodeled: false,
         height: 3.2,
         occupants: 2,
-        lightingDensity: 9.0, // W/m²
-        equipmentDensity: 20.0, // W/m²
+        lightingDensity: 10.0, // W/m²
+        equipmentDensity: 10.0, // W/m²
+        ventRp: 2.5,
+        ventRa: 0.3,
+        hasRoof: true,
+        roofAssembly: 'insulated_deck',
+        hasFloor: false,
+        floorAssembly: 'slab_on_grade',
         polygon: [
             { x: 0, y: 0 },
             { x: 6, y: 0 },
@@ -31,10 +49,44 @@ const initialSpaces = [
             { x: 0, y: 5 }
         ],
         walls: [
-            { p1: { x: 0, y: 0 }, p2: { x: 6, y: 0 }, boundaryCondition: BOUNDARY_CONDITIONS.OUTDOOR, hasWindow: true, orientation: { name: 'North', angle: 0 } },
-            { p1: { x: 6, y: 0 }, p2: { x: 6, y: 5 }, boundaryCondition: BOUNDARY_CONDITIONS.OUTDOOR, hasWindow: true, orientation: { name: 'East', angle: 90 } },
-            { p1: { x: 6, y: 5 }, p2: { x: 0, y: 5 }, boundaryCondition: BOUNDARY_CONDITIONS.INTERNAL_PARTITION, hasWindow: false, orientation: { name: 'South', angle: 180 } },
-            { p1: { x: 0, y: 5 }, p2: { x: 0, y: 0 }, boundaryCondition: BOUNDARY_CONDITIONS.INTERNAL_PARTITION, hasWindow: false, orientation: { name: 'West', angle: 270 } }
+            {
+                p1: { x: 0, y: 0 }, p2: { x: 6, y: 0 },
+                boundaryCondition: BOUNDARY_CONDITIONS.OUTDOOR,
+                wallAssembly: 'masonry_insulated',
+                surfaceColor: 'medium',
+                hasWindow: true,
+                windowWidth: 2.4,
+                windowHeight: 1.5,
+                windowAssembly: 'double_clear',
+                internalShade: 'blinds_light',
+                orientation: { name: 'North', angle: 0 }
+            },
+            {
+                p1: { x: 6, y: 0 }, p2: { x: 6, y: 5 },
+                boundaryCondition: BOUNDARY_CONDITIONS.OUTDOOR,
+                wallAssembly: 'masonry_insulated',
+                surfaceColor: 'medium',
+                hasWindow: true,
+                windowWidth: 2.0,
+                windowHeight: 1.5,
+                windowAssembly: 'double_clear',
+                internalShade: 'blinds_light',
+                orientation: { name: 'East', angle: 90 }
+            },
+            {
+                p1: { x: 6, y: 5 }, p2: { x: 0, y: 5 },
+                boundaryCondition: BOUNDARY_CONDITIONS.INTERNAL_PARTITION,
+                wallAssembly: 'internal_partition',
+                hasWindow: false,
+                orientation: { name: 'South', angle: 180 }
+            },
+            {
+                p1: { x: 0, y: 5 }, p2: { x: 0, y: 0 },
+                boundaryCondition: BOUNDARY_CONDITIONS.INTERNAL_PARTITION,
+                wallAssembly: 'internal_partition',
+                hasWindow: false,
+                orientation: { name: 'West', angle: 270 }
+            }
         ]
     },
     {
@@ -42,13 +94,21 @@ const initialSpaces = [
         name: 'Conference Room 102',
         spaceNumber: 102,
         zone: 'Zone 1 - East Wing',
+        spaceType: 'conference_room',
+        activityLevel: 'sedentary_work',
         notes: 'High occupancy meeting space with projector and AV rack',
         isMultiLevel: false,
         isUnmodeled: false,
         height: 3.2,
-        occupants: 10,
-        lightingDensity: 12.0,
-        equipmentDensity: 25.0,
+        occupants: 12,
+        lightingDensity: 11.5,
+        equipmentDensity: 10.0,
+        ventRp: 2.5,
+        ventRa: 0.3,
+        hasRoof: true,
+        roofAssembly: 'insulated_deck',
+        hasFloor: false,
+        floorAssembly: 'slab_on_grade',
         polygon: [
             { x: 6, y: 0 },
             { x: 14, y: 0 },
@@ -56,10 +116,40 @@ const initialSpaces = [
             { x: 6, y: 5 }
         ],
         walls: [
-            { p1: { x: 6, y: 0 }, p2: { x: 14, y: 0 }, boundaryCondition: BOUNDARY_CONDITIONS.OUTDOOR, hasWindow: true, orientation: { name: 'North', angle: 0 } },
-            { p1: { x: 14, y: 0 }, p2: { x: 14, y: 5 }, boundaryCondition: BOUNDARY_CONDITIONS.OUTDOOR, hasWindow: false, orientation: { name: 'East', angle: 90 } },
-            { p1: { x: 14, y: 5 }, p2: { x: 6, y: 5 }, boundaryCondition: BOUNDARY_CONDITIONS.INTERNAL_PARTITION, hasWindow: false, orientation: { name: 'South', angle: 180 } },
-            { p1: { x: 6, y: 5 }, p2: { x: 6, y: 0 }, boundaryCondition: BOUNDARY_CONDITIONS.INTERNAL_PARTITION, hasWindow: false, orientation: { name: 'West', angle: 270 } }
+            {
+                p1: { x: 6, y: 0 }, p2: { x: 14, y: 0 },
+                boundaryCondition: BOUNDARY_CONDITIONS.OUTDOOR,
+                wallAssembly: 'masonry_insulated',
+                surfaceColor: 'medium',
+                hasWindow: true,
+                windowWidth: 3.0,
+                windowHeight: 1.5,
+                windowAssembly: 'double_low_e',
+                internalShade: 'curtain_medium',
+                orientation: { name: 'North', angle: 0 }
+            },
+            {
+                p1: { x: 14, y: 0 }, p2: { x: 14, y: 5 },
+                boundaryCondition: BOUNDARY_CONDITIONS.OUTDOOR,
+                wallAssembly: 'masonry_insulated',
+                surfaceColor: 'medium',
+                hasWindow: false,
+                orientation: { name: 'East', angle: 90 }
+            },
+            {
+                p1: { x: 14, y: 5 }, p2: { x: 6, y: 5 },
+                boundaryCondition: BOUNDARY_CONDITIONS.INTERNAL_PARTITION,
+                wallAssembly: 'internal_partition',
+                hasWindow: false,
+                orientation: { name: 'South', angle: 180 }
+            },
+            {
+                p1: { x: 6, y: 5 }, p2: { x: 6, y: 0 },
+                boundaryCondition: BOUNDARY_CONDITIONS.INTERNAL_PARTITION,
+                wallAssembly: 'internal_partition',
+                hasWindow: false,
+                orientation: { name: 'West', angle: 270 }
+            }
         ]
     },
     {
@@ -67,13 +157,21 @@ const initialSpaces = [
         name: 'Open Workspace 103',
         spaceNumber: 103,
         zone: 'Zone 2 - West Wing',
+        spaceType: 'office_open',
+        activityLevel: 'office_work',
         notes: 'Main engineering open layout workstations facing West',
         isMultiLevel: false,
         isUnmodeled: false,
         height: 3.2,
-        occupants: 16,
-        lightingDensity: 8.5,
-        equipmentDensity: 18.0,
+        occupants: 10,
+        lightingDensity: 8.7,
+        equipmentDensity: 12.0,
+        ventRp: 2.5,
+        ventRa: 0.3,
+        hasRoof: true,
+        roofAssembly: 'insulated_deck',
+        hasFloor: false,
+        floorAssembly: 'slab_on_grade',
         polygon: [
             { x: 0, y: 5 },
             { x: 14, y: 5 },
@@ -81,10 +179,49 @@ const initialSpaces = [
             { x: 0, y: 12 }
         ],
         walls: [
-            { p1: { x: 0, y: 5 }, p2: { x: 14, y: 5 }, boundaryCondition: BOUNDARY_CONDITIONS.INTERNAL_PARTITION, hasWindow: false, orientation: { name: 'North', angle: 0 } },
-            { p1: { x: 14, y: 5 }, p2: { x: 14, y: 12 }, boundaryCondition: BOUNDARY_CONDITIONS.OUTDOOR, hasWindow: true, orientation: { name: 'East', angle: 90 } },
-            { p1: { x: 14, y: 12 }, p2: { x: 0, y: 12 }, boundaryCondition: BOUNDARY_CONDITIONS.OUTDOOR, hasWindow: true, orientation: { name: 'South', angle: 180 } },
-            { p1: { x: 0, y: 12 }, p2: { x: 0, y: 5 }, boundaryCondition: BOUNDARY_CONDITIONS.OUTDOOR, hasWindow: true, orientation: { name: 'West', angle: 270 } }
+            {
+                p1: { x: 0, y: 5 }, p2: { x: 14, y: 5 },
+                boundaryCondition: BOUNDARY_CONDITIONS.INTERNAL_PARTITION,
+                wallAssembly: 'internal_partition',
+                hasWindow: false,
+                orientation: { name: 'North', angle: 0 }
+            },
+            {
+                p1: { x: 14, y: 5 }, p2: { x: 14, y: 12 },
+                boundaryCondition: BOUNDARY_CONDITIONS.OUTDOOR,
+                wallAssembly: 'masonry_insulated',
+                surfaceColor: 'medium',
+                hasWindow: true,
+                windowWidth: 2.5,
+                windowHeight: 1.5,
+                windowAssembly: 'double_clear',
+                internalShade: 'blinds_light',
+                orientation: { name: 'East', angle: 90 }
+            },
+            {
+                p1: { x: 14, y: 12 }, p2: { x: 0, y: 12 },
+                boundaryCondition: BOUNDARY_CONDITIONS.OUTDOOR,
+                wallAssembly: 'masonry_insulated',
+                surfaceColor: 'medium',
+                hasWindow: true,
+                windowWidth: 3.0,
+                windowHeight: 1.5,
+                windowAssembly: 'double_clear',
+                internalShade: 'blinds_light',
+                orientation: { name: 'South', angle: 180 }
+            },
+            {
+                p1: { x: 0, y: 12 }, p2: { x: 0, y: 5 },
+                boundaryCondition: BOUNDARY_CONDITIONS.OUTDOOR,
+                wallAssembly: 'masonry_insulated',
+                surfaceColor: 'medium',
+                hasWindow: true,
+                windowWidth: 3.0,
+                windowHeight: 1.5,
+                windowAssembly: 'double_low_e',
+                internalShade: 'blinds_light',
+                orientation: { name: 'West', angle: 270 }
+            }
         ]
     },
     {
@@ -92,13 +229,21 @@ const initialSpaces = [
         name: 'Data Server Room 104',
         spaceNumber: 104,
         zone: 'Zone 3 - Critical IT',
+        spaceType: 'data_center',
+        activityLevel: 'office_work',
         notes: 'High internal sensible plug load with constant cooling requirement',
         isMultiLevel: false,
         isUnmodeled: false,
         height: 3.2,
         occupants: 1,
         lightingDensity: 5.0,
-        equipmentDensity: 180.0, // High server plug load
+        equipmentDensity: 150.0, // High server plug load
+        ventRp: 2.5,
+        ventRa: 0.3,
+        hasRoof: true,
+        roofAssembly: 'insulated_deck',
+        hasFloor: false,
+        floorAssembly: 'slab_on_grade',
         polygon: [
             { x: 14, y: 0 },
             { x: 20, y: 0 },
@@ -106,10 +251,36 @@ const initialSpaces = [
             { x: 14, y: 7 }
         ],
         walls: [
-            { p1: { x: 14, y: 0 }, p2: { x: 20, y: 0 }, boundaryCondition: BOUNDARY_CONDITIONS.OUTDOOR, hasWindow: false, orientation: { name: 'North', angle: 0 } },
-            { p1: { x: 20, y: 0 }, p2: { x: 20, y: 7 }, boundaryCondition: BOUNDARY_CONDITIONS.OUTDOOR, hasWindow: false, orientation: { name: 'East', angle: 90 } },
-            { p1: { x: 20, y: 7 }, p2: { x: 14, y: 7 }, boundaryCondition: BOUNDARY_CONDITIONS.INTERNAL_PARTITION, hasWindow: false, orientation: { name: 'South', angle: 180 } },
-            { p1: { x: 14, y: 7 }, p2: { x: 14, y: 0 }, boundaryCondition: BOUNDARY_CONDITIONS.INTERNAL_PARTITION, hasWindow: false, orientation: { name: 'West', angle: 270 } }
+            {
+                p1: { x: 14, y: 0 }, p2: { x: 20, y: 0 },
+                boundaryCondition: BOUNDARY_CONDITIONS.OUTDOOR,
+                wallAssembly: 'masonry_insulated',
+                surfaceColor: 'medium',
+                hasWindow: false,
+                orientation: { name: 'North', angle: 0 }
+            },
+            {
+                p1: { x: 20, y: 0 }, p2: { x: 20, y: 7 },
+                boundaryCondition: BOUNDARY_CONDITIONS.OUTDOOR,
+                wallAssembly: 'masonry_insulated',
+                surfaceColor: 'medium',
+                hasWindow: false,
+                orientation: { name: 'East', angle: 90 }
+            },
+            {
+                p1: { x: 20, y: 7 }, p2: { x: 14, y: 7 },
+                boundaryCondition: BOUNDARY_CONDITIONS.INTERNAL_PARTITION,
+                wallAssembly: 'internal_partition',
+                hasWindow: false,
+                orientation: { name: 'South', angle: 180 }
+            },
+            {
+                p1: { x: 14, y: 7 }, p2: { x: 14, y: 0 },
+                boundaryCondition: BOUNDARY_CONDITIONS.INTERNAL_PARTITION,
+                wallAssembly: 'internal_partition',
+                hasWindow: false,
+                orientation: { name: 'West', angle: 270 }
+            }
         ]
     }
 ];
@@ -214,6 +385,8 @@ class KapiApp {
             if (rotInput) rotInput.value = deg;
             if (rotSlider) rotSlider.value = deg;
             this.cadCanvas.setBuildingRotation(deg);
+            this.hourlyEngine.buildingRotation = deg;
+            this.thermalEngine.buildingRotation = deg;
             this.updateCalculations();
             this.renderHourlyChart();
             const sel = this.spaces.find(s => s.id === this.cadCanvas.selectedSpaceId);
@@ -242,6 +415,8 @@ class KapiApp {
         this.cadCanvas.onBuildingRotationChanged = (deg) => {
             if (rotInput) rotInput.value = deg;
             if (rotSlider) rotSlider.value = deg;
+            this.hourlyEngine.buildingRotation = deg;
+            this.thermalEngine.buildingRotation = deg;
             this.updateCalculations();
             this.renderHourlyChart();
             const sel = this.spaces.find(s => s.id === this.cadCanvas.selectedSpaceId);
@@ -256,6 +431,8 @@ class KapiApp {
         const removeBtn = document.getElementById('btn-remove-window');
         const widthInput = document.getElementById('modal-win-width');
         const heightInput = document.getElementById('modal-win-height');
+        const glazingSelect = document.getElementById('modal-win-glazing');
+        const shadingSelect = document.getElementById('modal-win-shading');
         const wallInfo = document.getElementById('window-modal-wall-info');
         const preview = document.getElementById('window-modal-preview');
 
@@ -280,10 +457,12 @@ class KapiApp {
             currentEditing = { space, wallIndex, wall };
             modal.classList.remove('hidden');
             if (wallInfo) {
-                wallInfo.textContent = `${space.name} - Parede ${wallIndex + 1} (${wall.orientation.name}, Comp: ${wall.length.toFixed(1)}m, Alt: ${(space.height || 3.0).toFixed(1)}m)`;
+                wallInfo.textContent = `${space.name} - Parede ${wallIndex + 1} (${wall.orientation ? wall.orientation.name : 'N'}, Comp: ${wall.length.toFixed(1)}m, Alt: ${(space.height || 3.0).toFixed(1)}m)`;
             }
             if (widthInput) widthInput.value = wall.windowWidth !== undefined ? wall.windowWidth : Math.min(Math.round(wall.length * 0.5 * 10) / 10, 2.0);
             if (heightInput) heightInput.value = wall.windowHeight !== undefined ? wall.windowHeight : Math.min(Math.round((space.height || 3.0) * 0.5 * 10) / 10, 1.4);
+            if (glazingSelect) glazingSelect.value = wall.windowAssembly || 'double_clear';
+            if (shadingSelect) shadingSelect.value = wall.internalShade || 'none';
             updatePreview();
         };
 
@@ -302,6 +481,8 @@ class KapiApp {
                 currentEditing.wall.hasWindow = true;
                 currentEditing.wall.windowWidth = w;
                 currentEditing.wall.windowHeight = h;
+                if (glazingSelect) currentEditing.wall.windowAssembly = glazingSelect.value;
+                if (shadingSelect) currentEditing.wall.internalShade = shadingSelect.value;
                 this.cadCanvas.triggerChanged();
                 closeModal();
                 this.populatePropertyPanel(currentEditing.space);
@@ -399,6 +580,8 @@ class KapiApp {
             this.updateCalculations();
             this.cadCanvas.render();
             this.renderHourlyChart();
+            const sel = this.spaces.find(s => s.id === this.cadCanvas.selectedSpaceId);
+            if (sel) this.populatePropertyPanel(sel);
         };
 
         if (outdoorTemp) outdoorTemp.addEventListener('input', updateWeather);
@@ -426,7 +609,103 @@ class KapiApp {
         bindInput('prop-occupants', 'occupants', true);
         bindInput('prop-lighting', 'lightingDensity', true);
         bindInput('prop-equipment', 'equipmentDensity', true);
+        bindInput('prop-vent-rp', 'ventRp', true);
+        bindInput('prop-vent-ra', 'ventRa', true);
         bindInput('prop-notes', 'notes');
+
+        // Space Type Preset Selector Event
+        const spaceTypeSelect = document.getElementById('prop-space-type');
+        if (spaceTypeSelect) {
+            spaceTypeSelect.addEventListener('change', () => {
+                const space = this.spaces.find(s => s.id === this.cadCanvas.selectedSpaceId);
+                if (!space) return;
+                const pKey = spaceTypeSelect.value;
+                const preset = SPACE_TYPES[pKey];
+                space.spaceType = pKey;
+
+                if (preset && pKey !== 'custom') {
+                    const area = space.area || ThermalEngine.calculatePolygonArea(space.polygon);
+                    space.occupants = Math.max(1, Math.round(area / (preset.areaPerPerson || 10.0)));
+                    space.activityLevel = preset.activity;
+                    space.lightingDensity = preset.lightingWpM2;
+                    space.equipmentDensity = preset.equipmentWpM2;
+                    space.ventRp = preset.ventRp;
+                    space.ventRa = preset.ventRa;
+                }
+                this.cadCanvas.triggerChanged();
+                this.populatePropertyPanel(space);
+                this.renderHourlyChart();
+            });
+        }
+
+        // Activity Level Selector Event
+        const activitySelect = document.getElementById('prop-activity-level');
+        if (activitySelect) {
+            activitySelect.addEventListener('change', () => {
+                const space = this.spaces.find(s => s.id === this.cadCanvas.selectedSpaceId);
+                if (space) {
+                    space.activityLevel = activitySelect.value;
+                    this.cadCanvas.triggerChanged();
+                    this.populatePropertyPanel(space);
+                    this.renderHourlyChart();
+                }
+            });
+        }
+
+        // Roof & Floor Toggles
+        const hasRoofChk = document.getElementById('prop-has-roof');
+        const roofGroup = document.getElementById('roof-assembly-group');
+        const roofSelect = document.getElementById('prop-roof-assembly');
+        if (hasRoofChk) {
+            hasRoofChk.addEventListener('change', () => {
+                const space = this.spaces.find(s => s.id === this.cadCanvas.selectedSpaceId);
+                if (space) {
+                    space.hasRoof = hasRoofChk.checked;
+                    if (roofGroup) roofGroup.classList.toggle('hidden', !hasRoofChk.checked);
+                    this.cadCanvas.triggerChanged();
+                    this.populatePropertyPanel(space);
+                    this.renderHourlyChart();
+                }
+            });
+        }
+        if (roofSelect) {
+            roofSelect.addEventListener('change', () => {
+                const space = this.spaces.find(s => s.id === this.cadCanvas.selectedSpaceId);
+                if (space) {
+                    space.roofAssembly = roofSelect.value;
+                    this.cadCanvas.triggerChanged();
+                    this.populatePropertyPanel(space);
+                    this.renderHourlyChart();
+                }
+            });
+        }
+
+        const hasFloorChk = document.getElementById('prop-has-floor');
+        const floorGroup = document.getElementById('floor-assembly-group');
+        const floorSelect = document.getElementById('prop-floor-assembly');
+        if (hasFloorChk) {
+            hasFloorChk.addEventListener('change', () => {
+                const space = this.spaces.find(s => s.id === this.cadCanvas.selectedSpaceId);
+                if (space) {
+                    space.hasFloor = hasFloorChk.checked;
+                    if (floorGroup) floorGroup.classList.toggle('hidden', !hasFloorChk.checked);
+                    this.cadCanvas.triggerChanged();
+                    this.populatePropertyPanel(space);
+                    this.renderHourlyChart();
+                }
+            });
+        }
+        if (floorSelect) {
+            floorSelect.addEventListener('change', () => {
+                const space = this.spaces.find(s => s.id === this.cadCanvas.selectedSpaceId);
+                if (space) {
+                    space.floorAssembly = floorSelect.value;
+                    this.cadCanvas.triggerChanged();
+                    this.populatePropertyPanel(space);
+                    this.renderHourlyChart();
+                }
+            });
+        }
 
         const delBtn = document.getElementById('btn-delete-space');
         if (delBtn) {
@@ -457,33 +736,106 @@ class KapiApp {
             if (el) el.value = val !== undefined ? val : '';
         };
 
+        const spaceTypePreset = SPACE_TYPES[space.spaceType] || SPACE_TYPES.CUSTOM;
+
+        setValue('prop-space-type', space.spaceType || 'office_enclosed');
+        setValue('prop-activity-level', space.activityLevel || spaceTypePreset.activity || 'office_work');
         setValue('prop-name', space.name);
         setValue('prop-zone', space.zone);
         setValue('prop-height', space.height);
-        setValue('prop-occupants', space.occupants);
-        setValue('prop-lighting', space.lightingDensity);
-        setValue('prop-equipment', space.equipmentDensity);
+        setValue('prop-occupants', space.occupants !== undefined ? space.occupants : 2);
+        setValue('prop-lighting', space.lightingDensity !== undefined ? space.lightingDensity : spaceTypePreset.lightingWpM2);
+        setValue('prop-equipment', space.equipmentDensity !== undefined ? space.equipmentDensity : spaceTypePreset.equipmentWpM2);
+        setValue('prop-vent-rp', space.ventRp !== undefined ? space.ventRp : spaceTypePreset.ventRp);
+        setValue('prop-vent-ra', space.ventRa !== undefined ? space.ventRa : spaceTypePreset.ventRa);
         setValue('prop-notes', space.notes);
 
-        // Calculate dynamic load for current hour
-        const currentHourLoad = this.hourlyEngine.calculateSpaceHour(space, this.currentHour, this.thermalEngine.designConditions);
-        // Calculate 24h simulation to know peak hour
+        // Roof & Floor
+        const hasRoofChk = document.getElementById('prop-has-roof');
+        const roofGroup = document.getElementById('roof-assembly-group');
+        const roofSelect = document.getElementById('prop-roof-assembly');
+        const isRoof = space.hasRoof !== undefined ? space.hasRoof : false;
+        if (hasRoofChk) hasRoofChk.checked = isRoof;
+        if (roofGroup) roofGroup.classList.toggle('hidden', !isRoof);
+        if (roofSelect) roofSelect.value = space.roofAssembly || 'insulated_deck';
+
+        const hasFloorChk = document.getElementById('prop-has-floor');
+        const floorGroup = document.getElementById('floor-assembly-group');
+        const floorSelect = document.getElementById('prop-floor-assembly');
+        const isFloor = space.hasFloor !== undefined ? space.hasFloor : false;
+        if (hasFloorChk) hasFloorChk.checked = isFloor;
+        if (floorGroup) floorGroup.classList.toggle('hidden', !isFloor);
+        if (floorSelect) floorSelect.value = space.floorAssembly || 'slab_on_grade';
+
+        // Complete Carrier HAP Design Load Calculation for this Space
+        const thermalCalc = this.thermalEngine.calculateSpaceThermalLoad(space);
         const sim24 = this.hourlyEngine.simulate24Hours(space, this.thermalEngine.designConditions);
+        const curHData = sim24.hourlyData[this.currentHour];
+
+        const loads = thermalCalc.loads;
+        const totals = loads.totals;
 
         document.getElementById('prop-load-summary').innerHTML = `
-            <div class="stat-badge">
-                <strong>${currentHourLoad.totalCoolingTR} TR</strong> (${currentHourLoad.totalCoolingBTUh.toLocaleString()} BTU/h)
-                <span class="stat-hour">às ${this.currentHour}:00h</span>
-            </div>
-            <div class="stat-sub">
-                ${space.area || 30} m² | <strong>Pico da Sala: ${sim24.peakHour}:00h</strong> (${sim24.peakLoadTR.toFixed(2)} TR)
-            </div>
-            <div class="stat-sub">
-                Solar: ${(currentHourLoad.solarGainW / 1000).toFixed(2)} kW | Interna: ${(currentHourLoad.internalSensibleW / 1000).toFixed(2)} kW
+            <div class="load-breakdown-card">
+                <div class="load-kpi-main">
+                    <div>
+                        <div class="tr-badge">${totals.coolingTons} TR</div>
+                        <div class="btu-sub">${totals.coolingBTUh.toLocaleString()} BTU/h (${totals.coolingKW} kW)</div>
+                    </div>
+                    <div style="text-align:right">
+                        <div style="font-size:12px; font-weight:600; color:#e3b341">${totals.supplyAirflowCFM} CFM</div>
+                        <div style="font-size:10px; color:#8b949e">${totals.loadDensityWpM2} W/m²</div>
+                    </div>
+                </div>
+
+                <div class="breakdown-row highlight-row">
+                    <span>Pico Coincidente da Sala:</span>
+                    <span>${sim24.peakHour}:00h (${sim24.peakLoadTR.toFixed(2)} TR)</span>
+                </div>
+                <div class="breakdown-row">
+                    <span>Hora Atual (${this.currentHour}:00h):</span>
+                    <span>${curHData.totalCoolingTR.toFixed(2)} TR (${curHData.totalCoolingW} W)</span>
+                </div>
+                
+                <hr style="border:none; border-top:1px solid #30363d; margin:4px 0;">
+
+                <div class="breakdown-row">
+                    <span>Paredes Condução (Sol-Ar):</span>
+                    <span>${loads.envelope.wallsCoolingW} W</span>
+                </div>
+                <div class="breakdown-row">
+                    <span>Janelas Condução:</span>
+                    <span>${loads.envelope.windowsCondW} W</span>
+                </div>
+                <div class="breakdown-row">
+                    <span>Janelas Radiação Solar:</span>
+                    <span>${loads.envelope.windowsSolarW} W</span>
+                </div>
+                ${isRoof ? `
+                <div class="breakdown-row">
+                    <span>Cobertura Solar (Teto):</span>
+                    <span>${loads.envelope.roofCoolingW} W</span>
+                </div>` : ''}
+                <div class="breakdown-row">
+                    <span>Pessoas (${space.occupants || 2}p - Sens+Lat):</span>
+                    <span>${loads.internal.peopleSensibleW + loads.internal.peopleLatentW} W</span>
+                </div>
+                <div class="breakdown-row">
+                    <span>Iluminação:</span>
+                    <span>${loads.internal.lightingW} W</span>
+                </div>
+                <div class="breakdown-row">
+                    <span>Equipamentos / TI:</span>
+                    <span>${loads.internal.equipmentW} W</span>
+                </div>
+                <div class="breakdown-row">
+                    <span>Ventilação Exterior (62.1):</span>
+                    <span>${loads.ventilation.sensibleCoolingW + loads.ventilation.latentCoolingW} W (${loads.ventilation.cfm} CFM)</span>
+                </div>
             </div>
         `;
 
-        // Render Walls and Window dimensions list
+        // Render Walls & Fenestration Inspector
         const wallsContainer = document.getElementById('prop-walls-container');
         if (wallsContainer) {
             if (!space.walls || space.walls.length === 0) {
@@ -492,24 +844,72 @@ class KapiApp {
                 wallsContainer.innerHTML = '';
                 space.walls.forEach((wall, idx) => {
                     const grossArea = wall.length * (space.height || 3.0);
-                    const isOutdoor = wall.boundaryCondition === 'OutdoorAir';
+                    const isOutdoor = wall.boundaryCondition === BOUNDARY_CONDITIONS.OUTDOOR;
                     const winW = wall.windowWidth !== undefined ? wall.windowWidth : Math.min(Math.round(wall.length * 0.5 * 10) / 10, 2.0);
                     const winH = wall.windowHeight !== undefined ? wall.windowHeight : Math.min(Math.round((space.height || 3.0) * 0.5 * 10) / 10, 1.4);
                     const winArea = wall.hasWindow ? Math.min(grossArea * 0.85, winW * winH) : 0;
                     const wwr = wall.hasWindow ? ((winArea / grossArea) * 100).toFixed(0) : 0;
+
+                    // Detail from thermal calculation
+                    const wDetail = thermalCalc.wallDetails[idx] || {};
 
                     const card = document.createElement('div');
                     card.className = 'wall-card';
                     card.innerHTML = `
                         <div class="wall-card-header">
                             <span class="wall-card-title">Parede ${idx + 1} (${wall.length.toFixed(1)}m)</span>
-                            <span class="wall-card-orientation">${wall.orientation ? wall.orientation.name : 'N'} (${isOutdoor ? 'Externa' : 'Divisória'})</span>
+                            <span class="wall-card-orientation">${wDetail.orientation || (wall.orientation ? wall.orientation.name : 'N')}</span>
                         </div>
+
+                        <!-- Boundary Condition Selector -->
+                        <div class="form-row" style="margin-bottom:4px;">
+                            <div class="form-group" style="flex:1;">
+                                <label style="font-size:10px;">Tipo de Exposição:</label>
+                                <select class="wall-boundary-select" data-wall="${idx}">
+                                    <option value="OutdoorAir" ${isOutdoor ? 'selected' : ''}>Externa (Ar Exterior + Sol)</option>
+                                    <option value="ModeledOtherSide" ${!isOutdoor ? 'selected' : ''}>Divisória Interna</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        ${isOutdoor ? `
+                        <!-- Construction Assembly & Color -->
+                        <div class="wall-assembly-row">
+                            <label style="font-size:10px; color:#8b949e;">Construção da Parede:</label>
+                            <select class="wall-assembly-select" data-wall="${idx}">
+                                <option value="masonry_insulated" ${wall.wallAssembly === 'masonry_insulated' || !wall.wallAssembly ? 'selected' : ''}>Alvenaria c/ Isolamento EPS (U=0.39)</option>
+                                <option value="masonry_uninsulated" ${wall.wallAssembly === 'masonry_uninsulated' ? 'selected' : ''}>Alvenaria Tijolo Furado (U=1.90)</option>
+                                <option value="concrete_structural" ${wall.wallAssembly === 'concrete_structural' ? 'selected' : ''}>Concreto Maciço 15cm (U=2.40)</option>
+                                <option value="steel_frame_insulated" ${wall.wallAssembly === 'steel_frame_insulated' ? 'selected' : ''}>Drywall/Steel Frame c/ Lã (U=0.43)</option>
+                                <option value="curtain_wall" ${wall.wallAssembly === 'curtain_wall' ? 'selected' : ''}>Fachada Pele de Vidro (U=2.10)</option>
+                            </select>
+
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:2px;">
+                                <label style="font-size:10px; color:#8b949e;">Cor Externa:</label>
+                                <select class="wall-color-select" data-wall="${idx}" style="width:140px;">
+                                    <option value="light" ${wall.surfaceColor === 'light' ? 'selected' : ''}>Clara (α=0.40)</option>
+                                    <option value="medium" ${wall.surfaceColor === 'medium' || !wall.surfaceColor ? 'selected' : ''}>Média / HAP (α=0.675)</option>
+                                    <option value="dark" ${wall.surfaceColor === 'dark' ? 'selected' : ''}>Escura (α=0.90)</option>
+                                </select>
+                            </div>
+
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
+                                <span class="sol-air-badge" title="Temperatura Sol-Ar sob incidência de radiação solar">
+                                    🌡️ T_sol-ar: <strong>${wDetail.solAirTempC || 35}°C</strong>
+                                </span>
+                                <span style="font-size:10px; font-family:var(--font-mono); color:#8b949e;">
+                                    ${wDetail.incidentSolarWpM2 || 0} W/m²
+                                </span>
+                            </div>
+                        </div>` : ''}
+
+                        <!-- Window Configuration Section -->
                         <div class="wall-window-config">
                             <label class="window-toggle-label">
                                 <input type="checkbox" class="wall-has-window-chk" data-wall="${idx}" ${wall.hasWindow ? 'checked' : ''}>
                                 <span>🪟 Possui Janela</span>
                             </label>
+
                             <div class="window-dims-row" style="display: ${wall.hasWindow ? 'flex' : 'none'};" id="wall-dims-row-${idx}">
                                 <div class="window-dim-item">
                                     <label>Larg (m):</label>
@@ -519,13 +919,47 @@ class KapiApp {
                                     <label>Alt (m):</label>
                                     <input type="number" step="0.1" min="0.3" max="${(space.height || 3.0).toFixed(1)}" value="${winH.toFixed(1)}" class="wall-win-h" data-wall="${idx}">
                                 </div>
+                                <button class="btn-config-win" data-wall="${idx}" title="Configurar Esquadria e Proteção Solar" style="background:#21262d; border:1px solid #30363d; border-radius:4px; color:#58a6ff; font-size:11px; padding:2px 6px; cursor:pointer;">
+                                    ⚙️
+                                </button>
                             </div>
+
                             <div class="window-area-badge" style="display: ${wall.hasWindow ? 'block' : 'none'};" id="wall-area-badge-${idx}">
-                                Área da Janela: ${winArea.toFixed(2)} m² (${wwr}% WWR)
+                                Janela: ${winArea.toFixed(2)} m² (${wwr}% WWR) | ${wDetail.totalWindowWatts || 0} W
                             </div>
                         </div>
                     `;
                     wallsContainer.appendChild(card);
+                });
+
+                // Boundary condition change
+                wallsContainer.querySelectorAll('.wall-boundary-select').forEach(sel => {
+                    sel.addEventListener('change', (e) => {
+                        const wallIdx = parseInt(e.target.dataset.wall, 10);
+                        space.walls[wallIdx].boundaryCondition = e.target.value;
+                        this.cadCanvas.triggerChanged();
+                        this.populatePropertyPanel(space);
+                    });
+                });
+
+                // Wall Assembly change
+                wallsContainer.querySelectorAll('.wall-assembly-select').forEach(sel => {
+                    sel.addEventListener('change', (e) => {
+                        const wallIdx = parseInt(e.target.dataset.wall, 10);
+                        space.walls[wallIdx].wallAssembly = e.target.value;
+                        this.cadCanvas.triggerChanged();
+                        this.populatePropertyPanel(space);
+                    });
+                });
+
+                // Wall Color change
+                wallsContainer.querySelectorAll('.wall-color-select').forEach(sel => {
+                    sel.addEventListener('change', (e) => {
+                        const wallIdx = parseInt(e.target.dataset.wall, 10);
+                        space.walls[wallIdx].surfaceColor = e.target.value;
+                        this.cadCanvas.triggerChanged();
+                        this.populatePropertyPanel(space);
+                    });
                 });
 
                 // Checkbox toggle window
@@ -543,6 +977,14 @@ class KapiApp {
                     });
                 });
 
+                // Window Config Gear button
+                wallsContainer.querySelectorAll('.btn-config-win').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const wallIdx = parseInt(e.currentTarget.dataset.wall, 10);
+                        this.cadCanvas.onWindowConfigure(space, wallIdx, space.walls[wallIdx]);
+                    });
+                });
+
                 // Window Width input
                 wallsContainer.querySelectorAll('.wall-win-w').forEach(inp => {
                     inp.addEventListener('input', (e) => {
@@ -554,7 +996,7 @@ class KapiApp {
                         const h = space.walls[wallIdx].windowHeight || 1.4;
                         const area = Math.min(grossArea * 0.85, val * h);
                         const badge = document.getElementById(`wall-area-badge-${wallIdx}`);
-                        if (badge) badge.textContent = `Área da Janela: ${area.toFixed(2)} m² (${((area / grossArea) * 100).toFixed(0)}% WWR)`;
+                        if (badge) badge.textContent = `Janela: ${area.toFixed(2)} m² (${((area / grossArea) * 100).toFixed(0)}% WWR)`;
                     });
                 });
 
@@ -569,7 +1011,7 @@ class KapiApp {
                         const w = space.walls[wallIdx].windowWidth || 1.8;
                         const area = Math.min(grossArea * 0.85, w * val);
                         const badge = document.getElementById(`wall-area-badge-${wallIdx}`);
-                        if (badge) badge.textContent = `Área da Janela: ${area.toFixed(2)} m² (${((area / grossArea) * 100).toFixed(0)}% WWR)`;
+                        if (badge) badge.textContent = `Janela: ${area.toFixed(2)} m² (${((area / grossArea) * 100).toFixed(0)}% WWR)`;
                     });
                 });
             }
@@ -624,7 +1066,7 @@ class KapiApp {
 
         document.getElementById('total-cooling-tr').textContent = `${currentCoolingTR.toFixed(2)} TR`;
         document.getElementById('total-cooling-btu').textContent = `${Math.round(currentCoolingBTUh).toLocaleString()} BTU/h (${(currentTotalCoolingW / 1000).toFixed(1)} kW)`;
-        document.getElementById('total-sensible-latent').textContent = `Sensível: ${(currentSensibleW / 1000).toFixed(1)} kW | Latent: ${(currentLatentW / 1000).toFixed(1)} kW`;
+        document.getElementById('total-sensible-latent').textContent = `Sensível: ${(currentSensibleW / 1000).toFixed(1)} kW | Latente: ${(currentLatentW / 1000).toFixed(1)} kW`;
         document.getElementById('total-airflow-cfm').textContent = `${Math.round(currentCFM).toLocaleString()} CFM`;
         document.getElementById('total-area-m2').textContent = `${totalAreaM2.toFixed(1)} m²`;
 

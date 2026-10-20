@@ -1,0 +1,86 @@
+Index,CategoryIndex,EnglishName,MetricName,Order,Thickness (inches),Density (lb/cuft),SpecificHeat (BTU/lb-F),Thermal-Resistance (hr-sqft-F/BTU),Conductivity (BTU/hr-ft-F),Weight (lb/sqft)
+101,1,Air Space,Air Space,101,0,0,0,0.91,0,0
+102,1,"3.5-in cavity, 16-in o.c. steel frame, no insul","89mm cavity, 406mm o.c. steel frame, no insul",102,3.5,2.9,0.01,0.79,0,0.846
+103,1,"3.5-in cavity, 16-in o.c. steel frame, R-13 batt","89mm cavity, 406mm o.c. steel frame, RSI-2.3 batt",103,3.5,3.4,0.2,6,0.04861,0.99
+104,1,"3.5-in cavity, 24-in o.c. steel frame, no insul","89mm cavity, 610mm o.c. steel frame, no insul",104,3.5,1.93,0.01,0.91,0,0.563
+105,1,"3.5-in cavity, 24-in o.c. steel frame, R-13 batt","89mm cavity, 610mm o.c. steel frame, RSI-2.3 batt",105,3.5,2.41,0.2,7.2,0.04051,0.7
+201,2,R-3.8 board insulation,RSI-0.67 board insulation,201,0.76,2.5,0.35,3.8,0.01667,0.16
+202,2,R-5 board insulation,RSI-0.88 board insulation,202,1,2.5,0.35,5,0.01667,0.21
+203,2,R-7 board insulation,RSI-1.2 board insulation,203,1.4,2.5,0.35,7,0.01667,0.29
+204,2,R-7.5 board insulation,RSI-1.3 board insulation,204,1.5,2.5,0.35,7.5,0.01667,0.31
+205,2,R-10 board insulation,RSI-1.8 board insulation,206,2,2.5,0.35,10,0.01667,0.42
+206,2,R-12.5 board insulation,RSI-2.2 board insulation,207,2.5,2.5,0.35,12.5,0.01667,0.52
+207,2,R-14 board insulation,RSI-2.5 board insulation,208,2.8,2.5,0.35,14,0.01667,0.58
+208,2,R-15 board insulation,RSI-2.6 board insulation,209,3,2.5,0.35,15,0.01667,0.63
+209,2,R-18.8 board insulation,RSI-3.3 board insulation,210,3.76,2.5,0.35,18.8,0.01667,0.78
+210,2,R-20 board insulation,RSI-3.5 board insulation,211,4,2.5,0.35,20,0.01667,0.83
+211,2,R-25 board insulation,RSI-4.4 board insulation,212,5,2.5,0.35,25,0.01667,1.04
+212,2,R-30 board insulation,RSI-5.3 board insulation,213,6,2.5,0.35,30,0.01667,1.25
+213,2,R-35 board insulation,RSI-6.2 board insulation,214,7,2.5,0.35,35,0.01667,1.46
+214,2,R-11 batt insulation,RSI-1.9 batt insulation,215,3.52,0.49,0.2,11,0.02667,0.14
+215,2,R-13 batt insulation,RSI-2.3 batt insulation,216,4.16,0.49,0.2,13,0.02667,0.17
+216,2,R-19 batt insulation,RSI-3.3 batt insulation,217,6.08,0.49,0.2,19,0.02667,0.25
+217,2,R-22 batt insulation,RSI-3.9 batt insulation,218,7.04,0.49,0.2,22,0.02667,0.29
+218,2,R-25 batt insulation,RSI-4.4 batt insulation,219,8,0.49,0.2,25,0.02667,0.33
+219,2,R-30 batt insulation,RSI-5.3 batt insulation,220,9.6,0.49,0.2,30,0.02667,0.39
+220,2,R-38 batt insulation,RSI-6.7 batt insulation,221,12.16,0.49,0.2,38,0.02667,0.5
+221,2,R-9.5 board insulation,RSI-1.7 board insulation,205,1.9,2.5,0.35,9.5,0.01667,0.4
+301,3,"Carpet with rubber pad, R-0.68","Carpet with rubber pad, RSI-0.12",301,0.375,20,0.33,0.68,0.04596,0.63
+302,3,Carpet with urethane pad,Carpet with urethane pad,303,0.75,7,0.33,2.38,0.02626,0.44
+303,3,Terrazzo,Terrazzo,304,1,160,0.19,0.08,1.04167,13.33
+304,3,"Carpet with rubber pad, R-1.23","Carpet with rubber pad, RSI-0.22",302,0.5,18,0.33,1.23,0.03388,0.75
+401,4,4-in face brick,102mm face brick,401,4,125,0.22,0.4329,0.77,41.67
+402,4,4-in common brick,102mm common brick,402,4,120,0.2,0.79365,0.42,40
+403,4,8-in common brick,203mm common brick,403,8,120,0.2,1.5873,0.42,80
+404,4,4-in LW concrete block,102mm LW concrete block,404,4,38,0.21,1.51515,0.22,12.67
+405,4,6-in LW concrete block,152mm LW concrete block,405,6,32,0.21,1.76991,0.2825,16
+406,4,8-in LW concrete block,203mm LW concrete block,406,8,29,0.21,2.54777,0.26167,19.33
+407,4,12-in LW concrete block,305mm LW concrete block,407,12,32,0.21,2.44898,0.40833,32
+408,4,6-in LW concrete block (filled),152mm LW concrete block (filled),408,6,32,0.21,3,0.16667,16
+409,4,8-in LW concrete block (filled),203mm LW concrete block (filled),409,8,29,0.21,4.5977,0.145,19.33
+410,4,12-in LW concrete block (filled),305mm LW concrete block (filled),410,12,32,0.21,5.7971,0.1725,32
+411,4,4-in HW Concrete block,102mm HW concrete block,411,4,61,0.22,0.70922,0.47,20.33
+412,4,8-in HW Concrete block,203mm HW concrete block,412,8,50,0.22,1.03627,0.64333,33.33
+413,4,12-in HW Concrete block,305mm HW concrete block,413,12,50,0.22,1.23457,0.81,50
+414,4,8-in HW Concrete block (filled),203mm HW concrete block (filled),414,8,50,0.22,1.64948,0.40417,33.33
+415,4,"8-in HW concrete block, fully grouted","203mm HW concrete block, fully grouted",415,8,58.5,0.22,0.87414,0.76265,39
+501,5,4 in. LW concrete,102mm LW concrete,501,4,80,0.2,1.08108,0.30833,26.67
+502,5,6 in. LW concrete,152mm LW concrete,502,6,80,0.2,1.62162,0.30833,40
+503,5,8 in. LW concrete,203mm LW concrete,503,8,80,0.2,2.16216,0.30833,53.33
+504,5,6 in. HW concrete,155mm HW concrete,504,6,140,0.22,0.44444,1.125,70
+505,5,8 in. HW concrete,203mm HW concrete,505,8,140,0.22,0.59259,1.125,93.33
+506,5,12 in. HW concrete,305mm HW concrete,506,12,140,0.22,0.88889,1.125,140
+601,6,Acoustic Tile,Acoustic Tile,601,0.75,23,0.14,1.78571,0.035,1.44
+602,6,Asphalt Sheathing,Asphalt Sheathing,602,0.5,70,0.35,1.43678,0.029,2.92
+603,6,EIFS finish,EIFS finish,603,0.375,116,0.2,0.075,0.41667,3.63
+604,6,26-gauge galvanized steel wall panel,26-gauge galvanized steel wall panel,604,0.022,501,0.12,0.00006,30.13889,0.91
+605,6,24-gauge galvanized steel wall panel,24-gauge galvanized steel wall panel,605,0.028,501,0.12,0.00008,29.16667,1.17
+606,6,22-gauge galvanized steel wall panel,22-gauge galvanized steel wall panel,606,0.034,501,0.12,0.00009,31.11111,1.4
+607,6,22-gauge steel roof deck,22-gauge steel roof deck,607,0.034,489,0.12,0.00009,31.48148,1.39
+608,6,22-gauge steel floor deck,22-gauge steel floor deck,608,0.034,489,0.12,0.00009,31.48148,1.39
+609,6,1/2-in gypsum board,13mm gypsum board,609,0.5,50,0.26,0.44803,0.093,2.08
+610,6,5/8-in gypsum board,16mm gypsum board,610,0.625,50,0.26,0.56306,0.0925,2.6
+611,6,1/2-in gypsum plaster,13mm gypsum plaster,611,0.5,45,0.32,0.32051,0.13,1.88
+612,6,Opaque spandrel glass,Opaque spandrel glass,612,0.25,158,0.21,0.03623,0.575,3.29
+613,6,1-in stone,25mm stone,613,1,160,0.19,0.04545,1.83333,13.33
+614,6,3/4-in HW stucco,19mm HW stucco,614,0.75,120,0.2,0.08,0.78125,7.5
+615,6,1-in stucco,25mm stucco,615,1,116,0.2,0.2,0.41667,9.67
+616,6,1/2-in vegetable board,13mm vegetable board,616,0.5,18,0.31,1.30208,0.032,0.75
+701,7,Asphalt shingles,Asphalt shingles,701,0.125,70,0.3,0.44643,0.02333,0.73
+702,7,Asphalt roll,Asphalt roll,702,0.063,70,0.36,0.15319,0.03427,0.37
+703,7,Built-up roofing,Built-up roofing,703,0.375,70,0.35,0.33186,0.09417,2.19
+704,7,2-in LW concrete roof ballast,51mm LW concrete roof ballast,704,2,40,0.2,1.53846,0.10833,6.67
+705,7,Slate or tile,Slate or tile,705,0.5,120,0.3,0.04545,0.91667,5
+706,7,Wood shingles,Wood shingles,706,0.25,37,0.31,0.92593,0.0225,0.77
+801,8,1/2-in fiberboard sheathing,13mm fiberboard sheathing,801,0.5,25,0.31,1.06383,0.03917,1.04
+802,8,1/2-in oriented strand board,13mm oriented strand board,802,0.5,41,0.45,0.68,0.06127,1.71
+803,8,3/8-in plywood,10mm plywood,803,0.375,34,0.45,0.50673,0.06167,1.06
+804,8,1/2-in plywood,13mm plywood,804,0.5,34,0.45,0.67564,0.06167,1.42
+805,8,5/8-in plywood,16mm plywood,805,0.625,34,0.45,0.84459,0.06167,1.77
+806,8,1/2-in wood,13mm wood,806,0.5,38,0.39,0.4717,0.08833,1.58
+807,8,3/4-in wood,19mm wood,807,0.75,38,0.39,0.70757,0.08833,2.38
+808,8,1-in wood,25mm wood,808,1,38,0.39,0.9434,0.08833,3.17
+809,8,2-in wood,51mm wood,809,2,38,0.39,1.88679,0.08833,6.33
+810,8,4-in wood,102mm wood,810,4,38,0.39,3.77358,0.08833,12.67
+811,8,Wood siding,Wood siding,811,0.5,37,0.39,0.80645,0.05167,1.54
+812,8,Wood shingles,Wood shingles,812,0.25,37,0.31,0.92593,0.0225,0.77

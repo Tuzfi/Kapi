@@ -1,0 +1,494 @@
+﻿[
+  {
+    "ID": 20010001,
+    "Name": "LAUNDRY: Commercial Laundry",
+    "OA1CFMPerson": 13,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010002,
+    "Name": "LAUNDRY: Commercial Dry Cleaner",
+    "OA1CFMPerson": 15,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010003,
+    "Name": "LAUNDRY: Storage, Pick Up",
+    "OA1CFMPerson": 18,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010004,
+    "Name": "LAUNDRY: Coin-Operated Laundries",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010005,
+    "Name": "LAUNDRY: Coin-Operated Dry Cleaner",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010006,
+    "Name": "FOOD SERVICE: Dining Rooms",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010007,
+    "Name": "FOOD SERVICE: Cafeteria, Fast Food",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010008,
+    "Name": "FOOD SERVICE: Bars, Cocktail Lounges",
+    "OA1CFMPerson": 15,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010009,
+    "Name": "FOOD SERVICE: Kitchens (cooking)",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010010,
+    "Name": "GARAGE: Enclosed Parking Garage",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 7.5
+  },
+  {
+    "ID": 20010011,
+    "Name": "GARAGE: Auto Repair Rooms",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 7.5
+  },
+  {
+    "ID": 20010012,
+    "Name": "HOTEL: Bedrooms",
+    "OA1CFMPerson": 15,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010013,
+    "Name": "HOTEL: Living Rooms",
+    "OA1CFMPerson": 15,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010014,
+    "Name": "HOTEL: Baths",
+    "OA1CFMPerson": 18,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010015,
+    "Name": "HOTEL: Lobbies",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010016,
+    "Name": "HOTEL: Conference Rooms",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010017,
+    "Name": "HOTEL: Assembly Rooms",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010018,
+    "Name": "HOTEL: Dormitory Sleeping Areas",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010019,
+    "Name": "HOTEL: Gambling Casinos",
+    "OA1CFMPerson": 15,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010020,
+    "Name": "OFFICE: Office Space",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010021,
+    "Name": "OFFICE: Reception Areas",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010022,
+    "Name": "OFFICE: Telecom Centers and Data Entry",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010023,
+    "Name": "OFFICE: Conference Rooms",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010024,
+    "Name": "PUBLIC: Corridors and Utilities",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 0.25
+  },
+  {
+    "ID": 20010025,
+    "Name": "PUBLIC: Public Restrooms",
+    "OA1CFMPerson": 25,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010026,
+    "Name": "PUBLIC: Locker and Dressing Rooms",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 2.5
+  },
+  {
+    "ID": 20010027,
+    "Name": "PUBLIC: Smoking Lounge",
+    "OA1CFMPerson": 30,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010028,
+    "Name": "PUBLIC: Elevators",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 5
+  },
+  {
+    "ID": 20010029,
+    "Name": "RETAIL: Basement and Street",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 1.5
+  },
+  {
+    "ID": 20010030,
+    "Name": "RETAIL: Upper Floors",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 1
+  },
+  {
+    "ID": 20010031,
+    "Name": "RETAIL: Storage Rooms",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 0.75
+  },
+  {
+    "ID": 20010032,
+    "Name": "RETAIL: Dressing Rooms",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 1
+  },
+  {
+    "ID": 20010033,
+    "Name": "RETAIL: Malls and Arcades",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 1
+  },
+  {
+    "ID": 20010034,
+    "Name": "RETAIL: Shipping and Receiving",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 0.75
+  },
+  {
+    "ID": 20010035,
+    "Name": "RETAIL: Warehouses",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 0.25
+  },
+  {
+    "ID": 20010036,
+    "Name": "RETAIL: Smoking Lounge",
+    "OA1CFMPerson": 30,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010037,
+    "Name": "SPECIALTY SHOPS: Barber",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010038,
+    "Name": "SPECIALTY SHOPS: Beauty",
+    "OA1CFMPerson": 13,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010039,
+    "Name": "SPECIALTY SHOPS: Reducing Salons",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010040,
+    "Name": "SPECIALTY SHOPS: Florists",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010041,
+    "Name": "SPECIALTY SHOPS: Clothiers, Furniture",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 1.5
+  },
+  {
+    "ID": 20010042,
+    "Name": "SPECIALTY SHOPS: Hardware, Drugs, Fabric",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010043,
+    "Name": "SPECIALTY SHOPS: Supermarkets",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010044,
+    "Name": "SPECIALTY SHOPS: Pet Shops",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 5
+  },
+  {
+    "ID": 20010045,
+    "Name": "SPORTS: Spectator Areas",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010046,
+    "Name": "SPORTS: Game Rooms",
+    "OA1CFMPerson": 13,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010047,
+    "Name": "SPORTS: Ice Arenas (playing areas)",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 2.5
+  },
+  {
+    "ID": 20010048,
+    "Name": "SPORTS: Swimming Pools (pool and deck area)",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 2.5
+  },
+  {
+    "ID": 20010049,
+    "Name": "SPORTS: Playing Floors (gymnasium)",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010050,
+    "Name": "SPORTS: Ballrooms and Discos",
+    "OA1CFMPerson": 13,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010051,
+    "Name": "SPORTS: Bowling Alleys (seating areas)",
+    "OA1CFMPerson": 13,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010052,
+    "Name": "THEATERS: Ticket Booths",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010053,
+    "Name": "THEATERS: Lobbies",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010054,
+    "Name": "THEATERS: Auditorium",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010055,
+    "Name": "THEATERS: Stages, Studios",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010056,
+    "Name": "TRANSPORTATION: Waiting Rooms",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010057,
+    "Name": "TRANSPORTATION: Platforms",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010058,
+    "Name": "TRANSPORTATION: Vehicles",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010059,
+    "Name": "WORKROOMS: Meat Processing",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010060,
+    "Name": "WORKROOMS: Photo Studios",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010061,
+    "Name": "WORKROOMS: Darkrooms",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 2.5
+  },
+  {
+    "ID": 20010062,
+    "Name": "WORKROOMS: Pharmacy",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010063,
+    "Name": "WORKROOMS: Bank Vaults",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010064,
+    "Name": "WORKROOMS: Duplicating, Printing",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 2.5
+  },
+  {
+    "ID": 20010065,
+    "Name": "EDUCATION: Classroom",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010066,
+    "Name": "EDUCATION: Laboratories",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010067,
+    "Name": "EDUCATION: Training Shop",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010068,
+    "Name": "EDUCATION: Music Rooms",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010069,
+    "Name": "EDUCATION: Libraries",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010070,
+    "Name": "EDUCATION: Locker Rooms",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 2.5
+  },
+  {
+    "ID": 20010071,
+    "Name": "EDUCATION: Corridors",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 0.5
+  },
+  {
+    "ID": 20010072,
+    "Name": "EDUCATION: Auditoriums",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010073,
+    "Name": "EDUCATION: Smoking Lounges",
+    "OA1CFMPerson": 30,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010074,
+    "Name": "HOSPITAL: Patient Rooms",
+    "OA1CFMPerson": 13,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010075,
+    "Name": "HOSPITAL: Medical Procedure",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010076,
+    "Name": "HOSPITAL: Operating Rooms",
+    "OA1CFMPerson": 15,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010077,
+    "Name": "HOSPITAL: Recovery and ICU",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010078,
+    "Name": "HOSPITAL: Autopsy Rooms",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 2.5
+  },
+  {
+    "ID": 20010079,
+    "Name": "HOSPITAL: Physical Therapy",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010080,
+    "Name": "CORRECTIONAL FACILITY: Cells",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010081,
+    "Name": "CORRECTIONAL FACILITY: Dining Halls",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20010082,
+    "Name": "CORRECTIONAL FACILITY: Guard Stations",
+    "OA1CFMPerson": 8,
+    "OA2CFMsqft": 0
+  }
+]

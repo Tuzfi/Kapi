@@ -1,0 +1,28 @@
+Index,Climate-Zone,Name,OpaqueUvalue (BTU/hr-sqft-F),GlassUvalue (BTU/hr-sqft-F),Glass-SHGC,GlassVT,Glass Fraction (percent)
+6001,0,"2016 Zone 0 Opaque, swinging",0.37,0.62,0.76,0.73,0
+6002,0,"2016 Zone 0 Opaque, non-swinging",0.31,0.62,0.76,0.73,0
+6003,0,"2016 Zone 0 Glass, metal framing, entrance door",0.83,0.83,0.22,0.242,100
+6004,1,"2016 Zone 1 Opaque, swinging",0.37,0.62,0.76,0.73,0
+6005,1,"2016 Zone 1 Opaque, non-swinging",0.31,0.62,0.76,0.73,0
+6006,1,"2016 Zone 1 Glass, metal framing, entrance door",1.1,1.1,0.25,0.275,100
+6007,2,"2016 Zone 2 Opaque, swinging",0.37,0.62,0.76,0.73,0
+6008,2,"2016 Zone 2 Opaque, non-swinging",0.31,0.62,0.76,0.73,0
+6009,2,"2016 Zone 2 Glass, metal framing, entrance door",0.83,0.83,0.25,0.275,100
+6010,3,"2016 Zone 3 Opaque, swinging",0.37,0.62,0.76,0.73,0
+6011,3,"2016 Zone 3 Opaque, non-swinging",0.31,0.62,0.76,0.73,0
+6012,3,"2016 Zone 3 Glass, metal framing, entrance door",0.77,0.77,0.25,0.275,100
+6013,4,"2016 Zone 4 Opaque, swinging",0.37,0.62,0.76,0.73,0
+6014,4,"2016 Zone 4 Opaque, non-swinging",0.31,0.62,0.76,0.73,0
+6015,4,"2016 Zone 4  Glass, metal framing, entrance door",0.68,0.68,0.36,0.396,100
+6016,5,"2016 Zone 5 Opaque, swinging",0.37,0.62,0.76,0.73,0
+6017,5,"2016 Zone 5 Opaque, non-swinging",0.31,0.62,0.76,0.73,0
+6018,5,"2016 Zone 5 Glass, metal framing, entrance door",0.68,0.68,0.38,0.418,100
+6019,6,"2016 Zone 6 Opaque, swinging",0.37,0.62,0.76,0.73,0
+6020,6,"2016 Zone 6 Opaque, non-swinging",0.31,0.62,0.76,0.73,0
+6021,6,"2016 Zone 6 Glass, metal framing, entrance door",0.68,0.68,0.4,0.44,100
+6022,7,"2016 Zone 7 Opaque, swinging",0.37,0.62,0.76,0.73,0
+6023,7,"2016 Zone 7 Opaque, non-swinging",0.31,0.62,0.76,0.73,0
+6024,7,"2016 Zone 7 Glass, metal framing, entrance door",0.68,0.68,0.45,0.495,100
+6025,8,"2016 Zone 8 Opaque, swinging",0.37,0.62,0.76,0.73,0
+6026,8,"2016 Zone 8 Opaque, non-swinging",0.31,0.62,0.76,0.73,0
+6027,8,"2016 Zone 8 Glass, metal framing, entrance door",0.68,0.68,0.45,0.495,100

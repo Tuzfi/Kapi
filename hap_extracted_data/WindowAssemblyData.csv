@@ -1,0 +1,17 @@
+Index,Climate-Zone,Name,Input-Method,Overall-Uvalue (BTU/hr-sqft-F),Overall-SHGC,Overall-VT
+101,-1,Single Clear,0,1.04,0.86,0.9
+102,-1,Single Bronze Tint,0,1.04,0.73,0.68
+103,-1,Single Green Tint,0,1.04,0.7,0.82
+104,-1,Single Gray Tint,0,1.04,0.7,0.62
+105,-1,Single Reflective Clear,0,1.04,0.25,0.14
+106,-1,Double Clear,0,0.55,0.76,0.81
+107,-1,Double Green Tint,0,0.55,0.6,0.75
+108,-1,Double Gray Tint,0,0.55,0.6,0.56
+109,-1,Double Reflective Clear,0,0.55,0.17,0.13
+110,-1,Double Clear Low-e 0.2 on s2,0,0.45,0.65,0.76
+111,-1,Double Clear Low-e 0.2 on s3,0,0.45,0.7,0.76
+112,-1,Double Green Low-e 0.2 on s3,0,0.45,0.55,0.7
+113,-1,Double Gray Low-e 0.2 on s3,0,0.45,0.54,0.53
+114,-1,Triple Clear,0,0.38,0.68,0.74
+115,-1,Triple Clear Low-e 0.2 on s2,0,0.33,0.6,0.68
+116,-1,Triple Clear Low-e 0.2 on s5,0,0.33,0.62,0.68

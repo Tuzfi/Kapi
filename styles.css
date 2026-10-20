@@ -910,3 +910,152 @@ textarea {
 .btn-danger-outline:hover {
     background: rgba(218, 54, 51, 0.15);
 }
+
+/* --- Carrier HAP 6.4 Rich Preset & Construction Selectors Styling --- */
+.highlight-group {
+    background: rgba(88, 166, 255, 0.08);
+    border: 1px solid rgba(88, 166, 255, 0.25);
+    border-radius: 6px;
+    padding: 8px 10px;
+}
+
+.highlight-group label {
+    color: #58a6ff !important;
+    font-weight: 600;
+}
+
+.preset-select {
+    width: 100%;
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-primary);
+    padding: 6px 8px;
+    font-size: 11px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.preset-select:focus {
+    border-color: var(--accent-blue);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(88, 166, 255, 0.2);
+}
+
+.envelope-toggle-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 8px 10px;
+}
+
+.sub-form-group {
+    margin-top: 4px;
+    padding-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.sub-form-group label {
+    font-size: 10px;
+    color: var(--text-secondary);
+}
+
+.sub-form-group select {
+    width: 100%;
+    padding: 4px 6px;
+    font-size: 11px;
+}
+
+.mt-2 {
+    margin-top: 8px;
+}
+
+/* Wall Card Advanced Construction Controls */
+.wall-assembly-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 4px;
+    padding-top: 4px;
+    border-top: 1px dashed var(--border-color);
+}
+
+.wall-assembly-row select {
+    width: 100%;
+    font-size: 10px;
+    padding: 2px 4px;
+}
+
+.sol-air-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 10px;
+    font-family: var(--font-mono);
+    padding: 2px 6px;
+    border-radius: 4px;
+    background: rgba(240, 136, 62, 0.15);
+    color: #f0883e;
+    border: 1px solid rgba(240, 136, 62, 0.3);
+    width: fit-content;
+}
+
+/* Detailed Thermal Load Breakdown inside Inspector */
+.load-breakdown-card {
+    background: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.load-kpi-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 6px;
+}
+
+.load-kpi-main .tr-badge {
+    font-size: 18px;
+    font-weight: 700;
+    color: #58a6ff;
+    font-family: var(--font-mono);
+}
+
+.load-kpi-main .btu-sub {
+    font-size: 11px;
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+}
+
+.breakdown-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10.5px;
+    color: var(--text-secondary);
+}
+
+.breakdown-row span:last-child {
+    font-family: var(--font-mono);
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.breakdown-row.highlight-row {
+    color: #e3b341;
+    font-weight: 600;
+}
+
+.breakdown-row.highlight-row span:last-child {
+    color: #e3b341;
+}

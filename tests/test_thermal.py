@@ -114,5 +114,43 @@ class TestKapiCore(unittest.TestCase):
         self.assertEqual(engine_0.building_rotation, 0.0)
         self.assertEqual(engine_90.building_rotation, 90.0)
 
+    def test_hap_space_type_presets(self):
+        engine = ThermalEngine()
+        # Conference room (high occupant density) vs Data center (high equipment density)
+        conf_space = {'area': 20.0, 'height': 3.0, 'spaceType': 'conference_room'}
+        dc_space = {'area': 20.0, 'height': 3.0, 'spaceType': 'data_center'}
+        
+        res_conf = engine.calculate_space(conf_space)
+        res_dc = engine.calculate_space(dc_space)
+        
+        # Data center should have massive sensible cooling due to plug load
+        self.assertGreater(res_dc['cooling_watts'], res_conf['cooling_watts'])
+        # Conference room should have significant cooling
+        self.assertGreater(res_conf['cooling_watts'], 500)
+
+    def test_sol_air_absorptivity_impact(self):
+        engine = ThermalEngine()
+        # Light surface (alpha = 0.40) vs Dark surface (alpha = 0.90) on West sunlit wall
+        light_wall_space = {
+            'area': 30.0, 'height': 3.0,
+            'walls': [{'length': 10.0, 'boundaryCondition': 'OutdoorAir', 'azimuth': 270.0, 'absorptivity': 0.40}]
+        }
+        dark_wall_space = {
+            'area': 30.0, 'height': 3.0,
+            'walls': [{'length': 10.0, 'boundaryCondition': 'OutdoorAir', 'azimuth': 270.0, 'absorptivity': 0.90}]
+        }
+        res_light = engine.calculate_space(light_wall_space)
+        res_dark = engine.calculate_space(dark_wall_space)
+        # Dark exterior wall absorbs more solar heat and generates higher cooling load
+        self.assertGreater(res_dark['cooling_watts'], res_light['cooling_watts'])
+
+    def test_roof_thermal_load(self):
+        engine = ThermalEngine()
+        space_no_roof = {'area': 50.0, 'height': 3.0, 'hasRoof': False}
+        space_with_roof = {'area': 50.0, 'height': 3.0, 'hasRoof': True, 'uRoof': 0.35}
+        res_no = engine.calculate_space(space_no_roof)
+        res_roof = engine.calculate_space(space_with_roof)
+        self.assertGreater(res_roof['cooling_watts'], res_no['cooling_watts'])
+
 if __name__ == '__main__':
     unittest.main()

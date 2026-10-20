@@ -1,0 +1,470 @@
+﻿[
+  {
+    "ID": 20130307,
+    "Name": "CORRECTIONAL FACILITY: Booking/waiting",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130308,
+    "Name": "CORRECTIONAL FACILITY: Cell",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20130309,
+    "Name": "CORRECTIONAL FACILITY: Dayroom",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130310,
+    "Name": "CORRECTIONAL FACILITY: Guard stations",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130311,
+    "Name": "EDUCATION: Art classroom",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20130312,
+    "Name": "EDUCATION: Classroom (ages 5-8)",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20130313,
+    "Name": "EDUCATION: Classroom (age 9 plus)",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20130314,
+    "Name": "EDUCATION: Computer lab",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20130315,
+    "Name": "EDUCATION: Daycare (through age 4)",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20130316,
+    "Name": "EDUCATION: Daycare sickroom",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20130317,
+    "Name": "EDUCATION: Lecture classroom",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130318,
+    "Name": "EDUCATION: Lecture hall (fixed seats)",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130319,
+    "Name": "EDUCATION: Media center",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20130320,
+    "Name": "EDUCATION: Multiuse assembly",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130321,
+    "Name": "EDUCATION: Music/theater/dance",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130322,
+    "Name": "EDUCATION: Science laboratory",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20130323,
+    "Name": "EDUCATION: University/college laboratory",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20130324,
+    "Name": "EDUCATION: Wood/metal shop",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20130325,
+    "Name": "FOOD AND BEVERAGE SERVICE: Bar, cocktail lounge",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20130326,
+    "Name": "FOOD AND BEVERAGE SERVICE: Cafeteria/fast food dining",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20130327,
+    "Name": "FOOD AND BEVERAGE SERVICE: Kitchen (cooking)",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20130328,
+    "Name": "FOOD AND BEVERAGE SERVICE: Restaurant dining room",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20130329,
+    "Name": "GENERAL: Break room",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130330,
+    "Name": "GENERAL: Coffee station",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130331,
+    "Name": "GENERAL: Conference/meeting",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130332,
+    "Name": "GENERAL: Corridor",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130333,
+    "Name": "GENERAL: Occupiable storage room (liq/gel)",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20130334,
+    "Name": "HOTEL / MOTEL / RESORT / DORM: Barracks sleeping area",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130335,
+    "Name": "HOTEL / MOTEL / RESORT / DORM: Bedroom/living room",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130336,
+    "Name": "HOTEL / MOTEL / RESORT / DORM: Laundry room within dwelling unit",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20130337,
+    "Name": "HOTEL / MOTEL / RESORT / DORM: Laundry room, central",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20130338,
+    "Name": "HOTEL / MOTEL / RESORT / DORM: Lobby/prefunction",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130339,
+    "Name": "HOTEL / MOTEL / RESORT / DORM: Multipurpose assembly",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130340,
+    "Name": "OFFICE: Breakroom",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20130341,
+    "Name": "OFFICE: Main entry lobby",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130342,
+    "Name": "OFFICE: Occupiable storage room for dry materials",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130343,
+    "Name": "OFFICE: Office space",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130344,
+    "Name": "OFFICE: Reception area ",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130345,
+    "Name": "OFFICE: Telephone/data entry",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130346,
+    "Name": "MISCELLANEOUS: Bank or bank lobby",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130347,
+    "Name": "MISCELLANEOUS: Bank vault/safe deposit",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130348,
+    "Name": "MISCELLANEOUS: Computer (not printing)",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130349,
+    "Name": "MISCELLANEOUS: General manufacturing (excludes heavy industrial and processes using chemicals)",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20130350,
+    "Name": "MISCELLANEOUS: Pharmacy (prep. area)",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20130351,
+    "Name": "MISCELLANEOUS: Photo studio",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20130352,
+    "Name": "MISCELLANEOUS: Shipping/receiving",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20130353,
+    "Name": "MISCELLANEOUS: Sorting, packing, light assembly",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20130354,
+    "Name": "MISCELLANEOUS: Telephone closet",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20130355,
+    "Name": "MISCELLANEOUS: Transportation waiting",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130356,
+    "Name": "MISCELLANEOUS: Warehouse",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130357,
+    "Name": "MISCELLANEOUS: Freezer and refrigerated spaces (<50°F)",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20130358,
+    "Name": "PUBLIC ASSEMBLY: Auditorium seating area",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130359,
+    "Name": "PUBLIC ASSEMBLY: Courtroom",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130360,
+    "Name": "PUBLIC ASSEMBLY: Legislative chamber",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130361,
+    "Name": "PUBLIC ASSEMBLY: Library",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20130362,
+    "Name": "PUBLIC ASSEMBLY: Lobby",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130363,
+    "Name": "PUBLIC ASSEMBLY: Museum (children's)",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20130364,
+    "Name": "PUBLIC ASSEMBLY: Museum/gallery",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130365,
+    "Name": "PUBLIC ASSEMBLY: Place of religious worship",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130366,
+    "Name": "RESIDENTIAL: Common corridor",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130367,
+    "Name": "RESIDENTIAL: Dwelling unit",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130368,
+    "Name": "RETAIL: Barbershop",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130369,
+    "Name": "RETAIL: Beauty and nail salon",
+    "OA1CFMPerson": 20,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20130370,
+    "Name": "RETAIL: Coin-operated laundry",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20130371,
+    "Name": "RETAIL: Mall common area",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130372,
+    "Name": "RETAIL: Pet shop (animal area)",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20130373,
+    "Name": "RETAIL: Sales (except other categories here)",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20130374,
+    "Name": "RETAIL: Supermarket",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130375,
+    "Name": "SPORTS: Bowling alley (seating)",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20130376,
+    "Name": "SPORTS: Disco/dance floor",
+    "OA1CFMPerson": 20,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130377,
+    "Name": "SPORTS: Gambling casino",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20130378,
+    "Name": "SPORTS: Game arcade",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20130379,
+    "Name": "SPORTS: Health club/aerobics room",
+    "OA1CFMPerson": 20,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130380,
+    "Name": "SPORTS: Health club/weight room",
+    "OA1CFMPerson": 20,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130381,
+    "Name": "SPORTS: Spectator area ",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130382,
+    "Name": "SPORTS: Gym, sports arena (play area)",
+    "OA1CFMPerson": 20,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20130383,
+    "Name": "SPORTS: Stage, studio",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20130384,
+    "Name": "SPORTS: Swimming (pool & deck)",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 0.48
+  }
+]

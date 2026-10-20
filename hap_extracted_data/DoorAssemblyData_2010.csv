@@ -1,0 +1,28 @@
+Index,Climate-Zone,Name,OpaqueUvalue (BTU/hr-sqft-F),GlassUvalue (BTU/hr-sqft-F),Glass-SHGC,GlassVT,Glass Fraction (percent)
+4001,0,"2010 Zone 0 Opaque, swinging",0.7,0.62,0.76,0.73,0
+4002,0,"2010 Zone 0 Opaque, non-swinging",1.45,0.62,0.76,0.73,0
+4003,0,"2010 Zone 0 Glass, metal framing, entrance door",1.2,1.2,0.25,0.275,100
+4004,1,"2010 Zone 1 Opaque, swinging",0.7,0.62,0.76,0.73,0
+4005,1,"2010 Zone 1 Opaque, non-swinging",1.45,0.62,0.76,0.73,0
+4006,1,"2010 Zone 1 Glass, metal framing, entrance door",1.2,1.2,0.25,0.275,100
+4007,2,"2010 Zone 2 Opaque, swinging",0.7,0.62,0.76,0.73,0
+4008,2,"2010 Zone 2 Opaque, non-swinging",1.45,0.62,0.76,0.73,0
+4009,2,"2010 Zone 2 Glass, metal framing, entrance door",1.1,1.1,0.25,0.275,100
+4010,3,"2010 Zone 3 Opaque, swinging",0.7,0.62,0.76,0.73,0
+4011,3,"2010 Zone 3 Opaque, non-swinging",1.45,0.62,0.76,0.73,0
+4012,3,"2010 Zone 3 Glass, metal framing, entrance door",0.9,0.9,0.25,0.275,100
+4013,4,"2010 Zone 4 Opaque, swinging",0.7,0.62,0.76,0.73,0
+4014,4,"2010 Zone 4 Opaque, non-swinging",0.5,0.62,0.76,0.73,0
+4015,4,"2010 Zone 4  Glass, metal framing, entrance door",0.85,0.85,0.4,0.44,100
+4016,5,"2010 Zone 5 Opaque, swinging",0.7,0.62,0.76,0.73,0
+4017,5,"2010 Zone 5 Opaque, non-swinging",0.5,0.62,0.76,0.73,0
+4018,5,"2010 Zone 5 Glass, metal framing, entrance door",0.8,0.8,0.4,0.44,100
+4019,6,"2010 Zone 6 Opaque, swinging",0.7,0.62,0.76,0.73,0
+4020,6,"2010 Zone 6 Opaque, non-swinging",0.5,0.62,0.76,0.73,0
+4021,6,"2010 Zone 6 Glass, metal framing, entrance door",0.8,0.8,0.4,0.44,100
+4022,7,"2010 Zone 7 Opaque, swinging",0.5,0.62,0.76,0.73,0
+4023,7,"2010 Zone 7 Opaque, non-swinging",0.5,0.62,0.76,0.73,0
+4024,7,"2010 Zone 7 Glass, metal framing, entrance door",0.8,0.8,0.45,0.495,100
+4025,8,"2010 Zone 8 Opaque, swinging",0.5,0.62,0.76,0.73,0
+4026,8,"2010 Zone 8 Opaque, non-swinging",0.5,0.62,0.76,0.73,0
+4027,8,"2010 Zone 8 Glass, metal framing, entrance door",0.8,0.8,0.45,0.495,100

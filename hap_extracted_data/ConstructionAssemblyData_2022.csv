@@ -1,0 +1,28 @@
+Index,Climate-Zone,Name,Assembly-Type,WallType,FloorType,Symmetrical,Inside-Surface-Color,Inside-Absorptivity,Outside-Surface-Color,Outside-Absorptivity,Inside-Surface-Resistance,Outside-Surface-Resistance,Overall-Uvalue,Overall-Weight,Layer-OneIs-Outside,Layer(1),Layer(2),Layer(3),Layer(4),Layer(5),Layer(6),Layer(7),Layer(8),.UsedForExteriorInsulation,.Configuration,.ExtendsVertically,.Extends-Horizontally,Exterior-Insulation-LayerID
+8101,0,2022 Zone 0 Above-grade steel-framed wall,1,1,0,FALSE,0,0.45,1,0.675,0.68,0.17,0.124,13.7,FALSE,610,103,610,614,0,0,0,0,FALSE,1,0,0,0
+8102,1,2022 Zone 1 Above-grade steel-framed wall,1,1,0,FALSE,0,0.45,1,0.675,0.68,0.17,0.124,13.7,FALSE,610,103,610,614,0,0,0,0,FALSE,1,0,0,0
+8103,2,2022 Zone 2 Above-grade steel-framed wall,1,1,0,FALSE,0,0.45,1,0.675,0.68,0.17,0.084,13.9,FALSE,610,103,201,610,614,0,0,0,FALSE,1,0,0,0
+8104,3,2022 Zone 3 Above-grade steel-framed wall,1,1,0,FALSE,0,0.45,1,0.675,0.68,0.17,0.077,13.9,FALSE,610,103,202,610,614,0,0,0,FALSE,1,0,0,0
+8105,4,2022 Zone 4 Above-grade steel-framed wall,1,1,0,FALSE,0,0.45,1,0.675,0.68,0.17,0.064,14,FALSE,610,103,204,610,614,0,0,0,FALSE,1,0,0,0
+8106,5,2022 Zone 5 Above-grade steel-framed wall,1,1,0,FALSE,0,0.45,1,0.675,0.68,0.17,0.055,14.1,FALSE,610,103,205,610,614,0,0,0,FALSE,1,0,0,0
+8107,6,2022 Zone 6 Above-grade steel-framed wall,1,1,0,FALSE,0,0.45,1,0.675,0.68,0.17,0.049,14.2,FALSE,610,103,206,610,614,0,0,0,FALSE,1,0,0,0
+8108,7,2022 Zone 7 Above-grade steel-framed wall,1,1,0,FALSE,0,0.45,1,0.675,0.68,0.17,0.049,14.2,FALSE,610,103,206,610,614,0,0,0,FALSE,1,0,0,0
+8109,8,2022 Zone 8 Above-grade steel-framed wall,1,1,0,FALSE,0,0.45,1,0.675,0.68,0.17,0.037,14.5,FALSE,610,103,209,610,614,0,0,0,FALSE,1,0,0,0
+8201,0,2022 Zone 0 Insulation entirely above deck,2,0,0,FALSE,0,0.45,0,0.45,0.61,0.17,0.039,2.4,TRUE,211,607,0,0,0,0,0,0,FALSE,1,0,0,0
+8202,1,2022 Zone 1 Insulation entirely above deck,2,0,0,FALSE,0,0.45,0,0.45,0.61,0.17,0.048,2.2,TRUE,210,607,0,0,0,0,0,0,FALSE,1,0,0,0
+8203,2,2022 Zone 2 Insulation entirely above deck,2,0,0,FALSE,0,0.45,0,0.45,0.61,0.17,0.039,2.4,TRUE,211,607,0,0,0,0,0,0,FALSE,1,0,0,0
+8204,3,2022 Zone 3 Insulation entirely above deck,2,0,0,FALSE,0,0.45,0,0.45,0.61,0.17,0.039,2.4,TRUE,211,607,0,0,0,0,0,0,FALSE,1,0,0,0
+8205,4,2022 Zone 4 Insulation entirely above deck,2,0,0,FALSE,0,0.45,1,0.675,0.61,0.17,0.032,2.6,TRUE,212,607,0,0,0,0,0,0,FALSE,1,0,0,0
+8206,5,2022 Zone 5 Insulation entirely above deck,2,0,0,FALSE,0,0.45,1,0.675,0.61,0.17,0.032,2.6,TRUE,212,607,0,0,0,0,0,0,FALSE,1,0,0,0
+8207,6,2022 Zone 6 Insulation entirely above deck,2,0,0,FALSE,0,0.45,1,0.675,0.61,0.17,0.032,2.6,TRUE,212,607,0,0,0,0,0,0,FALSE,1,0,0,0
+8208,7,2022 Zone 7 Insulation entirely above deck,2,0,0,FALSE,0,0.45,1,0.675,0.61,0.17,0.028,2.8,TRUE,213,607,0,0,0,0,0,0,FALSE,1,0,0,0
+8209,8,2022 Zone 8 Insulation entirely above deck,2,0,0,FALSE,0,0.45,1,0.675,0.61,0.17,0.028,2.8,TRUE,213,607,0,0,0,0,0,0,FALSE,1,0,0,0
+8301,0,"2022 Zone 0 Slab-on-grade floor, unheated",3,0,2,FALSE,1,0.675,0,0,0.92,0,0.733,70,FALSE,504,0,0,0,0,0,0,0,FALSE,2,2,2,203
+8302,1,"2022 Zone 1 Slab-on-grade floor, unheated",3,0,2,FALSE,1,0.675,0,0,0.92,0,0.733,70,FALSE,504,0,0,0,0,0,0,0,FALSE,2,2,2,203
+8303,2,"2022 Zone 2 Slab-on-grade floor, unheated",3,0,2,FALSE,1,0.675,0,0,0.92,0,0.733,70,FALSE,504,0,0,0,0,0,0,0,FALSE,2,2,2,203
+8304,3,"2022 Zone 3 Slab-on-grade floor, unheated",3,0,2,FALSE,1,0.675,0,0,0.92,0,0.733,70,FALSE,504,0,0,0,0,0,0,0,FALSE,2,2,2,203
+8305,4,"2022 Zone 4 Slab-on-grade floor, unheated",3,0,2,FALSE,1,0.675,0,0,0.92,0,0.733,70,FALSE,504,0,0,0,0,0,0,0,TRUE,2,2,2,208
+8306,5,"2022 Zone 5 Slab-on-grade floor, unheated",3,0,2,FALSE,1,0.675,0,0,0.92,0,0.733,70,FALSE,504,0,0,0,0,0,0,0,TRUE,2,2,2,208
+8307,6,"2022 Zone 6 Slab-on-grade floor, unheated",3,0,2,FALSE,1,0.675,0,0,0.92,0,0.733,70,FALSE,504,0,0,0,0,0,0,0,TRUE,2,2,2,210
+8308,7,"2022 Zone 7 Slab-on-grade floor, unheated",3,0,2,FALSE,1,0.675,0,0,0.92,0,0.733,70,FALSE,504,0,0,0,0,0,0,0,TRUE,2,2,2,210
+8309,8,"2022 Zone 8 Slab-on-grade floor, unheated",3,0,2,FALSE,1,0.675,0,0,0.92,0,0.733,70,FALSE,504,0,0,0,0,0,0,0,TRUE,2,4,4,210

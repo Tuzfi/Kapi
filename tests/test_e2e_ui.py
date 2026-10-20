@@ -126,20 +126,19 @@ def run_ui_test():
 
         # 5. Test Window Placement & Dimension Configuration Modal
         print("\n[Step 5] Testing Window Tool and Custom Dimension Modal...")
-        tool_window = page.locator('[data-mode="add_window"]')
-        tool_window.click()
-        time.sleep(0.3)
+        # Select first space to display wall inspector
+        page.click(".space-item:first-child")
+        time.sleep(0.5)
 
-        # Click on wall of executive office (first space top wall: x ~ 0 to 6, y ~ 0)
-        # Convert world (3, 0) to screen: offsetX=250+120=370, offsetY=200+80=280, scale=30 -> sx=370+90=460, sy=280
-        page.mouse.click(box["x"] + 460, box["y"] + 280)
+        # Click the window configure gear button on wall 1
+        page.locator(".btn-config-win").first.click()
         time.sleep(0.5)
 
         # Check modal
         modal = page.locator("#window-modal")
         modal_visible = not ("hidden" in modal.get_attribute("class"))
         print(f" -> Window modal opened: {modal_visible}")
-        assert modal_visible, "Window modal should be visible after clicking wall with window tool"
+        assert modal_visible, "Window modal should be visible after clicking gear button"
 
         # Edit window dimensions: 2.8m width x 1.8m height
         page.fill("#modal-win-width", "2.8")
@@ -185,6 +184,72 @@ def run_ui_test():
         page.screenshot(path=p8)
         test_results.append(("08_timeline_playback_advancing.png", "Reprodução 24h avançando, atualizando a curva dinâmica de carga e a posição solar"))
         print(f" -> Screenshot saved: {p8}")
+
+        # 8. Test Space Type Preset Selection (Carrier HAP Library)
+        print("\n[Step 8] Testing Space Type Preset Dropdown (HAP 6.4 Model)...")
+        # Select first space
+        page.click(".space-item:first-child")
+        time.sleep(0.5)
+
+        space_type_select = page.locator("#prop-space-type")
+        space_type_select.select_option("conference_room")
+        time.sleep(0.5)
+
+        occ_val = page.locator("#prop-occupants").input_value()
+        light_val = page.locator("#prop-lighting").input_value()
+        equip_val = page.locator("#prop-equipment").input_value()
+        print(f" -> Preset 'conference_room' applied: Occupants={occ_val}, Lighting={light_val} W/m², Equip={equip_val} W/m²")
+        assert float(light_val) == 11.5, f"Expected 11.5 W/m² for conference room, got {light_val}"
+
+        p9 = os.path.join(OUTPUT_DIR, "09_hap_space_type_preset_applied.png")
+        page.screenshot(path=p9)
+        test_results.append(("09_hap_space_type_preset_applied.png", "Modelo de espaço Carrier HAP 'Sala de Reunião' aplicado automaticamente populando ocupantes, iluminação ASHRAE 90.1 e ventilação 62.1"))
+        print(f" -> Screenshot saved: {p9}")
+
+        # 9. Test Roof & Floor Assemblies & Wall Sol-Air Configuration
+        print("\n[Step 9] Testing Roof & Floor Assemblies and Wall Sol-Air...")
+        roof_chk = page.locator("#prop-has-roof")
+        if not roof_chk.is_checked():
+            roof_chk.check()
+        time.sleep(0.3)
+        roof_select = page.locator("#prop-roof-assembly")
+        roof_select.select_option("uninsulated_concrete")
+        time.sleep(0.5)
+
+        # Change wall 1 to dark surface color
+        wall_color_select = page.locator(".wall-color-select").first
+        wall_color_select.select_option("dark")
+        time.sleep(0.5)
+
+        p10 = os.path.join(OUTPUT_DIR, "10_roof_and_wall_assemblies_configured.png")
+        page.screenshot(path=p10)
+        test_results.append(("10_roof_and_wall_assemblies_configured.png", "Configurações de cobertura e absorptância de parede escura (Sol-Air) refletidas em tempo real no cálculo"))
+        print(f" -> Screenshot saved: {p10}")
+
+        # 10. Test Window Configuration Modal with Glazing and Shading
+        print("\n[Step 10] Testing Window Modal Glazing and Shading Selectors...")
+        gear_btn = page.locator(".btn-config-win").first
+        gear_btn.click()
+        time.sleep(0.5)
+
+        glazing_sel = page.locator("#modal-win-glazing")
+        glazing_sel.select_option("double_low_e")
+        shading_sel = page.locator("#modal-win-shading")
+        shading_sel.select_option("blinds_light")
+        time.sleep(0.3)
+
+        p11 = os.path.join(OUTPUT_DIR, "11_window_glazing_shading_modal.png")
+        page.screenshot(path=p11)
+        test_results.append(("11_window_glazing_shading_modal.png", "Modal de configuração com seleção de vidro (Double Low-E) e proteção solar interna (Persiana clara IAC=0.65)"))
+        print(f" -> Screenshot saved: {p11}")
+
+        page.click("#btn-save-window")
+        time.sleep(0.5)
+
+        p12 = os.path.join(OUTPUT_DIR, "12_detailed_thermal_breakdown_card.png")
+        page.screenshot(path=p12)
+        test_results.append(("12_detailed_thermal_breakdown_card.png", "Detalhamento completo de carga térmica exibindo condução Sol-Ar, janelas, pessoas, iluminação e ventilação 62.1"))
+        print(f" -> Screenshot saved: {p12}")
 
         browser.close()
 

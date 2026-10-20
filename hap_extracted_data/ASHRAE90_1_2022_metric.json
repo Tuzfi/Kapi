@@ -1,0 +1,920 @@
+[
+  {
+    "ID": 20220002,
+    "Method": 1,
+    "Name": "Automotive Facility",
+    "LPD": 7.9
+  },
+  {
+    "ID": 20220003,
+    "Method": 1,
+    "Name": "Convention Center",
+    "LPD": 6.8
+  },
+  {
+    "ID": 20220004,
+    "Method": 1,
+    "Name": "Courthouse",
+    "LPD": 8.0
+  },
+  {
+    "ID": 20220005,
+    "Method": 1,
+    "Name": "Dining: Bar lounge/leisure",
+    "LPD": 8.0
+  },
+  {
+    "ID": 20220006,
+    "Method": 1,
+    "Name": "Dining: Cafeteria/fast food",
+    "LPD": 7.5
+  },
+  {
+    "ID": 20220007,
+    "Method": 1,
+    "Name": "Dining: Family",
+    "LPD": 7.0
+  },
+  {
+    "ID": 20220008,
+    "Method": 1,
+    "Name": "Dormitory",
+    "LPD": 5.6
+  },
+  {
+    "ID": 20220009,
+    "Method": 1,
+    "Name": "Exercise Center",
+    "LPD": 7.8
+  },
+  {
+    "ID": 20220010,
+    "Method": 1,
+    "Name": "Fire Station",
+    "LPD": 6.0
+  },
+  {
+    "ID": 20220011,
+    "Method": 1,
+    "Name": "Gymnasium",
+    "LPD": 8.1
+  },
+  {
+    "ID": 20220012,
+    "Method": 1,
+    "Name": "Health-Care Clinic",
+    "LPD": 8.3
+  },
+  {
+    "ID": 20220013,
+    "Method": 1,
+    "Name": "Hospital",
+    "LPD": 9.9
+  },
+  {
+    "ID": 20220014,
+    "Method": 1,
+    "Name": "Hotel/motel",
+    "LPD": 5.7
+  },
+  {
+    "ID": 20220015,
+    "Method": 1,
+    "Name": "Library",
+    "LPD": 9.0
+  },
+  {
+    "ID": 20220016,
+    "Method": 1,
+    "Name": "Manufacturing Facility",
+    "LPD": 8.8
+  },
+  {
+    "ID": 20220017,
+    "Method": 1,
+    "Name": "Motion Picture Theater",
+    "LPD": 4.6
+  },
+  {
+    "ID": 20220018,
+    "Method": 1,
+    "Name": "Multifamily",
+    "LPD": 4.9
+  },
+  {
+    "ID": 20220019,
+    "Method": 1,
+    "Name": "Museum",
+    "LPD": 6.0
+  },
+  {
+    "ID": 20220020,
+    "Method": 1,
+    "Name": "Office",
+    "LPD": 6.7
+  },
+  {
+    "ID": 20220021,
+    "Method": 1,
+    "Name": "Parking Garage",
+    "LPD": 1.8
+  },
+  {
+    "ID": 20220022,
+    "Method": 1,
+    "Name": "Penitentiary",
+    "LPD": 7.0
+  },
+  {
+    "ID": 20220023,
+    "Method": 1,
+    "Name": "Performing Arts Theater",
+    "LPD": 8.8
+  },
+  {
+    "ID": 20220024,
+    "Method": 1,
+    "Name": "Police Station",
+    "LPD": 6.6
+  },
+  {
+    "ID": 20220025,
+    "Method": 1,
+    "Name": "Post Office",
+    "LPD": 6.8
+  },
+  {
+    "ID": 20220026,
+    "Method": 1,
+    "Name": "Religious Facility",
+    "LPD": 7.1
+  },
+  {
+    "ID": 20220027,
+    "Method": 1,
+    "Name": "Retail",
+    "LPD": 8.4
+  },
+  {
+    "ID": 20220028,
+    "Method": 1,
+    "Name": "School/University",
+    "LPD": 7.5
+  },
+  {
+    "ID": 20220029,
+    "Method": 1,
+    "Name": "Sports Arena",
+    "LPD": 7.8
+  },
+  {
+    "ID": 20220030,
+    "Method": 1,
+    "Name": "Town Hall",
+    "LPD": 7.2
+  },
+  {
+    "ID": 20220031,
+    "Method": 1,
+    "Name": "Transportation",
+    "LPD": 6.0
+  },
+  {
+    "ID": 20220032,
+    "Method": 1,
+    "Name": "Warehouse",
+    "LPD": 4.8
+  },
+  {
+    "ID": 20220033,
+    "Method": 1,
+    "Name": "Workshop",
+    "LPD": 9.3
+  },
+  {
+    "ID": 20220035,
+    "Method": 2,
+    "Name": "Audience Seating Area: Auditorium",
+    "LPD": 6.1
+  },
+  {
+    "ID": 20220037,
+    "Method": 2,
+    "Name": "Audience Seating Area: Gymnasium",
+    "LPD": 2.5
+  },
+  {
+    "ID": 20220038,
+    "Method": 2,
+    "Name": "Audience Seating Area: Motion picture theater",
+    "LPD": 2.9
+  },
+  {
+    "ID": 20220039,
+    "Method": 2,
+    "Name": "Correctional Facilities: Audience seating area",
+    "LPD": 6.1
+  },
+  {
+    "ID": 20220040,
+    "Method": 2,
+    "Name": "Audience Seating Area: Performing arts theater",
+    "LPD": 11.8
+  },
+  {
+    "ID": 20220041,
+    "Method": 2,
+    "Name": "Religious Facility: Audience seating area",
+    "LPD": 7.8
+  },
+  {
+    "ID": 20220042,
+    "Method": 2,
+    "Name": "Audience Seating Area: Sports arena",
+    "LPD": 2.9
+  },
+  {
+    "ID": 20220043,
+    "Method": 2,
+    "Name": "Audience Seating Area: All others",
+    "LPD": 2.5
+  },
+  {
+    "ID": 20220044,
+    "Method": 2,
+    "Name": "Banking Activity Area",
+    "LPD": 6.0
+  },
+  {
+    "ID": 20220046,
+    "Method": 2,
+    "Name": "Correctional Facilities: Classroom/Lecture hall/training room",
+    "LPD": 8.0
+  },
+  {
+    "ID": 20220047,
+    "Method": 2,
+    "Name": "Classroom/Lecture Hall/Training Room: All others",
+    "LPD": 7.7
+  },
+  {
+    "ID": 20220048,
+    "Method": 2,
+    "Name": "Computer Room",
+    "LPD": 8.0
+  },
+  {
+    "ID": 20220049,
+    "Method": 2,
+    "Name": "Conference/Meeting/Multipurpose Rooms",
+    "LPD": 9.5
+  },
+  {
+    "ID": 20220050,
+    "Method": 2,
+    "Name": "Correctional Facilities: Confinement cells",
+    "LPD": 6.5
+  },
+  {
+    "ID": 20220051,
+    "Method": 2,
+    "Name": "Convention Center: Exhibit Space",
+    "LPD": 5.4
+  },
+  {
+    "ID": 20220052,
+    "Method": 2,
+    "Name": "Copy/Print Room",
+    "LPD": 6.0
+  },
+  {
+    "ID": 20220054,
+    "Method": 2,
+    "Name": "Facility for the Visually Impaired: Corridor",
+    "LPD": 6.5
+  },
+  {
+    "ID": 20220055,
+    "Method": 2,
+    "Name": "Healthcare Facility: Hospital corridor",
+    "LPD": 6.5
+  },
+  {
+    "ID": 20220057,
+    "Method": 2,
+    "Name": "Corridor: All others",
+    "LPD": 4.8
+  },
+  {
+    "ID": 20220058,
+    "Method": 2,
+    "Name": "Courtroom",
+    "LPD": 11.6
+  },
+  {
+    "ID": 20220060,
+    "Method": 2,
+    "Name": "Dining Areas: Bar/lounge or leisure dining",
+    "LPD": 8.2
+  },
+  {
+    "ID": 20220061,
+    "Method": 2,
+    "Name": "Dining Areas: Cafeteria or fast food dining",
+    "LPD": 3.9
+  },
+  {
+    "ID": 20220062,
+    "Method": 2,
+    "Name": "Facility for the Visually Impaired: Dining",
+    "LPD": 13.1
+  },
+  {
+    "ID": 20220063,
+    "Method": 2,
+    "Name": "Dining Areas: Family dining",
+    "LPD": 5.6
+  },
+  {
+    "ID": 20220064,
+    "Method": 2,
+    "Name": "Correctional Facilities: Dining area",
+    "LPD": 3.8
+  },
+  {
+    "ID": 20220065,
+    "Method": 2,
+    "Name": "Dining Areas: All others",
+    "LPD": 4.5
+  },
+  {
+    "ID": 20220066,
+    "Method": 2,
+    "Name": "Dormitory: Living Quarters",
+    "LPD": 5.4
+  },
+  {
+    "ID": 20220067,
+    "Method": 2,
+    "Name": "Electrical/Mechanical Room",
+    "LPD": 7.6
+  },
+  {
+    "ID": 20220068,
+    "Method": 2,
+    "Name": "Emergency Vehicle Garage",
+    "LPD": 5.6
+  },
+  {
+    "ID": 20220070,
+    "Method": 2,
+    "Name": "Facility for the Visually Impaired: Chapel",
+    "LPD": 7.1
+  },
+  {
+    "ID": 20220071,
+    "Method": 2,
+    "Name": "Facility for the Visually Impaired: Recreation room/common living room",
+    "LPD": 12.9
+  },
+  {
+    "ID": 20220072,
+    "Method": 2,
+    "Name": "Fire Station: Sleeping Quarters",
+    "LPD": 2.5
+  },
+  {
+    "ID": 20220073,
+    "Method": 2,
+    "Name": "Food Preparation Area",
+    "LPD": 10.4
+  },
+  {
+    "ID": 20220074,
+    "Method": 2,
+    "Name": "Guest Room",
+    "LPD": 4.4
+  },
+  {
+    "ID": 20220076,
+    "Method": 2,
+    "Name": "Gymnasium/Fitness Center: Exercise area",
+    "LPD": 8.8
+  },
+  {
+    "ID": 20220077,
+    "Method": 2,
+    "Name": "Gymnasium/Fitness Center: Playing area",
+    "LPD": 8.8
+  },
+  {
+    "ID": 20220079,
+    "Method": 2,
+    "Name": "Healthcare Facility: Exam/treatment room",
+    "LPD": 14.3
+  },
+  {
+    "ID": 20220080,
+    "Method": 2,
+    "Name": "Healthcare Facility: Imaging room",
+    "LPD": 10.1
+  },
+  {
+    "ID": 20220081,
+    "Method": 2,
+    "Name": "Healthcare Facility: Medical supply room",
+    "LPD": 6.0
+  },
+  {
+    "ID": 20220082,
+    "Method": 2,
+    "Name": "Healthcare Facility: Nurse's station",
+    "LPD": 11.5
+  },
+  {
+    "ID": 20220083,
+    "Method": 2,
+    "Name": "Healthcare Facility: Nursery",
+    "LPD": 9.4
+  },
+  {
+    "ID": 20220084,
+    "Method": 2,
+    "Name": "Healthcare Facility: Operating room",
+    "LPD": 24.9
+  },
+  {
+    "ID": 20220085,
+    "Method": 2,
+    "Name": "Healthcare Facility: Patient room",
+    "LPD": 8.4
+  },
+  {
+    "ID": 20220086,
+    "Method": 2,
+    "Name": "Healthcare Facility: Physical therapy room",
+    "LPD": 8.8
+  },
+  {
+    "ID": 20220087,
+    "Method": 2,
+    "Name": "Healthcare Facility: Recovery room",
+    "LPD": 12.7
+  },
+  {
+    "ID": 20220089,
+    "Method": 2,
+    "Name": "Laboratory: In or as a classroom",
+    "LPD": 11.3
+  },
+  {
+    "ID": 20220090,
+    "Method": 2,
+    "Name": "Laboratory: All others",
+    "LPD": 13.0
+  },
+  {
+    "ID": 20220091,
+    "Method": 2,
+    "Name": "Laundry/Washing Area",
+    "LPD": 5.5
+  },
+  {
+    "ID": 20220093,
+    "Method": 2,
+    "Name": "Library: Reading area",
+    "LPD": 9.3
+  },
+  {
+    "ID": 20220094,
+    "Method": 2,
+    "Name": "Library: Stacks",
+    "LPD": 12.7
+  },
+  {
+    "ID": 20220095,
+    "Method": 2,
+    "Name": "Loading Dock, Interior",
+    "LPD": 9.4
+  },
+  {
+    "ID": 20220097,
+    "Method": 2,
+    "Name": "Lobby: Elevator",
+    "LPD": 6.3
+  },
+  {
+    "ID": 20220098,
+    "Method": 2,
+    "Name": "Facility for the Visually Impaired: Lobby",
+    "LPD": 15.5
+  },
+  {
+    "ID": 20220099,
+    "Method": 2,
+    "Name": "Lobby: Hotel",
+    "LPD": 5.2
+  },
+  {
+    "ID": 20220100,
+    "Method": 2,
+    "Name": "Lobby: Motion picture theater",
+    "LPD": 2.1
+  },
+  {
+    "ID": 20220101,
+    "Method": 2,
+    "Name": "Lobby: Performing arts theater",
+    "LPD": 13.0
+  },
+  {
+    "ID": 20220102,
+    "Method": 2,
+    "Name": "Lobby: All other lobbies",
+    "LPD": 8.6
+  },
+  {
+    "ID": 20220103,
+    "Method": 2,
+    "Name": "Locker Room",
+    "LPD": 4.6
+  },
+  {
+    "ID": 20220105,
+    "Method": 2,
+    "Name": "Healthcare Facility: Lounge",
+    "LPD": 8.3
+  },
+  {
+    "ID": 20220106,
+    "Method": 2,
+    "Name": "Lounge/Breakroom: All others",
+    "LPD": 5.4
+  },
+  {
+    "ID": 20220108,
+    "Method": 2,
+    "Name": "Manufacturing Facility: Detailed manufacturing area",
+    "LPD": 8.1
+  },
+  {
+    "ID": 20220109,
+    "Method": 2,
+    "Name": "Equipment room",
+    "LPD": 7.9
+  },
+  {
+    "ID": 20220110,
+    "Method": 2,
+    "Name": "Manufacturing Facility: Extra high bay area (>15.2m)",
+    "LPD": 14.6
+  },
+  {
+    "ID": 20220111,
+    "Method": 2,
+    "Name": "Manufacturing Facility: High bay area (7.6 to 15.2m)",
+    "LPD": 13.3
+  },
+  {
+    "ID": 20220112,
+    "Method": 2,
+    "Name": "Manufacturing Facility: Low bay area (<7.6m)",
+    "LPD": 9.2
+  },
+  {
+    "ID": 20220114,
+    "Method": 2,
+    "Name": "Museum: General exhibition area",
+    "LPD": 3.3
+  },
+  {
+    "ID": 20220115,
+    "Method": 2,
+    "Name": "Museum: Restoration room",
+    "LPD": 13.4
+  },
+  {
+    "ID": 20220117,
+    "Method": 2,
+    "Name": "Office: Office <= 13.9 m2",
+    "LPD": 7.9
+  },
+  {
+    "ID": 20220118,
+    "Method": 2,
+    "Name": "Office: Office > 13.9 and <= 27.9 m2",
+    "LPD": 7.1
+  },
+  {
+    "ID": 20220119,
+    "Method": 2,
+    "Name": "Office > 27.9 m2",
+    "LPD": 6.0
+  },
+  {
+    "ID": 20220120,
+    "Method": 2,
+    "Name": "Parking Garage: All other parking and drive areas",
+    "LPD": 1.2
+  },
+  {
+    "ID": 20220121,
+    "Method": 2,
+    "Name": "Performing Arts Theater: Dressing Room",
+    "LPD": 4.2
+  },
+  {
+    "ID": 20220122,
+    "Method": 2,
+    "Name": "Pharmacy Area",
+    "LPD": 17.9
+  },
+  {
+    "ID": 20220123,
+    "Method": 2,
+    "Name": "Post Office: Sorting Area",
+    "LPD": 7.6
+  },
+  {
+    "ID": 20220125,
+    "Method": 2,
+    "Name": "Religious Facility: Fellowship hall",
+    "LPD": 5.4
+  },
+  {
+    "ID": 20220126,
+    "Method": 2,
+    "Name": "Religious Facility: Worship/pulpit/choir area",
+    "LPD": 8.1
+  },
+  {
+    "ID": 20220128,
+    "Method": 2,
+    "Name": "Facility for the Visually Impaired: Restroom",
+    "LPD": 10.3
+  },
+  {
+    "ID": 20220129,
+    "Method": 2,
+    "Name": "Restroom",
+    "LPD": 8.0
+  },
+  {
+    "ID": 20220131,
+    "Method": 2,
+    "Name": "Retail Facilities: Dressing/fitting room",
+    "LPD": 4.9
+  },
+  {
+    "ID": 20220132,
+    "Method": 2,
+    "Name": "Retail Facilities: Mall concourse",
+    "LPD": 6.1
+  },
+  {
+    "ID": 20220133,
+    "Method": 2,
+    "Name": "Sales Area (For accent lighting)",
+    "LPD": 9.1
+  },
+  {
+    "ID": 20220134,
+    "Method": 2,
+    "Name": "Seating Area, General",
+    "LPD": 2.2
+  },
+  {
+    "ID": 20220136,
+    "Method": 2,
+    "Name": "Sports Arena - Playing Area: Class I facility",
+    "LPD": 30.8
+  },
+  {
+    "ID": 20220137,
+    "Method": 2,
+    "Name": "Sports Arena - Playing Area: Class II facility",
+    "LPD": 21.3
+  },
+  {
+    "ID": 20220138,
+    "Method": 2,
+    "Name": "Sports Arena - Playing Area: Class III facility",
+    "LPD": 13.8
+  },
+  {
+    "ID": 20220139,
+    "Method": 2,
+    "Name": "Sports Arena - Playing Area: Class IV facility",
+    "LPD": 9.2
+  },
+  {
+    "ID": 20220140,
+    "Method": 2,
+    "Name": "Stairwell",
+    "LPD": 5.0
+  },
+  {
+    "ID": 20220142,
+    "Method": 2,
+    "Name": "Storage Room: < 4.6 m2",
+    "LPD": 5.2
+  },
+  {
+    "ID": 20220144,
+    "Method": 2,
+    "Name": "Storage Room: >= 4.6 m2",
+    "LPD": 3.8
+  },
+  {
+    "ID": 20220146,
+    "Method": 2,
+    "Name": "Transportation Facility: Concourse",
+    "LPD": 5.3
+  },
+  {
+    "ID": 20220147,
+    "Method": 2,
+    "Name": "Transportation Facility: Baggage/carousel area",
+    "LPD": 3.0
+  },
+  {
+    "ID": 20220148,
+    "Method": 2,
+    "Name": "Transportation Facility: Ticket counter",
+    "LPD": 4.3
+  },
+  {
+    "ID": 20220149,
+    "Method": 2,
+    "Name": "Vehicular Maintenance Area",
+    "LPD": 6.4
+  },
+  {
+    "ID": 20220151,
+    "Method": 2,
+    "Name": "Warehouse - Storage Area: Medium to bulky, palletized items",
+    "LPD": 3.6
+  },
+  {
+    "ID": 20220152,
+    "Method": 2,
+    "Name": "Warehouse - Storage Area: Smaller items, picking areas",
+    "LPD": 7.4
+  },
+  {
+    "ID": 20220153,
+    "Method": 2,
+    "Name": "Workshop (including workshop classrooms)",
+    "LPD": 12.6
+  },
+  {
+    "ID": 20220154,
+    "Method": 2,
+    "Name": "Atrium (<6.1 m in height)",
+    "LPD": 3.5
+  },
+  {
+    "ID": 20220155,
+    "Method": 2,
+    "Name": "Atrium (>=6.1 m and <=12.2 m in height)",
+    "LPD": 4.4
+  },
+  {
+    "ID": 20220156,
+    "Method": 2,
+    "Name": "Atrium (>12.2 m in height)",
+    "LPD": 5.5
+  },
+  {
+    "ID": 20220160,
+    "Method": 2,
+    "Name": "Natatorium: Class I facility",
+    "LPD": 23.7
+  },
+  {
+    "ID": 20220162,
+    "Method": 2,
+    "Name": "Natatorium: Class II facility",
+    "LPD": 15.8
+  },
+  {
+    "ID": 20220164,
+    "Method": 2,
+    "Name": "Natatorium: Class III facility",
+    "LPD": 10.7
+  },
+  {
+    "ID": 20220166,
+    "Method": 2,
+    "Name": "Natatorium: Class IV facility",
+    "LPD": 6.4
+  },
+  {
+    "ID": 20220170,
+    "Method": 2,
+    "Name": "Security Screening: Transportation screening",
+    "LPD": 10.0
+  },
+  {
+    "ID": 20220172,
+    "Method": 2,
+    "Name": "Security Screening: Transportation screening queue",
+    "LPD": 6.0
+  },
+  {
+    "ID": 20220174,
+    "Method": 2,
+    "Name": "Security Screening: General security screening",
+    "LPD": 6.9
+  },
+  {
+    "ID": 20220180,
+    "Method": 2,
+    "Name": "Casino-Gaming Area: Betting/sportsbook/keno/bingo area",
+    "LPD": 8.8
+  },
+  {
+    "ID": 20220182,
+    "Method": 2,
+    "Name": "Casino-Gaming Area: High-limit game area",
+    "LPD": 18.0
+  },
+  {
+    "ID": 20220184,
+    "Method": 2,
+    "Name": "Casino-Gaming Area: Slot machine/digital gaming area",
+    "LPD": 5.9
+  },
+  {
+    "ID": 20220186,
+    "Method": 2,
+    "Name": "Casino-Gaming Area: Table games area",
+    "LPD": 11.7
+  },
+  {
+    "ID": 20220190,
+    "Method": 2,
+    "Name": "Parking Garage: Daylight transition zone",
+    "LPD": 11.4
+  },
+  {
+    "ID": 20220192,
+    "Method": 2,
+    "Name": "Control/Editing Room or Booth",
+    "LPD": 7.9
+  },
+  {
+    "ID":  20220045,
+    "Method": 2,
+    "Name": "Classroom/Lecture Hall/Training Room: Shop classroom",
+    "LPD": 12.6
+  },
+  {
+    "ID": 20220075,
+    "Method": 2,
+    "Name": "Lounge/Breakroom: Mother's/wellness room",
+    "LPD": 7.3
+  },
+  {
+    "ID": 20220078,
+    "Method": 2,
+    "Name": "Healthcare Facility: Control room (MRI/CT/radiology/PET)",
+    "LPD": 8.4
+  },
+  {
+    "ID": 20220088,
+    "Method": 2,
+    "Name": "Healthcare Facility: Telemedicine",
+    "LPD": 15.4
+  },
+  {
+    "ID": 20220127,
+    "Method": 2,
+    "Name": "Retail Facilities: Hair care",
+    "LPD": 7.0
+  },
+  {
+    "ID": 20220135,
+    "Method": 2,
+    "Name": "Retail Facilities: Massage",
+    "LPD": 8.7
+  },
+  {
+    "ID": 20220145,
+    "Method": 2,
+    "Name": "Retail Facilities: Nail care",
+    "LPD": 8.1
+  },
+  {
+    "ID": 20220141,
+    "Method": 2,
+    "Name": "Transportation Facility: Airport hangar",
+    "LPD": 14.6
+  },
+  {
+    "ID": 20220143,
+    "Method": 2,
+    "Name": "Transportation Facility: Passenger loading area",
+    "LPD": 7.7
+  }
+]

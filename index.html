@@ -159,9 +159,28 @@
 
                 <!-- Selected Space Properties -->
                 <div id="property-panel" class="property-panel">
-                    <div class="section-title">Propriedades do Espaço</div>
+                    <div class="section-title">Propriedades do Espaço & Modelo HAP</div>
                     
                     <div id="prop-load-summary" class="prop-load-badge"></div>
+
+                    <!-- Space Type Preset Selector (ASHRAE 90.1 / Carrier HAP) -->
+                    <div class="form-group highlight-group">
+                        <label for="prop-space-type">🏢 Modelo / Tipo de Espaço (HAP 6.4):</label>
+                        <select id="prop-space-type" class="preset-select">
+                            <option value="office_enclosed">Escritório Individual / Fechado</option>
+                            <option value="office_open">Escritório Aberto (Open Plan / Co-working)</option>
+                            <option value="conference_room">Sala de Reunião / Conferência</option>
+                            <option value="classroom">Sala de Aula / Treinamento</option>
+                            <option value="retail_store">Comércio / Loja / Shopping</option>
+                            <option value="restaurant_dining">Restaurante / Salão de Refeições</option>
+                            <option value="data_center">Data Center / CPD / Servidores</option>
+                            <option value="fitness_gym">Academia / Sala de Ginástica</option>
+                            <option value="hotel_room">Quarto de Hotel / Residencial</option>
+                            <option value="auditorium">Auditório / Teatro / Cinema</option>
+                            <option value="corridor">Corredor / Hall de Circulação</option>
+                            <option value="custom">Personalizado (Entrada Manual Livre)</option>
+                        </select>
+                    </div>
 
                     <div class="form-group">
                         <label for="prop-name">Nome do Espaço:</label>
@@ -179,7 +198,19 @@
                         </div>
                     </div>
 
-                    <div class="section-title">Cargas Internas (ASHRAE)</div>
+                    <div class="section-title">Ocupação & Nível de Atividade (HAP)</div>
+                    <div class="form-group">
+                        <label for="prop-activity-level">Atividade Metabólica dos Ocupantes:</label>
+                        <select id="prop-activity-level" class="preset-select">
+                            <option value="seated_at_rest">Sentado em Repouso (67W sens / 35W lat)</option>
+                            <option value="office_work">Trabalho de Escritório (72W sens / 60W lat)</option>
+                            <option value="sedentary_work">Trabalho Sedentário/Reunião (82W sens / 79W lat)</option>
+                            <option value="medium_work">Trabalho Leve/Comércio (87W sens / 133W lat)</option>
+                            <option value="heavy_work">Trabalho Pesado (154W sens / 271W lat)</option>
+                            <option value="athletics">Atividades Esportivas/Academia (208W sens / 320W lat)</option>
+                        </select>
+                    </div>
+
                     <div class="form-row">
                         <div class="form-group">
                             <label for="prop-occupants">Ocupantes (pessoas):</label>
@@ -196,13 +227,55 @@
                         <input type="number" id="prop-equipment" step="1.0" min="0">
                     </div>
 
-                    <div class="form-group">
+                    <div class="section-title">Renovação de Ar (ASHRAE 62.1)</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="prop-vent-rp" title="Taxa de ar exterior por ocupante (L/s por pessoa)">Taxa Pessoa (L/s·pes):</label>
+                            <input type="number" id="prop-vent-rp" step="0.5" min="0">
+                        </div>
+                        <div class="form-group">
+                            <label for="prop-vent-ra" title="Taxa de ar exterior por área de piso (L/s por m²)">Taxa Área (L/s·m²):</label>
+                            <input type="number" id="prop-vent-ra" step="0.1" min="0">
+                        </div>
+                    </div>
+
+                    <div class="section-title">Cobertura & Piso (Envoltória)</div>
+                    <div class="envelope-toggle-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="prop-has-roof">
+                            <span><strong>Sob Cobertura / Último Andar (Teto Solar)</strong></span>
+                        </label>
+                        <div id="roof-assembly-group" class="sub-form-group hidden">
+                            <label for="prop-roof-assembly">Tipo de Cobertura:</label>
+                            <select id="prop-roof-assembly">
+                                <option value="insulated_deck">Laje c/ Isolamento Térmico EPS/PIR (U=0.35)</option>
+                                <option value="uninsulated_concrete">Laje Maciça sem Isolamento (U=2.20)</option>
+                                <option value="sandwich_pir">Telha Metálica Sanduíche PU/PIR (U=0.38)</option>
+                                <option value="tile_with_ceiling">Telha Cerâmica/Fibrocimento c/ Forro (U=1.60)</option>
+                            </select>
+                        </div>
+
+                        <label class="checkbox-label mt-2">
+                            <input type="checkbox" id="prop-has-floor">
+                            <span><strong>Piso Térreo / Contato com Solo ou Pilotis</strong></span>
+                        </label>
+                        <div id="floor-assembly-group" class="sub-form-group hidden">
+                            <label for="prop-floor-assembly">Tipo de Piso:</label>
+                            <select id="prop-floor-assembly">
+                                <option value="slab_on_grade">Piso sobre Solo (Slab-on-Grade - Neutro Verão)</option>
+                                <option value="over_pilotis">Piso sobre Pilotis / Garagem Aberta (U=0.45)</option>
+                                <option value="interior_floor">Piso entre Andares Condicionados (Adiabático)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group mt-2">
                         <label for="prop-notes">Notas / Especificações:</label>
                         <textarea id="prop-notes" rows="2"></textarea>
                     </div>
 
                     <!-- Walls and Fenestration Inspector -->
-                    <div class="section-title">Paredes & Janelas da Sala</div>
+                    <div class="section-title">Paredes, Orientação & Janelas</div>
                     <div id="prop-walls-container" class="walls-inspector-list">
                         <p class="empty-hint">Nenhuma parede cadastrada.</p>
                     </div>
@@ -214,7 +287,7 @@
                     <hr class="divider">
 
                     <!-- Ambient Design Conditions -->
-                    <div class="section-title">Condições de Projeto (ASHRAE)</div>
+                    <div class="section-title">Condições de Projeto (HAP Design Weather)</div>
                     <div class="form-row">
                         <div class="form-group">
                             <label for="weather-outdoor-db">Temp. Externa (°C):</label>
@@ -238,7 +311,7 @@
     <div id="window-modal" class="modal-overlay hidden">
         <div class="modal-dialog">
             <div class="modal-header">
-                <h4>🪟 Definir Dimensões da Janela</h4>
+                <h4>🪟 Configurar Esquadria & Dimensões da Janela</h4>
                 <button id="btn-close-window-modal" class="modal-close" title="Fechar">&times;</button>
             </div>
             <div class="modal-body">
@@ -253,13 +326,36 @@
                         <input type="number" id="modal-win-height" step="0.1" min="0.3" value="1.4">
                     </div>
                 </div>
+                
+                <div class="form-group">
+                    <label for="modal-win-glazing">Tipo de Vidro (Carrier HAP):</label>
+                    <select id="modal-win-glazing">
+                        <option value="single_clear">Vidro Simples Transparente 6mm (U=5.8, SHGC=0.82)</option>
+                        <option value="single_tint">Vidro Simples Fumê/Verde (U=5.8, SHGC=0.70)</option>
+                        <option value="single_reflective">Vidro Simples Refletivo (U=5.8, SHGC=0.25)</option>
+                        <option value="double_clear" selected>Vidro Duplo Transparente (U=2.8, SHGC=0.70)</option>
+                        <option value="double_low_e">Vidro Duplo Low-E Alto Desempenho (U=1.6, SHGC=0.38)</option>
+                        <option value="laminated_solar">Vidro Laminado Controle Solar (U=3.4, SHGC=0.45)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="modal-win-shading">Proteção Solar Interna (IAC):</label>
+                    <select id="modal-win-shading">
+                        <option value="none" selected>Nenhuma / Vidro Desobstruído (IAC = 1.00)</option>
+                        <option value="blinds_light">Persiana Horizontal Clara Fechada (IAC = 0.65)</option>
+                        <option value="curtain_medium">Cortina Tecido Médio (IAC = 0.70)</option>
+                        <option value="blackout">Cortina Blecaute / Rolo Térmico (IAC = 0.45)</option>
+                    </select>
+                </div>
+
                 <div class="modal-calc-preview" id="window-modal-preview">
                     Área da Janela: <strong>2.52 m²</strong>
                 </div>
             </div>
             <div class="modal-footer">
                 <button id="btn-remove-window" class="btn-danger-outline">Remover Janela</button>
-                <button id="btn-save-window" class="btn-primary">Salvar Dimensões</button>
+                <button id="btn-save-window" class="btn-primary">Salvar Configuração</button>
             </div>
         </div>
     </div>

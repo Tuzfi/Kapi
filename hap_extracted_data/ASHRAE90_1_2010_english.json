@@ -1,0 +1,752 @@
+[
+  {
+    "ID": 20100002,
+    "Method": 1,
+    "Name": "Automotive Facility",
+    "LPD": 0.82
+  },
+  {
+    "ID": 20100003,
+    "Method": 1,
+    "Name": "Convention Center",
+    "LPD": 1.08
+  },
+  {
+    "ID": 20100004,
+    "Method": 1,
+    "Name": "Courthouse",
+    "LPD": 1.05
+  },
+  {
+    "ID": 20100005,
+    "Method": 1,
+    "Name": "Dining: Bar lounge/leisure",
+    "LPD": 0.99
+  },
+  {
+    "ID": 20100006,
+    "Method": 1,
+    "Name": "Dining: Cafeteria/fast food",
+    "LPD": 0.9
+  },
+  {
+    "ID": 20100007,
+    "Method": 1,
+    "Name": "Dining: Family",
+    "LPD": 0.89
+  },
+  {
+    "ID": 20100008,
+    "Method": 1,
+    "Name": "Dormitory",
+    "LPD": 0.61
+  },
+  {
+    "ID": 20100009,
+    "Method": 1,
+    "Name": "Exercise Center",
+    "LPD": 0.88
+  },
+  {
+    "ID": 20100010,
+    "Method": 1,
+    "Name": "Fire Station",
+    "LPD": 0.71
+  },
+  {
+    "ID": 20100011,
+    "Method": 1,
+    "Name": "Gymnasium",
+    "LPD": 1.0
+  },
+  {
+    "ID": 20100012,
+    "Method": 1,
+    "Name": "Health-Care Clinic",
+    "LPD": 0.87
+  },
+  {
+    "ID": 20100013,
+    "Method": 1,
+    "Name": "Hospital",
+    "LPD": 1.21
+  },
+  {
+    "ID": 20100014,
+    "Method": 1,
+    "Name": "Hotel",
+    "LPD": 1.0
+  },
+  {
+    "ID": 20100015,
+    "Method": 1,
+    "Name": "Library",
+    "LPD": 1.18
+  },
+  {
+    "ID": 20100016,
+    "Method": 1,
+    "Name": "Manufacturing Facility",
+    "LPD": 1.11
+  },
+  {
+    "ID": 20100017,
+    "Method": 1,
+    "Name": "Motel",
+    "LPD": 0.88
+  },
+  {
+    "ID": 20100018,
+    "Method": 1,
+    "Name": "Motion Picture Theater",
+    "LPD": 0.83
+  },
+  {
+    "ID": 20100019,
+    "Method": 1,
+    "Name": "Multifamily",
+    "LPD": 0.6
+  },
+  {
+    "ID": 20100020,
+    "Method": 1,
+    "Name": "Museum",
+    "LPD": 1.06
+  },
+  {
+    "ID": 20100021,
+    "Method": 1,
+    "Name": "Office",
+    "LPD": 0.9
+  },
+  {
+    "ID": 20100022,
+    "Method": 1,
+    "Name": "Parking Garage",
+    "LPD": 0.25
+  },
+  {
+    "ID": 20100023,
+    "Method": 1,
+    "Name": "Penitentiary",
+    "LPD": 0.97
+  },
+  {
+    "ID": 20100024,
+    "Method": 1,
+    "Name": "Performing Arts Theater",
+    "LPD": 1.39
+  },
+  {
+    "ID": 20100025,
+    "Method": 1,
+    "Name": "Police Station",
+    "LPD": 0.96
+  },
+  {
+    "ID": 20100026,
+    "Method": 1,
+    "Name": "Post Office",
+    "LPD": 0.87
+  },
+  {
+    "ID": 20100027,
+    "Method": 1,
+    "Name": "Religious Building",
+    "LPD": 1.05
+  },
+  {
+    "ID": 20100028,
+    "Method": 1,
+    "Name": "Retail",
+    "LPD": 1.4
+  },
+  {
+    "ID": 20100029,
+    "Method": 1,
+    "Name": "School/University",
+    "LPD": 0.99
+  },
+  {
+    "ID": 20100030,
+    "Method": 1,
+    "Name": "Sports Arena",
+    "LPD": 0.78
+  },
+  {
+    "ID": 20100031,
+    "Method": 1,
+    "Name": "Town Hall",
+    "LPD": 0.92
+  },
+  {
+    "ID": 20100032,
+    "Method": 1,
+    "Name": "Transportation",
+    "LPD": 0.77
+  },
+  {
+    "ID": 20100033,
+    "Method": 1,
+    "Name": "Warehouse",
+    "LPD": 0.66
+  },
+  {
+    "ID": 20100034,
+    "Method": 1,
+    "Name": "Workshop",
+    "LPD": 1.2
+  },
+  {
+    "ID": 20100036,
+    "Method": 2,
+    "Name": "Audience/Seating Area: Auditorium",
+    "LPD": 0.79
+  },
+  {
+    "ID": 20100037,
+    "Method": 2,
+    "Name": "Audience/Seating Area: Motion picture theater",
+    "LPD": 1.14
+  },
+  {
+    "ID": 20100038,
+    "Method": 2,
+    "Name": "Audience/Seating Area: Performing arts theater",
+    "LPD": 2.6
+  },
+  {
+    "ID": 20100039,
+    "Method": 2,
+    "Name": "Automotive Service/Repair",
+    "LPD": 0.67
+  },
+  {
+    "ID": 20100040,
+    "Method": 2,
+    "Name": "Bank/Office Banking Activity Area",
+    "LPD": 1.38
+  },
+  {
+    "ID": 20100041,
+    "Method": 2,
+    "Name": "Classroom/Lecture/Training",
+    "LPD": 1.24
+  },
+  {
+    "ID": 20100042,
+    "Method": 2,
+    "Name": "Conference/Meeting/Multipurpose",
+    "LPD": 1.23
+  },
+  {
+    "ID": 20100044,
+    "Method": 2,
+    "Name": "Convention Center: Audience seating",
+    "LPD": 0.82
+  },
+  {
+    "ID": 20100045,
+    "Method": 2,
+    "Name": "Convention Center: Exhibit space",
+    "LPD": 1.45
+  },
+  {
+    "ID": 20100046,
+    "Method": 2,
+    "Name": "Corridor/Transition (width < 8ft)",
+    "LPD": 0.66
+  },
+  {
+    "ID": 20100048,
+    "Method": 2,
+    "Name": "Courthouse/Police Stations: Confinement cells",
+    "LPD": 1.1
+  },
+  {
+    "ID": 20100049,
+    "Method": 2,
+    "Name": "Courthouse/Police Stations: Courtroom",
+    "LPD": 1.72
+  },
+  {
+    "ID": 20100050,
+    "Method": 2,
+    "Name": "Courthouse/Police Stations: Dining",
+    "LPD": 1.07
+  },
+  {
+    "ID": 20100051,
+    "Method": 2,
+    "Name": "Courthouse/Police Stations: Judges chambers",
+    "LPD": 1.17
+  },
+  {
+    "ID": 20100052,
+    "Method": 2,
+    "Name": "Courthouse/Police Stations: Penitentiary audience seating",
+    "LPD": 0.43
+  },
+  {
+    "ID": 20100053,
+    "Method": 2,
+    "Name": "Courthouse/Police Stations: Penitentiary classroom",
+    "LPD": 1.34
+  },
+  {
+    "ID": 20100055,
+    "Method": 2,
+    "Name": "Dining Area: Bar lounge / Leisure dining",
+    "LPD": 1.31
+  },
+  {
+    "ID": 20100056,
+    "Method": 2,
+    "Name": "Dining Area: Family dining",
+    "LPD": 0.89
+  },
+  {
+    "ID": 20100057,
+    "Method": 2,
+    "Name": "Dining Area: All others",
+    "LPD": 0.65
+  },
+  {
+    "ID": 20100058,
+    "Method": 2,
+    "Name": "Dormitory Living Quarters",
+    "LPD": 0.38
+  },
+  {
+    "ID": 20100059,
+    "Method": 2,
+    "Name": "Dressing/Fitting Room for Performance Arts Theater",
+    "LPD": 0.4
+  },
+  {
+    "ID": 20100060,
+    "Method": 2,
+    "Name": "Electrical/Mechanical",
+    "LPD": 0.95
+  },
+  {
+    "ID": 20100062,
+    "Method": 2,
+    "Name": "Fire Stations: Engine room",
+    "LPD": 0.56
+  },
+  {
+    "ID": 20100063,
+    "Method": 2,
+    "Name": "Fire Stations: Sleeping quarters",
+    "LPD": 0.25
+  },
+  {
+    "ID": 20100064,
+    "Method": 2,
+    "Name": "Food Preparation",
+    "LPD": 0.99
+  },
+  {
+    "ID": 20100066,
+    "Method": 2,
+    "Name": "Gymnasium/Fitness Center: Audience seating",
+    "LPD": 0.43
+  },
+  {
+    "ID": 20100067,
+    "Method": 2,
+    "Name": "Gymnasium/Fitness Center: Fitness area",
+    "LPD": 0.72
+  },
+  {
+    "ID": 20100068,
+    "Method": 2,
+    "Name": "Gymnasium/Fitness Center: Playing area",
+    "LPD": 1.2
+  },
+  {
+    "ID": 20100070,
+    "Method": 2,
+    "Name": "Hospital: Corridor/Transition (width< 8ft)",
+    "LPD": 0.89
+  },
+  {
+    "ID": 20100071,
+    "Method": 2,
+    "Name": "Hospital: Emergency",
+    "LPD": 2.26
+  },
+  {
+    "ID": 20100072,
+    "Method": 2,
+    "Name": "Hospital: Exam/treatment",
+    "LPD": 1.66
+  },
+  {
+    "ID": 20100073,
+    "Method": 2,
+    "Name": "Hospital: Laundry -- Washing",
+    "LPD": 0.6
+  },
+  {
+    "ID": 20100074,
+    "Method": 2,
+    "Name": "Hospital: Lounge/Recreation",
+    "LPD": 1.07
+  },
+  {
+    "ID": 20100075,
+    "Method": 2,
+    "Name": "Hospital: Medical supply",
+    "LPD": 1.27
+  },
+  {
+    "ID": 20100076,
+    "Method": 2,
+    "Name": "Hospital: Nurse's station",
+    "LPD": 0.87
+  },
+  {
+    "ID": 20100077,
+    "Method": 2,
+    "Name": "Hospital: Nursery",
+    "LPD": 0.88
+  },
+  {
+    "ID": 20100078,
+    "Method": 2,
+    "Name": "Hospital: Operating room",
+    "LPD": 1.89
+  },
+  {
+    "ID": 20100079,
+    "Method": 2,
+    "Name": "Hospital: Patient room",
+    "LPD": 0.62
+  },
+  {
+    "ID": 20100080,
+    "Method": 2,
+    "Name": "Hospital: Pharmacy",
+    "LPD": 1.14
+  },
+  {
+    "ID": 20100081,
+    "Method": 2,
+    "Name": "Hospital: Physical therapy",
+    "LPD": 0.91
+  },
+  {
+    "ID": 20100082,
+    "Method": 2,
+    "Name": "Hospital: Radiology/Imaging",
+    "LPD": 1.32
+  },
+  {
+    "ID": 20100083,
+    "Method": 2,
+    "Name": "Hospital: Recovery",
+    "LPD": 1.15
+  },
+  {
+    "ID": 20100085,
+    "Method": 2,
+    "Name": "Hotel/Highway Lodging: Highway lodging dining",
+    "LPD": 0.88
+  },
+  {
+    "ID": 20100086,
+    "Method": 2,
+    "Name": "Hotel/Highway Lodging: Highway lodging guest rooms",
+    "LPD": 0.75
+  },
+  {
+    "ID": 20100087,
+    "Method": 2,
+    "Name": "Hotel/Highway Lodging: Hotel dining",
+    "LPD": 0.82
+  },
+  {
+    "ID": 20100088,
+    "Method": 2,
+    "Name": "Hotel/Highway Lodging: Hotel guest rooms",
+    "LPD": 1.11
+  },
+  {
+    "ID": 20100089,
+    "Method": 2,
+    "Name": "Hotel/Highway Lodging: Hotel lobby",
+    "LPD": 1.06
+  },
+  {
+    "ID": 20100091,
+    "Method": 2,
+    "Name": "Laboratory: Classrooms",
+    "LPD": 1.28
+  },
+  {
+    "ID": 20100092,
+    "Method": 2,
+    "Name": "Laboratory: Medical/Industrial/Research",
+    "LPD": 1.81
+  },
+  {
+    "ID": 20100094,
+    "Method": 2,
+    "Name": "Library: Card file and cataloging",
+    "LPD": 0.72
+  },
+  {
+    "ID": 20100095,
+    "Method": 2,
+    "Name": "Library: Reading area",
+    "LPD": 0.93
+  },
+  {
+    "ID": 20100096,
+    "Method": 2,
+    "Name": "Library: Stacks",
+    "LPD": 1.71
+  },
+  {
+    "ID": 20100098,
+    "Method": 2,
+    "Name": "Lobby: Elevator",
+    "LPD": 0.64
+  },
+  {
+    "ID": 20100099,
+    "Method": 2,
+    "Name": "Lobby: Motion picture theater",
+    "LPD": 0.52
+  },
+  {
+    "ID": 20100100,
+    "Method": 2,
+    "Name": "Lobby: Performance arts theater",
+    "LPD": 2.0
+  },
+  {
+    "ID": 20100101,
+    "Method": 2,
+    "Name": "Lobby: All Others",
+    "LPD": 0.9
+  },
+  {
+    "ID": 20100102,
+    "Method": 2,
+    "Name": "Locker Room",
+    "LPD": 0.75
+  },
+  {
+    "ID": 20100103,
+    "Method": 2,
+    "Name": "Lounge/Recreation",
+    "LPD": 0.73
+  },
+  {
+    "ID": 20100105,
+    "Method": 2,
+    "Name": "Manufacturing: Corridor/Transition",
+    "LPD": 0.41
+  },
+  {
+    "ID": 20100106,
+    "Method": 2,
+    "Name": "Manufacturing: Detailed manufacturing",
+    "LPD": 1.29
+  },
+  {
+    "ID": 20100107,
+    "Method": 2,
+    "Name": "Manufacturing: Equipment room",
+    "LPD": 0.95
+  },
+  {
+    "ID": 20100108,
+    "Method": 2,
+    "Name": "Manufacturing: Extra high bay ( >50 ft floor to ceiling height)",
+    "LPD": 1.05
+  },
+  {
+    "ID": 20100109,
+    "Method": 2,
+    "Name": "Manufacturing: High bay ( 25-50 ft floor to ceiling height)",
+    "LPD": 1.23
+  },
+  {
+    "ID": 20100110,
+    "Method": 2,
+    "Name": "Manufacturing: Low bay  (< 25ft floor to ceiling height)",
+    "LPD": 1.19
+  },
+  {
+    "ID": 20100112,
+    "Method": 2,
+    "Name": "Museum: General exhibition",
+    "LPD": 1.05
+  },
+  {
+    "ID": 20100113,
+    "Method": 2,
+    "Name": "Museum: Restoration",
+    "LPD": 1.02
+  },
+  {
+    "ID": 20100115,
+    "Method": 2,
+    "Name": "Office: Enclosed",
+    "LPD": 1.11
+  },
+  {
+    "ID": 20100116,
+    "Method": 2,
+    "Name": "Office: Open plan",
+    "LPD": 0.98
+  },
+  {
+    "ID": 20100117,
+    "Method": 2,
+    "Name": "Parking Garage -- Garage Area",
+    "LPD": 0.19
+  },
+  {
+    "ID": 20100119,
+    "Method": 2,
+    "Name": "Religious Buildings: Audience seating",
+    "LPD": 1.53
+  },
+  {
+    "ID": 20100120,
+    "Method": 2,
+    "Name": "Religious Buildings: Fellowship hall",
+    "LPD": 0.64
+  },
+  {
+    "ID": 20100121,
+    "Method": 2,
+    "Name": "Religious Buildings: Worship pulpit, choir area",
+    "LPD": 1.53
+  },
+  {
+    "ID": 20100122,
+    "Method": 2,
+    "Name": "Restrooms",
+    "LPD": 0.98
+  },
+  {
+    "ID": 20100124,
+    "Method": 2,
+    "Name": "Retail: Dressing/fitting room",
+    "LPD": 0.87
+  },
+  {
+    "ID": 20100125,
+    "Method": 2,
+    "Name": "Retail: Mall concourse",
+    "LPD": 1.1
+  },
+  {
+    "ID": 20100126,
+    "Method": 2,
+    "Name": "Retail: Sales area",
+    "LPD": 1.68
+  },
+  {
+    "ID": 20100127,
+    "Method": 2,
+    "Name": "Sales Area",
+    "LPD": 1.68
+  },
+  {
+    "ID": 20100129,
+    "Method": 2,
+    "Name": "Sports Arena: Audience seating",
+    "LPD": 0.43
+  },
+  {
+    "ID": 20100130,
+    "Method": 2,
+    "Name": "Sports Arena: Court sports class 1",
+    "LPD": 3.01
+  },
+  {
+    "ID": 20100131,
+    "Method": 2,
+    "Name": "Sports Arena: Court sports class 2",
+    "LPD": 1.92
+  },
+  {
+    "ID": 20100132,
+    "Method": 2,
+    "Name": "Sports Arena: Court sports class 3",
+    "LPD": 1.2
+  },
+  {
+    "ID": 20100133,
+    "Method": 2,
+    "Name": "Sports Arena: Court sports class 4",
+    "LPD": 0.72
+  },
+  {
+    "ID": 20100134,
+    "Method": 2,
+    "Name": "Sports Arena: Ring sports",
+    "LPD": 2.68
+  },
+  {
+    "ID": 20100135,
+    "Method": 2,
+    "Name": "Stairway",
+    "LPD": 0.69
+  },
+  {
+    "ID": 20100136,
+    "Method": 2,
+    "Name": "Storage",
+    "LPD": 0.63
+  },
+  {
+    "ID": 20100138,
+    "Method": 2,
+    "Name": "Transportation: Air/Train/Bus -  Baggage area",
+    "LPD": 0.76
+  },
+  {
+    "ID": 20100139,
+    "Method": 2,
+    "Name": "Transportation: Airport concourse",
+    "LPD": 0.36
+  },
+  {
+    "ID": 20100140,
+    "Method": 2,
+    "Name": "Transportation: Audience seating",
+    "LPD": 0.54
+  },
+  {
+    "ID": 20100141,
+    "Method": 2,
+    "Name": "Transportation: Terminal ticket counter",
+    "LPD": 1.08
+  },
+  {
+    "ID": 20100143,
+    "Method": 2,
+    "Name": "Warehouse: Fine material storage",
+    "LPD": 0.95
+  },
+  {
+    "ID": 20100144,
+    "Method": 2,
+    "Name": "Warehouse: Medium / bulky material storage",
+    "LPD": 0.58
+  },
+  {
+    "ID": 20100145,
+    "Method": 2,
+    "Name": "Workshop",
+    "LPD": 1.59
+  }
+]

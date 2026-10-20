@@ -1,0 +1,4 @@
+Index,Climate-Zone,Name,OpaqueUvalue (BTU/hr-sqft-F),GlassUvalue (BTU/hr-sqft-F),Glass-SHGC,GlassVT,Glass-Fraction (%)
+1,3,"Opaque, swinging",0.37,0.62,0.76,0.73,0
+2,3,"Opaque, non-swinging",0.31,0.62,0.76,0.73,0
+3,3,"Glass, metal framing, entrance door",0.7,0.68,0.36,0.396,100

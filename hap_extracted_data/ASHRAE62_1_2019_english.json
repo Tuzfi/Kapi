@@ -1,0 +1,656 @@
+﻿[
+  {
+    "ID": 20190307,
+    "Name": "CORRECTIONAL FACILITY: Booking/waiting",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190308,
+    "Name": "CORRECTIONAL FACILITY: Cell",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20190309,
+    "Name": "CORRECTIONAL FACILITY: Dayroom",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190310,
+    "Name": "CORRECTIONAL FACILITY: Guard stations",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190311,
+    "Name": "EDUCATION: Art classroom",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190312,
+    "Name": "EDUCATION: Classroom (ages 5-8)",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20190313,
+    "Name": "EDUCATION: Classroom (age 9 plus)",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20190314,
+    "Name": "EDUCATION: Computer lab",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20190315,
+    "Name": "EDUCATION: Daycare (through age 4)",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190316,
+    "Name": "EDUCATION: Daycare sickroom",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190317,
+    "Name": "EDUCATION: Lecture classroom",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190318,
+    "Name": "EDUCATION: Lecture hall (fixed seats)",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190319,
+    "Name": "EDUCATION: Media center",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20190320,
+    "Name": "EDUCATION: Multiuse assembly",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190321,
+    "Name": "EDUCATION: Music/theater/dance",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190322,
+    "Name": "EDUCATION: Science laboratory",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190323,
+    "Name": "EDUCATION: University/college laboratory",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190324,
+    "Name": "EDUCATION: Wood/metal shop",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190325,
+    "Name": "FOOD AND BEVERAGE SERVICE: Bar, cocktail lounge",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190326,
+    "Name": "FOOD AND BEVERAGE SERVICE: Cafeteria/fast food dining",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190327,
+    "Name": "FOOD AND BEVERAGE SERVICE: Kitchen (cooking)",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20190328,
+    "Name": "FOOD AND BEVERAGE SERVICE: Restaurant dining room",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190329,
+    "Name": "GENERAL: Break room",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190330,
+    "Name": "GENERAL: Coffee station",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190331,
+    "Name": "GENERAL: Conference/meeting",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190332,
+    "Name": "GENERAL: Corridor",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190333,
+    "Name": "GENERAL: Occupiable storage room (liq/gel)",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20190334,
+    "Name": "HOTEL / MOTEL / RESORT / DORM: Barracks sleeping area",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190335,
+    "Name": "HOTEL / MOTEL / RESORT / DORM: Bedroom/living room",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190336,
+    "Name": "HOTEL / MOTEL / RESORT / DORM: Laundry room within dwelling unit",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20190337,
+    "Name": "HOTEL / MOTEL / RESORT / DORM: Laundry room, central",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20190338,
+    "Name": "HOTEL / MOTEL / RESORT / DORM: Lobby/prefunction",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190339,
+    "Name": "HOTEL / MOTEL / RESORT / DORM: Multipurpose assembly",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190340,
+    "Name": "OFFICE: Breakroom",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20190341,
+    "Name": "OFFICE: Main entry lobby",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190342,
+    "Name": "OFFICE: Occupiable storage room for dry materials",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190343,
+    "Name": "OFFICE: Office space",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190344,
+    "Name": "OFFICE: Reception area ",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190345,
+    "Name": "OFFICE: Telephone/data entry",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190346,
+    "Name": "MISCELLANEOUS: Bank or bank lobby",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190347,
+    "Name": "MISCELLANEOUS: Bank vault/safe deposit",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190348,
+    "Name": "MISCELLANEOUS: Computer (not printing)",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190349,
+    "Name": "MISCELLANEOUS: Manufacturing, hazardous materials not used",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190350,
+    "Name": "MISCELLANEOUS: Pharmacy (prep. area)",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190351,
+    "Name": "MISCELLANEOUS: Photo studio",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20190352,
+    "Name": "MISCELLANEOUS: Shipping/receiving",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20190353,
+    "Name": "MISCELLANEOUS: Sorting, packing, light assembly",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20190354,
+    "Name": "MISCELLANEOUS: Telephone closet",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20190355,
+    "Name": "MISCELLANEOUS: Transportation waiting",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190356,
+    "Name": "MISCELLANEOUS: Warehouse",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190357,
+    "Name": "MISCELLANEOUS: Freezer and refrigerated spaces (<50°F)",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0
+  },
+  {
+    "ID": 20190358,
+    "Name": "PUBLIC ASSEMBLY: Auditorium seating area",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190359,
+    "Name": "PUBLIC ASSEMBLY: Courtroom",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190360,
+    "Name": "PUBLIC ASSEMBLY: Legislative chamber",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190361,
+    "Name": "PUBLIC ASSEMBLY: Library",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20190362,
+    "Name": "PUBLIC ASSEMBLY: Lobby",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190363,
+    "Name": "PUBLIC ASSEMBLY: Museum (children's)",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20190364,
+    "Name": "PUBLIC ASSEMBLY: Museum/gallery",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190365,
+    "Name": "PUBLIC ASSEMBLY: Place of religious worship",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190366,
+    "Name": "RESIDENTIAL: Common corridor",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190367,
+    "Name": "RESIDENTIAL: Dwelling unit",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190368,
+    "Name": "RETAIL: Barbershop",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190369,
+    "Name": "RETAIL: Beauty and nail salon",
+    "OA1CFMPerson": 20,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20190370,
+    "Name": "RETAIL: Coin-operated laundry",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20190371,
+    "Name": "RETAIL: Mall common area",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190372,
+    "Name": "RETAIL: Pet shop (animal area)",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190373,
+    "Name": "RETAIL: Sales (except other categories here)",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20190374,
+    "Name": "RETAIL: Supermarket",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190375,
+    "Name": "SPORTS: Bowling alley (seating)",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20190376,
+    "Name": "SPORTS: Disco/dance floor",
+    "OA1CFMPerson": 20,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190377,
+    "Name": "SPORTS: Gambling casino",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190378,
+    "Name": "SPORTS: Game arcade",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190379,
+    "Name": "SPORTS: Health club/aerobics room",
+    "OA1CFMPerson": 20,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190380,
+    "Name": "SPORTS: Health club/weight room",
+    "OA1CFMPerson": 20,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190381,
+    "Name": "SPORTS: Spectator area ",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190382,
+    "Name": "SPORTS: Gym, sports arena (play area)",
+    "OA1CFMPerson": 20,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190383,
+    "Name": "SPORTS: Stage, studio",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190384,
+    "Name": "SPORTS: Swimming (pool & deck)",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 0.48
+  },
+  {
+    "ID": 20190385,
+    "Name": "ANIMAL FACILITIES: Exam room",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20190386,
+    "Name": "ANIMAL FACILITIES: Imaging (MRI/CT/PET)",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190387,
+    "Name": "ANIMAL FACILITIES: Operating rooms",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190388,
+    "Name": "ANIMAL FACILITIES: Postoperative recovery",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190389,
+    "Name": "ANIMAL FACILITIES: Preparation rooms",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190390,
+    "Name": "ANIMAL FACILITIES: Procedure room",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190391,
+    "Name": "ANIMAL FACILITIES: Surgery scrub",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190392,
+    "Name": "ANIMAL FACILITIES: Large animal holding room",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190393,
+    "Name": "ANIMAL FACILITIES: Necropsy",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190394,
+    "Name": "ANIMAL FACILITIES: Small-animal-cage room (static cages) ",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190395,
+    "Name": "ANIMAL FACILITIES: Small-animal-cage room (ventilated cages)",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190396,
+    "Name": "OUTPATIENT HEALTHCARE: Birthing room",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190397,
+    "Name": "OUTPATIENT HEALTHCARE: Class 1 imaging rooms",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20190398,
+    "Name": "OUTPATIENT HEALTHCARE: Dental operatory",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190399,
+    "Name": "OUTPATIENT HEALTHCARE: General examination room",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20190400,
+    "Name": "OUTPATIENT HEALTHCARE: Other dental treatment areas",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190401,
+    "Name": "OUTPATIENT HEALTHCARE: Physical therapy exercise area",
+    "OA1CFMPerson": 20,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190402,
+    "Name": "OUTPATIENT HEALTHCARE: Physical therapy individual room",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190403,
+    "Name": "OUTPATIENT HEALTHCARE: Physical therapeutic pool area",
+    "OA1CFMPerson": 0,
+    "OA2CFMsqft": 0.48
+  },
+  {
+    "ID": 20190404,
+    "Name": "OUTPATIENT HEALTHCARE: Prosthetics and orthotics room",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190405,
+    "Name": "OUTPATIENT HEALTHCARE: Psychiatric consultation room",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190406,
+    "Name": "OUTPATIENT HEALTHCARE: Psychiatric examination room",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190407,
+    "Name": "OUTPATIENT HEALTHCARE: Psychiatric group room",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190408,
+    "Name": "OUTPATIENT HEALTHCARE: Psychiatric seclusion room",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190409,
+    "Name": "OUTPATIENT HEALTHCARE: Speech therapy room",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190410,
+    "Name": "OUTPATIENT HEALTHCARE: Urgent care examination room",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20190411,
+    "Name": "OUTPATIENT HEALTHCARE: Urgent care observation room",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.06
+  },
+  {
+    "ID": 20190412,
+    "Name": "OUTPATIENT HEALTHCARE: Urgent care treatment room",
+    "OA1CFMPerson": 7.5,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190413,
+    "Name": "OUTPATIENT HEALTHCARE: Urgent care triage room",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  },
+  {
+    "ID": 20190414,
+    "Name": "EDUCATION: Libraries",
+    "OA1CFMPerson": 5,
+    "OA2CFMsqft": 0.12
+  },
+  {
+    "ID": 20190415,
+    "Name": "MISCELLANEOUS: Manufacturing, hazardous materials are used",
+    "OA1CFMPerson": 10,
+    "OA2CFMsqft": 0.18
+  }
+]

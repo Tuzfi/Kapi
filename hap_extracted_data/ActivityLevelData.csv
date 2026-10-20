@@ -1,0 +1,9 @@
+ID,Name,Sensible,Latent
+0,User Defined,245.00,205.00
+1,Seated at Rest,230.00,120.00
+2,Office Work,245.00,205.00
+3,Sedentary Work,280.00,270.00
+4,Medium Work,295.00,455.00
+5,Heavy Work,525.00,925.00
+6,Dancing,305.00,545.00
+7,Athletics,710.00,1090.00

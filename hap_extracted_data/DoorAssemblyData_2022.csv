@@ -1,0 +1,28 @@
+Index,Climate-Zone,Name,OpaqueUvalue (BTU/hr-sqft-F),GlassUvalue (BTU/hr-sqft-F),Glass-SHGC,GlassVT,Glass Fraction (percent)
+8001,0,"2022 Zone 0 Opaque, swinging",0.37,0.62,0.76,0.73,0
+8002,0,"2022 Zone 0 Opaque, non-swinging",0.31,0.62,0.76,0.73,0
+8003,0,"2022 Zone 0 Glass, entrance door",0.83,0.83,0.2,0.22,100
+8004,1,"2022 Zone 1 Opaque, swinging",0.37,0.62,0.76,0.73,0
+8005,1,"2022 Zone 1 Opaque, non-swinging",0.31,0.62,0.76,0.73,0
+8006,1,"2022 Zone 1 Glass, entrance door",0.83,0.83,0.21,0.231,100
+8007,2,"2022 Zone 2 Opaque, swinging",0.37,0.62,0.76,0.73,0
+8008,2,"2022 Zone 2 Opaque, non-swinging",0.31,0.62,0.76,0.73,0
+8009,2,"2022 Zone 2 Glass, entrance door",0.77,0.77,0.23,0.253,100
+8010,3,"2022 Zone 3 Opaque, swinging",0.37,0.62,0.76,0.73,0
+8011,3,"2022 Zone 3 Opaque, non-swinging",0.31,0.62,0.76,0.73,0
+8012,3,"2022 Zone 3 Glass, entrance door",0.68,0.68,0.23,0.253,100
+8013,4,"2022 Zone 4 Opaque, swinging",0.37,0.62,0.76,0.73,0
+8014,4,"2022 Zone 4 Opaque, non-swinging",0.31,0.62,0.76,0.73,0
+8015,4,"2022 Zone 4  Glass, entrance door",0.63,0.63,0.33,0.363,100
+8016,5,"2022 Zone 5 Opaque, swinging",0.37,0.62,0.76,0.73,0
+8017,5,"2022 Zone 5 Opaque, non-swinging",0.31,0.62,0.76,0.73,0
+8018,5,"2022 Zone 5 Glass, entrance door",0.63,0.63,0.33,0.363,100
+8019,6,"2022 Zone 6 Opaque, swinging",0.37,0.62,0.76,0.73,0
+8020,6,"2022 Zone 6 Opaque, non-swinging",0.31,0.62,0.76,0.73,0
+8021,6,"2022 Zone 6 Glass, entrance door",0.63,0.63,0.34,0.374,100
+8022,7,"2022 Zone 7 Opaque, swinging",0.37,0.62,0.76,0.73,0
+8023,7,"2022 Zone 7 Opaque, non-swinging",0.31,0.62,0.76,0.73,0
+8024,7,"2022 Zone 7 Glass, entrance door",0.63,0.63,0.36,0.396,100
+8025,8,"2022 Zone 8 Opaque, swinging",0.37,0.62,0.76,0.73,0
+8026,8,"2022 Zone 8 Opaque, non-swinging",0.31,0.62,0.76,0.73,0
+8027,8,"2022 Zone 8 Glass, entrance door",0.63,0.63,0.36,0.396,100
