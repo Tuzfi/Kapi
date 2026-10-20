@@ -1,56 +1,109 @@
-# Kapi - HVAC 2D Thermal Load Calculator & 24h Dynamic Solar Simulation
+# Kapi HVAC 2D - Calculadora de Carga Térmica & Simulação Dinâmica 24h
 
-Clean-room reconstruction of **Carrier HAP 6.4** (Hourly Analysis Program) architectural search mechanisms, solar incidence algorithms, and 24-hour dynamic thermal simulation based on ASHRAE Standards 183 / 90.1 / 62.1.
-
----
-
-## ☀️ Como o Carrier HAP 6.4 Calcula a Incidência Solar nas Paredes
-
-A engenharia reversa nas bibliotecas [`HAPCore64.dll`](file:///C:/Program%20Files%20(x86)/Carrier%20HAP%206.4/HAPCore64.dll) e [`HAPDataHandler64.dll`](file:///C:/Program%20Files%20(x86)/Carrier%20HAP%206.4/HAPDataHandler64.dll) revelou as classes e fórmulas exatas utilizadas pelo HAP:
-
-1. **Vetor Normal e Azimute da Parede ($\gamma$):**
-   * Classe: `Carrier.HAP.Project.ExposureDirectionExtensions.SurfaceAzimuth`
-   * Mapeia 16 direções de bússola em radianos (Sul = $0$, Leste = $\pi/2$, Norte = $\pi$, Oeste = $-\pi/2$).
-   * Para cada segmento de parede no CAD 2D, calcula-se o vetor normal externo $(\Delta y, -\Delta x)$ e o azimute da parede $\gamma = \text{atan2}(n_x, n_y)$.
-
-2. **Posição do Sol Hora a Hora ($\beta_s$, $\phi_s$):**
-   * Classe: `Carrier.HAP.Configuration.Weather.DesignWeatherCalcs.CalcDesignSolar`
-   * Ângulo Horário do Sol: $H = 15^\circ \times (t - 12)$
-   * Altitude Solar ($\beta_s$): $\sin \beta_s = \cos(\text{Lat}) \cos \delta \cos H + \sin(\text{Lat}) \sin \delta$
-   * Azimute Solar ($\phi_s$): $\cos \phi_s = \frac{\sin \beta_s \sin(\text{Lat}) - \sin \delta}{\cos \beta_s \cos(\text{Lat})}$
-
-3. **Cosseno do Ângulo de Incidência Solar ($\cos \theta$):**
-   $$\cos \theta = \cos \beta_s \cdot \cos(\phi_s - \gamma)$$
-   * **Se $\cos \theta \le 0$:** A parede está auto-sombreada (na sombra). O feixe direto é zero ($I_{direto} = 0$), recebendo apenas radiação difusa do céu.
-   * **Se $\cos \theta > 0$:** A parede está iluminada diretamente pelo feixe solar ($I_{direto} = I_{dn} \cdot \cos \theta$).
+> **Versão:** `v0.1`  
+> **Status:** Release Inicial  
+> **Tecnologias:** JavaScript Moderno (ES Modules), HTML5 Canvas 2D, CSS3 Glassmorphism & Tokens, Python 3 (Engenharia de Testes)
 
 ---
 
-## 🚀 Recursos Interativos 24h & CAD do Kapi
+## ❄️ Visão Geral
 
-* **Navegação com Botão Direito no Canvas 2D:** Clique e arraste com o botão direito do mouse (ou botão do meio / Alt+clique) para locomover e navegar livremente pelo projeto.
-* **Janelas com Dimensões Customizáveis (Largura x Altura):** Defina a largura e altura exata de cada janela diretamente na parede via diálogo rápido ou no painel inspetor lateral, calculando a área envidraçada real e a taxa WWR (*Window-to-Wall Ratio*).
-* **Orientação do Norte & Rotação do Mapa:** Rotacione o azimute do edifício (0° a 359°) através dos controles na barra superior ou arrastando diretamente a **Rosa dos Ventos (Compass Rose)** no canvas, atualizando instantaneamente os ângulos de incidência solar em todas as paredes.
-* **Barra de Reprodução Temporal 24 Horas:** Slider interativo de $00:00$ às $23:00$ com botão **"Play/Pausar"** para ver o dia passando.
-* **Sol Dinâmico no CAD 2D:**
-  * O sol rotaciona visualmente ao redor do prédio com altitude e azimute reais corrigidos pela rotação do Norte.
-  * Paredes atingidas pelo sol direto acendem em dourado/amarelo (`#e3b341`) com visualização de vidros duplos.
-* **Mapa de Calor (Heatmap) Dinâmico:**
-  * De manhã, as salas a **Leste** esquentam;
-  * À tarde, as salas a **Oeste** sofrem o pico de calor;
-  * À noite, as salas resfriam gradativamente.
-* **Gráfico de Curva de Carga Horária 24h (SVG):**
-  * Curva da carga térmica ao longo do dia para o prédio total ou para a sala selecionada, com marcador dinâmico da hora atual.
-* **Cálculo da Diversidade e Pico Coincidente (*Block Load*):**
-  * Descobre a **Hora de Pico Individual** de cada sala (ex: 10h para Leste, 16h para Oeste).
-  * Descobre a **Hora de Pico Coincidente do Prédio** e a **Economia por Diversidade Horária** (evitando superdimensionar a máquina central).
+O **Kapi** é uma plataforma web interativa voltada para projetos de climatização e engenharia predial (HVAC). Ele combina um ambiente CAD 2D vetorial com um motor de balanço térmico instantâneo e simulação solar dinâmica hora a hora ao longo de 24 horas.
+
+A metodologia de cálculo adota os fundamentos consagrados da engenharia térmica predial e das normas **ASHRAE**:
+* **ASHRAE Standard 183:** Procedimentos de balanço térmico de pico para resfriamento e aquecimento.
+* **ASHRAE Standard 90.1:** Parâmetros de desempenho de envoltória (valores U de paredes, coberturas e vidros, SHGC e densidades de potência de iluminação e equipamentos).
+* **ASHRAE Standard 62.1:** Taxas de ventilação mecânica e renovação de ar externo na zona de respiração ($V_{oz} = R_p \cdot P + R_a \cdot A$).
 
 ---
 
-## 🧪 Testes Automatizados no Backend Python
+## 🚀 Principais Funcionalidades
 
-Execute:
+### 1. Modelagem Arquitetônica 2D & CAD
+* **Navegação com Botão Direito:** Clique e arraste com o botão direito do mouse (ou botão do meio / Alt + clique esquerdo) para locomover e navegar livremente pelo plano do edifício.
+* **Dimensionamento Preciso de Esquadrias:** Inserção e edição das dimensões exatas de cada janela (largura e altura em metros) com cálculo automático da área envidraçada e da relação vidro/parede (*Window-to-Wall Ratio*).
+* **Orientação Solar & Rotação do Norte:** Controle fino do azimute do edifício (0° a 359°) via campos numéricos, botões incrementais ou arrastando a Rosa dos Ventos interativa. O cálculo da incidência solar em todas as fachadas é recalculado instantaneamente.
+* **Busca e Filtro Rápido de Espaços:** Barra de pesquisa em tempo real para filtrar ambientes por nome ou por zona térmica, com métricas de área total e carga acumulada.
+
+### 2. Motor Termofísico em Tempo Real
+* **Temperatura Sol-Ar ($T_{sol-air}$):** Cálculo do ganho de calor solar absorvido nas paredes opacas e coberturas em função da absortância da cor do acabamento externo e do coeficiente de filme de ar superficial ($h_o$).
+* **Radiação Fenestração:** Decomposição da radiação solar incidente em feixe direto normal, difuso da abóbada celeste e refletido pelo solo, aplicando o fator solar ($SHGC$) e coeficientes de atenuação interna por persianas/cortinas ($IAC$).
+* **Balanço Sensível e Latente:**
+  * Ocupação metabólica individualizada por tipo de atividade (escritório, reunião, academia, comércio).
+  * Iluminação artificial e equipamentos de processo com cronogramas fracionários de operação.
+  * Infiltração de ar exterior por renovações horárias ($ACH$).
+  * Ventilação de ar novo com dimensionamento de vazão de ar exterior e desumidificação.
+
+### 3. Simulação Dinâmica 24 Horas & Gráficos
+* **Linha do Tempo com Reprodução Contínua:** Controle temporal com slider horário (00h às 23h) e botão Play/Pausar para acompanhar o ciclo solar diário.
+* **Sol Dinâmico no Canvas 2D:** Rastreamento do vetor solar em tempo real (altitude e azimute astronômico) com destaque dourado nas fachadas iluminadas diretamente pelo sol.
+* **Mapa de Calor Térmico (*Heatmap*):** Gradiente cromático por ambiente refletindo a carga térmica instantânea (salas a leste aquecem pela manhã, salas a oeste sofrem carga solar máxima no meio da tarde).
+* **Curva de Carga Diária (SVG Interativo):** Gráfico horário da potência térmica com marcador dinâmico da hora atual, permitindo inspecionar o comportamento de cada espaço ou do edifício integrado.
+* **Análise de Diversidade & Carga Coincidente (*Block Load*):** Comparação entre a soma das potências individuais de pico (*Non-Coincident Peak*) e o pico simultâneo da central de água gelada ou condensação (*Coincident Peak*), gerando o fator de diversidade real do projeto.
+
+---
+
+## 🏗️ Estrutura do Projeto
+
+```
+kapi/
+├── index.html                   # Interface web principal (HTML5 semântico e responsivo)
+├── styles.css                   # Sistema de design corporativo (tokens, glassmorphism)
+├── src/
+│   ├── app.js                   # Controlador central da aplicação web
+│   ├── cad_canvas.js            # Renderizador CAD 2D, pan/zoom, Rosa dos Ventos e sol
+│   ├── thermal_engine.js        # Motor termofísico (Sol-Air, balanço ASHRAE, ventilação)
+│   ├── hourly_engine.js         # Simulação horária 24h, posições solares e diversidade
+│   └── hap_library.js           # Bibliotecas de montagens, atividades e tipologias
+├── tests/
+│   ├── test_thermal.py          # Testes unitários do motor térmico
+│   ├── test_spatial_search.py   # Testes de indexação espacial QuadTree e busca
+│   └── test_e2e_ui.py           # Testes end-to-end com Playwright e captura visual
+└── README.md                    # Documentação do projeto
+```
+
+---
+
+## 💻 Como Executar
+
+### Pré-requisitos
+* Qualquer navegador web moderno com suporte a ES Modules e Canvas 2D (Chrome, Edge, Firefox, Safari).
+* Python 3.8+ (opcional, para execução de servidor local e suíte de testes).
+
+### Iniciando a Aplicação
+Como o projeto utiliza módulos JavaScript nativos, execute um servidor HTTP simples na pasta raiz:
+
+```bash
+# Via Python
+python -m http.server 8000
+
+# Ou via Node.js
+npx serve .
+```
+
+Abra o navegador no endereço:
+```
+http://localhost:8000
+```
+
+---
+
+## 🧪 Suíte de Testes Automatizados
+
+Para executar os testes unitários da engenharia térmica e da estrutura de dados:
+
 ```bash
 python -m unittest discover -s tests -p "test_*.py"
 ```
-Todos os 4 testes cobrindo busca alfanumérica, QuadTree espacial, posições solares e incidência solar em paredes são validados com sucesso.
+
+Para executar os testes visuais e de interação end-to-end (Playwright):
+
+```bash
+python tests/test_e2e_ui.py
+```
+
+---
+
+## 📄 Licença
+
+Distribuído sob a licença MIT. Consulte o arquivo `LICENSE` para mais detalhes.

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kapi - Cálculo de Carga Térmica 2D Interativo & Simulação Horária 24h (Carrier HAP Engine)</title>
+    <title>Kapi - Cálculo de Carga Térmica 2D Interativo & Simulação Horária 24h</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +19,7 @@
                 </div>
                 <div class="brand-info">
                     <span class="brand-name">Kapi <strong>HVAC 2D</strong></span>
-                    <span class="brand-badge">Carrier HAP 6.4 Engine</span>
+                    <span class="brand-badge">v0.1</span>
                 </div>
             </div>
 
@@ -95,7 +95,7 @@
 
         <!-- Main Workspace -->
         <main id="main-content">
-            <!-- Left Sidebar: Spaces & Search (Carrier HAP Filter Engine) -->
+            <!-- Left Sidebar: Spaces & Search Engine -->
             <aside id="left-sidebar">
                 <div class="sidebar-header">
                     <div class="header-title-group">
@@ -105,7 +105,7 @@
                     <span class="sidebar-badge-count" id="sidebar-spaces-count">4</span>
                 </div>
 
-                <!-- Carrier HAP SpacesSearchViewModel Filter Controls -->
+                <!-- Spaces Filter Controls -->
                 <div class="search-box">
                     <div class="search-input-wrapper">
                         <svg class="search-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -191,13 +191,13 @@
 
                 <!-- Selected Space Properties -->
                 <div id="property-panel" class="property-panel">
-                    <div class="section-title">Propriedades do Espaço & Modelo HAP</div>
+                    <div class="section-title">Propriedades do Espaço & Uso</div>
                     
                     <div id="prop-load-summary" class="prop-load-badge"></div>
 
-                    <!-- Space Type Preset Selector (ASHRAE 90.1 / Carrier HAP) -->
+                    <!-- Space Type Preset Selector -->
                     <div class="form-group highlight-group">
-                        <label for="prop-space-type">🏢 Modelo / Tipo de Espaço (HAP 6.4):</label>
+                        <label for="prop-space-type">🏢 Tipo de Espaço / Uso:</label>
                         <select id="prop-space-type" class="preset-select">
                             <option value="office_enclosed">Escritório Individual / Fechado</option>
                             <option value="office_open">Escritório Aberto (Open Plan / Co-working)</option>
@@ -230,7 +230,7 @@
                         </div>
                     </div>
 
-                    <div class="section-title">Ocupação & Nível de Atividade (HAP)</div>
+                    <div class="section-title">Ocupação & Nível de Atividade</div>
                     <div class="form-group">
                         <label for="prop-activity-level">Atividade Metabólica dos Ocupantes:</label>
                         <select id="prop-activity-level" class="preset-select">
@@ -319,7 +319,7 @@
                     <hr class="divider">
 
                     <!-- Ambient Design Conditions -->
-                    <div class="section-title">Condições de Projeto (HAP Design Weather)</div>
+                    <div class="section-title">Condições Climáticas de Projeto</div>
                     <div class="form-row">
                         <div class="form-group">
                             <label for="weather-outdoor-db">Temp. Externa (°C):</label>
@@ -363,7 +363,7 @@
                 </div>
                 
                 <div class="form-group">
-                    <label for="modal-win-glazing">Tipo de Vidro (Carrier HAP):</label>
+                    <label for="modal-win-glazing">Tipo de Vidro / Caixilho:</label>
                     <select id="modal-win-glazing">
                         <option value="single_clear">Vidro Simples Transparente 6mm (U=5.8, SHGC=0.82)</option>
                         <option value="single_tint">Vidro Simples Fumê/Verde (U=5.8, SHGC=0.70)</option>
