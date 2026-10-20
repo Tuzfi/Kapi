@@ -3,40 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kapi - Cálculo de Carga Térmica 2D Interativo & Simulação Horária 24h (Carrier HAP Architecture)</title>
+    <title>Kapi - Cálculo de Carga Térmica 2D Interativo & Simulação Horária 24h (Carrier HAP Engine)</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="app-container">
         <!-- Top Navigation / KPI Bar -->
         <header id="top-bar">
             <div class="brand">
-                <span class="brand-icon">❄️</span>
-                <span class="brand-name">Kapi <strong>HVAC 2D</strong></span>
-                <span class="brand-badge">Carrier HAP 6.4 Engine</span>
+                <div class="brand-icon-wrapper">
+                    <span class="brand-icon">❄️</span>
+                </div>
+                <div class="brand-info">
+                    <span class="brand-name">Kapi <strong>HVAC 2D</strong></span>
+                    <span class="brand-badge">Carrier HAP 6.4 Engine</span>
+                </div>
             </div>
 
             <!-- Global HVAC Load Metrics -->
             <div id="kpi-summary">
-                <div class="kpi-card">
-                    <span class="kpi-label">Carga Instantânea (TR)</span>
+                <div class="kpi-card kpi-primary">
+                    <div class="kpi-label-row">
+                        <span class="kpi-label">Carga Instantânea</span>
+                        <span class="kpi-chip">PICO 24H</span>
+                    </div>
                     <div class="kpi-value-group">
                         <span class="kpi-value highlight" id="total-cooling-tr">0.00 TR</span>
                         <span class="kpi-sub" id="total-cooling-btu">0 BTU/h</span>
                     </div>
                 </div>
-                <div class="kpi-card">
+                <div class="kpi-card kpi-secondary">
                     <span class="kpi-label">Sensível vs Latente</span>
                     <span class="kpi-value" id="total-sensible-latent">Sensível: 0 kW | Latente: 0 kW</span>
                 </div>
-                <div class="kpi-card">
+                <div class="kpi-card kpi-accent">
                     <span class="kpi-label">Vazão Total de Ar</span>
                     <span class="kpi-value" id="total-airflow-cfm">0 CFM</span>
                 </div>
-                <div class="kpi-card">
+                <div class="kpi-card kpi-muted">
                     <span class="kpi-label">Área Construída</span>
                     <span class="kpi-value" id="total-area-m2">0.0 m²</span>
                 </div>
@@ -44,21 +51,31 @@
 
             <!-- Quick Action Toolbar -->
             <div id="cad-toolbar">
-                <button class="tool-btn active" data-mode="select" title="Selecionar e mover vértices (Snap QuadTree)">
-                    <span class="icon">↖</span> Selecionar
-                </button>
-                <button class="tool-btn" data-mode="draw" title="Desenhar Novo Espaço (Clique nos vértices e feche o polígono)">
-                    <span class="icon">✏️</span> Novo Espaço
-                </button>
-                <button class="tool-btn" data-mode="add_window" title="Clique em uma parede para adicionar e definir dimensões da janela">
-                    <span class="icon">🪟</span> Janela
-                </button>
-                <button class="tool-btn" data-mode="toggle_boundary" title="Alternar entre Parede Externa e Parede Divisória Interna">
-                    <span class="icon">🧱</span> Externa / Divisória
-                </button>
-                <button class="action-btn active" id="toggle-heatmap" title="Alternar Mapa de Calor Térmico (W/m²)">
-                    <span class="icon">🔥</span> Heatmap
-                </button>
+                <div class="toolbar-segment">
+                    <button class="tool-btn active" data-mode="select" title="Selecionar e mover vértices (Snap QuadTree)">
+                        <span class="icon">↖</span>
+                        <span class="btn-text">Selecionar</span>
+                    </button>
+                    <button class="tool-btn" data-mode="draw" title="Desenhar Novo Espaço (Clique nos vértices e feche o polígono)">
+                        <span class="icon">✏️</span>
+                        <span class="btn-text">Novo Espaço</span>
+                    </button>
+                    <button class="tool-btn" data-mode="add_window" title="Clique em uma parede para adicionar e definir dimensões da janela">
+                        <span class="icon">🪟</span>
+                        <span class="btn-text">Janela</span>
+                    </button>
+                    <button class="tool-btn" data-mode="toggle_boundary" title="Alternar entre Parede Externa e Parede Divisória Interna">
+                        <span class="icon">🧱</span>
+                        <span class="btn-text">Externa / Divisória</span>
+                    </button>
+                </div>
+
+                <div class="toolbar-segment">
+                    <button class="action-btn active" id="toggle-heatmap" title="Alternar Mapa de Calor Térmico (W/m²)">
+                        <span class="icon">🔥</span>
+                        <span class="btn-text">Heatmap</span>
+                    </button>
+                </div>
 
                 <div class="toolbar-divider"></div>
 
@@ -66,8 +83,10 @@
                 <div class="rotation-control-group" title="Girar Orientação do Mapa / Norte (clique ou arraste a Rosa dos Ventos)">
                     <span class="compass-label">🧭 Norte:</span>
                     <button class="btn-rot-step" id="btn-rot-ccw" title="Girar 15° anti-horário">↺</button>
-                    <input type="number" id="input-building-rotation" min="0" max="359" value="0" step="5" class="rotation-input" title="Ângulo de rotação do Norte">
-                    <span class="unit-deg">°</span>
+                    <div class="rotation-input-wrapper">
+                        <input type="number" id="input-building-rotation" min="0" max="359" value="0" step="5" class="rotation-input" title="Ângulo de rotação do Norte">
+                        <span class="unit-deg">°</span>
+                    </div>
                     <button class="btn-rot-step" id="btn-rot-cw" title="Girar 15° horário">↻</button>
                     <input type="range" id="slider-building-rotation" min="0" max="359" value="0" step="1" class="rotation-slider" title="Ajuste contínuo da orientação">
                 </div>
@@ -79,13 +98,20 @@
             <!-- Left Sidebar: Spaces & Search (Carrier HAP Filter Engine) -->
             <aside id="left-sidebar">
                 <div class="sidebar-header">
-                    <h3>Espaços & Zonas</h3>
+                    <div class="header-title-group">
+                        <span class="sidebar-icon">📐</span>
+                        <h3>Espaços & Zonas</h3>
+                    </div>
+                    <span class="sidebar-badge-count" id="sidebar-spaces-count">4</span>
                 </div>
 
                 <!-- Carrier HAP SpacesSearchViewModel Filter Controls -->
                 <div class="search-box">
                     <div class="search-input-wrapper">
-                        <span class="search-icon">🔍</span>
+                        <svg class="search-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
                         <input type="text" id="search-input" placeholder="Buscar por nome ou zona..." autocomplete="off">
                     </div>
                     
@@ -122,12 +148,15 @@
                 <canvas id="cad-canvas"></canvas>
                 
                 <div id="viewport-legend">
-                    <div class="legend-item"><span class="legend-color ext-wall"></span> Parede Externa</div>
-                    <div class="legend-item"><span class="legend-color ext-sun"></span> Incidência Solar Direta</div>
-                    <div class="legend-item"><span class="legend-color part-wall"></span> Divisória Interna</div>
-                    <div class="legend-item"><span class="legend-color window-line"></span> Janela</div>
-                    <div class="legend-item"><span class="legend-color heatmap-cool"></span> Baixa Carga (<60 W/m²)</div>
-                    <div class="legend-item"><span class="legend-color heatmap-hot"></span> Alta Carga (>120 W/m²)</div>
+                    <div class="legend-header">Legenda Técnica:</div>
+                    <div class="legend-items">
+                        <div class="legend-item"><span class="legend-color ext-wall"></span> Parede Externa</div>
+                        <div class="legend-item"><span class="legend-color ext-sun"></span> Incidência Solar Direta</div>
+                        <div class="legend-item"><span class="legend-color part-wall"></span> Divisória Interna</div>
+                        <div class="legend-item"><span class="legend-color window-line"></span> Janela</div>
+                        <div class="legend-item"><span class="legend-color heatmap-cool"></span> Baixa Carga (&lt;60 W/m²)</div>
+                        <div class="legend-item"><span class="legend-color heatmap-hot"></span> Alta Carga (&gt;120 W/m²)</div>
+                    </div>
                 </div>
 
                 <!-- Bottom 24-Hour Timeline Player & Dynamic Load Curve -->
@@ -154,7 +183,10 @@
             <!-- Right Sidebar: Properties & Thermal Inspector -->
             <aside id="right-sidebar">
                 <div class="sidebar-header">
-                    <h3>Inspetor de Carga Térmica</h3>
+                    <div class="header-title-group">
+                        <span class="sidebar-icon">⚡</span>
+                        <h3>Inspetor de Carga Térmica</h3>
+                    </div>
                 </div>
 
                 <!-- Selected Space Properties -->
@@ -311,7 +343,10 @@
     <div id="window-modal" class="modal-overlay hidden">
         <div class="modal-dialog">
             <div class="modal-header">
-                <h4>🪟 Configurar Esquadria & Dimensões da Janela</h4>
+                <div class="modal-header-title">
+                    <span class="modal-title-icon">🪟</span>
+                    <h4>Configurar Esquadria & Dimensões da Janela</h4>
+                </div>
                 <button id="btn-close-window-modal" class="modal-close" title="Fechar">&times;</button>
             </div>
             <div class="modal-body">
